@@ -72,7 +72,7 @@
             // 
             // Splash
             // 
-            this.BackgroundImage = global::MissionPlanner.Properties.Resources.splashdark;
+            this.BackgroundImage = global::MissionPlanner.Properties.Resources.VOLO_FLIGHT_SHOT1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(584, 336);
             this.ControlBox = false;

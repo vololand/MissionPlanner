@@ -4654,7 +4654,7 @@ namespace MissionPlanner
         {
             try
             {
-                System.Diagnostics.Process.Start("https://ardupilot.org/?utm_source=Menu&utm_campaign=MP");
+                System.Diagnostics.Process.Start("https://vololand.com/");
             }
             catch
             {
@@ -4796,6 +4796,11 @@ namespace MissionPlanner
                     break;
                 }
             }
+        }
+
+        private void MainV2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1709,19 +1709,9 @@ namespace MissionPlanner.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap spl_bd1 {
+        internal static System.Drawing.Bitmap spl_bd4 {
             get {
-                object obj = ResourceManager.GetObject("spl_bd1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap spl_bd3 {
-            get {
-                object obj = ResourceManager.GetObject("spl_bd3", resourceCulture);
+                object obj = ResourceManager.GetObject("spl_bd4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

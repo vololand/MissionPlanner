@@ -796,7 +796,8 @@ namespace MissionPlanner
 
             if (splash != null)
             {
-                this.Text = splash?.Text;
+                //this.Text = splash?.Text;
+                this.Text = "VOLOLAND";
                 titlebar = splash?.Text;
             }
 

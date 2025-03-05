@@ -13,7 +13,7 @@ namespace MissionPlanner
             string strVersion = typeof(Splash).GetType().Assembly.GetName().Version.ToString();
 
             //TXT_version.Text = "Version: " + Application.ProductVersion; // +" Build " + strVersion;
-            TXT_version.Text = "VOLOLAND";
+            TXT_version.Text = null;
 
             Console.WriteLine(strVersion);
 

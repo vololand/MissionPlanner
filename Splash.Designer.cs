@@ -43,10 +43,9 @@
             this.label1.ForeColor = System.Drawing.Color.OliveDrab;
             this.label1.Location = new System.Drawing.Point(447, 132);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
             this.label1.Tag = "custom";
-            this.label1.Text = "by VOLOLAND";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // TXT_version
@@ -72,13 +71,13 @@
             // 
             // Splash
             // 
-            this.BackgroundImage = global::MissionPlanner.Properties.Resources.VOLO_FLIGHT_SHOT1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(584, 336);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.TXT_version);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

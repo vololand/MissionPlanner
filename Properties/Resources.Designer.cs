@@ -10,8 +10,9 @@
 
 namespace MissionPlanner.Properties {
     using System;
-    
-    
+    using System.Drawing;
+
+
     /// <summary>
     ///   지역화된 문자열 등을 찾기 위한 강력한 형식의 리소스 클래스입니다.
     /// </summary>
@@ -23,7 +24,7 @@ namespace MissionPlanner.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
-        
+        internal static Image vololand_logo;
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
@@ -1772,16 +1773,6 @@ namespace MissionPlanner.Properties {
         internal static System.Drawing.Bitmap VOLO_FLIGHT_SHOT1 {
             get {
                 object obj = ResourceManager.GetObject("VOLO-FLIGHT_SHOT1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap vololand_logo {
-            get {
-                object obj = ResourceManager.GetObject("vololand logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

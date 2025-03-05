@@ -798,7 +798,8 @@ namespace MissionPlanner
             {
                 //this.Text = splash?.Text;
                 this.Text = "VOLOLAND";
-                titlebar = splash?.Text;
+                //titlebar = splash?.Text;
+                titlebar = "VOLOLAND";
             }
 
             if (!MONO) // windows only

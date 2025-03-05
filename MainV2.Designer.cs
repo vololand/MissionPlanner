@@ -198,7 +198,7 @@ namespace MissionPlanner
             this.MenuArduPilot.BackColor = System.Drawing.Color.Transparent;
             this.MenuArduPilot.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.MenuArduPilot.ForeColor = System.Drawing.Color.White;
-            this.MenuArduPilot.Image = global::MissionPlanner.Properties.Resources.vololand_logo;
+            this.MenuArduPilot.Image = global::MissionPlanner.Properties.Resources.vololand_3;
             this.MenuArduPilot.Margin = new System.Windows.Forms.Padding(0);
             this.MenuArduPilot.Name = "MenuArduPilot";
             this.MenuArduPilot.Click += new System.EventHandler(this.MenuArduPilot_Click);

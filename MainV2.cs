@@ -4804,5 +4804,10 @@ namespace MissionPlanner
         {
 
         }
+
+        private void menuexit_click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -71,7 +71,7 @@
             // 
             // Splash
             // 
-            this.BackgroundImage = global::MissionPlanner.Properties.Resources.spl_bd4;
+            this.BackgroundImage = global::MissionPlanner.Properties.Resources.splashdark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(584, 336);
             this.ControlBox = false;

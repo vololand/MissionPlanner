@@ -814,9 +814,10 @@ namespace MissionPlanner.Properties {
         ///   {\rtf1\ansi\ansicpg1252\deff0\deflang3081\deflangfe3081{\fonttbl{\f0\fswiss\fprq2\fcharset0 Calibri;}}
         ///{\colortbl ;\red0\green0\blue255;}
         ///{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\sa200\sl276\slmult1\f0\fs22\par
-        ///\tab Welcome to the \b Mission Planner\b0 , mission planning for Unmanned Aerial Vehicles (\b UAV\b0 ).\par
-        ///\pard\nowidctlpar\fi720\b Help:\par
-        ///Arduplane: {\field{\*\fldinst{HYPERLINK &quot;http://ardupilot.org/plane&quot;}}{\fldrslt{\ul\cf1 http://ardupilot.org/plane}}}\f0\fs2[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///\tab Welcome to the \b VOLOLAND\b0 , mission planning for Unmanned Aerial Vehicles (\b UAV\b0 ).\par
+        ///\pard\nowidctlpar\fi720\b Help:
+        ///\par
+        ///\pard\nowidctlpar\sa200\sl276\slmult1\tab Please visit {\field{\*\fldinst{HYPERLINK &quot;https://vololand.com/&quot;}}{\fldrslt{\ul\cf1 ht[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string help_text {
             get {
@@ -1709,16 +1710,6 @@ namespace MissionPlanner.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap spl_bd4 {
-            get {
-                object obj = ResourceManager.GetObject("spl_bd4", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap splashdark {
             get {
                 object obj = ResourceManager.GetObject("splashdark", resourceCulture);
@@ -1762,46 +1753,6 @@ namespace MissionPlanner.Properties {
         internal static System.Drawing.Bitmap up {
             get {
                 object obj = ResourceManager.GetObject("up", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap VOLO_FLIGHT_SHOT1 {
-            get {
-                object obj = ResourceManager.GetObject("VOLO-FLIGHT_SHOT1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap vololand_1 {
-            get {
-                object obj = ResourceManager.GetObject("vololand_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap vololand_2 {
-            get {
-                object obj = ResourceManager.GetObject("vololand_2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap vololand_3 {
-            get {
-                object obj = ResourceManager.GetObject("vololand_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

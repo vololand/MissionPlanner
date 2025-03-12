@@ -4800,11 +4800,6 @@ namespace MissionPlanner
             }
         }
 
-        private void MainV2_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void menuexit_click(object sender, EventArgs e)
         {
             Application.Exit();

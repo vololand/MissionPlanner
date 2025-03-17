@@ -655,6 +655,9 @@ namespace MissionPlanner
             // load config
             LoadConfig();
 
+            // fullscrren
+            fullscreen();
+
             // force language to be loaded
             L10N.GetConfigLang();
 
@@ -2188,38 +2191,46 @@ namespace MissionPlanner
 
         private void LoadConfig()
         {
-            try
-            {
-                log.Info("Loading config");
+            //try
+            //{
+            //    log.Info("Loading config");
 
-                Settings.Instance.Load();
+            //    Settings.Instance.Load();
 
-                comPortName = Settings.Instance.ComPort;
-            }
-            catch (Exception ex)
-            {
-                log.Error("Bad Config File", ex);
-            }
+            //    comPortName = Settings.Instance.ComPort;
+            //}
+            //catch (Exception ex)
+            //{
+            //    log.Error("Bad Config File", ex);
+            //}
         }
 
         private void SaveConfig()
         {
-            try
-            {
-                log.Info("Saving config");
-                Settings.Instance.ComPort = comPortName;
+            //try
+            //{
+            //    log.Info("Saving config");
+            //    Settings.Instance.ComPort = comPortName;
 
-                if (_connectionControl != null)
-                    Settings.Instance.BaudRate = _connectionControl.CMB_baudrate.Text;
+            //    if (_connectionControl != null)
+            //        Settings.Instance.BaudRate = _connectionControl.CMB_baudrate.Text;
 
-                Settings.Instance.APMFirmware = MainV2.comPort.MAV.cs.firmware.ToString();
+            //    Settings.Instance.APMFirmware = MainV2.comPort.MAV.cs.firmware.ToString();
 
-                Settings.Instance.Save();
-            }
-            catch (Exception ex)
-            {
-                CustomMessageBox.Show(ex.ToString());
-            }
+            //    Settings.Instance.Save();
+            //}
+            //catch (Exception ex)
+            //{
+            //    CustomMessageBox.Show(ex.ToString());
+            //}
+        }
+
+        private void fullscreen()
+        {
+            this.TopMost = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.WindowState = FormWindowState.Normal;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         /// <summary>
@@ -4027,6 +4038,15 @@ namespace MissionPlanner
                 log.Info("myview width " + MyView.Width + " height " + MyView.Height);
 
             log.Info("this   width " + this.Width + " height " + this.Height);
+
+            if (this.FormBorderStyle == FormBorderStyle.None && this.WindowState == FormWindowState.Maximized)
+            {
+                fullScreenToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                fullScreenToolStripMenuItem.Checked = false;
+            }
         }
 
         private void MenuHelp_Click(object sender, EventArgs e)
@@ -4624,6 +4644,7 @@ namespace MissionPlanner
             //MainMenu.BackgroundImage = MissionPlanner.Properties.Resources.bgdark;
         }
 
+
         private void fullScreenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // full screen
@@ -4803,6 +4824,11 @@ namespace MissionPlanner
         private void menuexit_click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void MainV2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

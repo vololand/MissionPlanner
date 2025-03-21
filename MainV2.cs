@@ -799,10 +799,10 @@ namespace MissionPlanner
 
             if (splash != null)
             {
-                //this.Text = splash?.Text;
-                this.Text = "VOLOLAND";
-                //titlebar = splash?.Text;
-                titlebar = "VOLOLAND";
+                this.Text = splash?.Text;
+                //this.Text = "VOLOLAND";
+                titlebar = splash?.Text;
+                //titlebar = "VOLOLAND";
             }
 
             if (!MONO) // windows only

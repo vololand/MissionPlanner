@@ -655,9 +655,6 @@ namespace MissionPlanner
             // load config
             LoadConfig();
 
-            // fullscrren
-            fullscreen();
-
             // force language to be loaded
             L10N.GetConfigLang();
 
@@ -1094,6 +1091,9 @@ namespace MissionPlanner
 
             // save config to test we have write access
             SaveConfig();
+
+            // fullscrren
+            fullscreen();
         }
 
         void cmb_sysid_Click(object sender, EventArgs e)
@@ -4823,7 +4823,7 @@ namespace MissionPlanner
 
         private void menuexit_click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void MainV2_Load(object sender, EventArgs e)

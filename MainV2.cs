@@ -653,7 +653,7 @@ namespace MissionPlanner
             }
 
             // load config
-            //LoadConfig();
+            LoadConfig();
 
             // fullscrren
             fullscreen();
@@ -1093,7 +1093,7 @@ namespace MissionPlanner
             MainV2.comPort.MavChanged += comPort_MavChanged;
 
             // save config to test we have write access
-            //SaveConfig();
+            SaveConfig();
         }
 
         void cmb_sysid_Click(object sender, EventArgs e)
@@ -1300,7 +1300,7 @@ namespace MissionPlanner
             MyView.ShowScreen("FlightData");
 
             // save config
-            //SaveConfig();
+            SaveConfig();
         }
 
         private void MenuFlightPlanner_Click(object sender, EventArgs e)
@@ -1308,7 +1308,7 @@ namespace MissionPlanner
             MyView.ShowScreen("FlightPlanner");
 
             // save config
-            //SaveConfig();
+            SaveConfig();
         }
 
         public void MenuSetup_Click(object sender, EventArgs e)
@@ -1832,7 +1832,7 @@ namespace MissionPlanner
             Connect();
 
             // save config
-            //SaveConfig();
+            SaveConfig();
         }
 
         private void Connect()
@@ -2157,7 +2157,7 @@ namespace MissionPlanner
             } // i get alot of these errors, the port is still open, but not valid - user has unpluged usb
 
             // save config
-            //SaveConfig();
+            SaveConfig();
 
             Console.WriteLine(httpthread?.IsAlive);
             Console.WriteLine(pluginthread?.IsAlive);

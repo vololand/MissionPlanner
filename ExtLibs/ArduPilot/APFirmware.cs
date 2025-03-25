@@ -97,7 +97,7 @@ namespace MissionPlanner.ArduPilot
 
         private static readonly object getListlock = new object();
 
-        public static void GetList(string url = "https://firmware.ardupilot.org/manifest.json.gz", bool force = false)
+        public static void GetList(string url = "http://125.181.10.212:80/Desktop/VOLO-Firmware/manifest.json/manifest.json.gz", bool force = false)
         {
             lock (getListlock)
             {

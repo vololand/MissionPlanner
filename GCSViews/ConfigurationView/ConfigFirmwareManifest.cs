@@ -64,7 +64,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 
             Task.Run(() =>
             {
-                APFirmware.GetList("https://firmware.oborne.me/manifest.json.gz");
+                APFirmware.GetList("http://125.181.10.212:80/Desktop/VOLO-Firmware/manifest.json/manifest.json.gz");
 
                 var options = APFirmware.GetRelease(REL_Type);
 

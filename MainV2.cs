@@ -797,9 +797,7 @@ namespace MissionPlanner
             if (splash != null)
             {
                 this.Text = splash?.Text;
-                //this.Text = "VOLOLAND";
                 titlebar = splash?.Text;
-                //titlebar = "VOLOLAND";
             }
 
             if (!MONO) // windows only
@@ -3914,7 +3912,7 @@ namespace MissionPlanner
             {
                 if (Settings.Instance["fw_check"] != DateTime.Now.ToShortDateString())
                 {
-                    APFirmware.GetList("https://firmware.oborne.me/manifest.json.gz");
+                    APFirmware.GetList("http://125.181.10.212:80/Desktop/VOLO-Firmware/manifest.json/manifest.json.gz");
 
                     Settings.Instance["fw_check"] = DateTime.Now.ToShortDateString();
                 }

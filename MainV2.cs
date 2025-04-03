@@ -1335,7 +1335,6 @@ namespace MissionPlanner
                 }
             }
         }
-
         private void MenuSimulation_Click(object sender, EventArgs e)
         {
             MyView.ShowScreen("Simulation");

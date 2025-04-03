@@ -134,7 +134,7 @@ namespace AssortedWidgets
             menuItemFileSave = new MenuItemButton("Save");
             menuItemFileSaveAs = new MenuItemButton("Save As");
             menuItemFileSeparator = new MenuItemSeparator();
-            menuItemFileExit = new MenuItemButton("Exit");
+            menuItemFileExit = new MenuItemButton(string.GetString("MenuExit.Text")); // lee
             menuItemFileExport = new MenuItemSubMenu("Export");
             menuItemFilePNG = new MenuItemSubMenu("PNG Image");
             menuItemFilePNGNone = new MenuItemButton("None");

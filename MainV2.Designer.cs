@@ -52,7 +52,7 @@ namespace MissionPlanner
             this.MenuConnect = new System.Windows.Forms.ToolStripButton();
             this.toolStripConnectionControl = new MissionPlanner.Controls.ToolStripConnectionControl();
             this.MenuArduPilot = new System.Windows.Forms.ToolStripButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menu = new MissionPlanner.Controls.MyButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.status1 = new MissionPlanner.Controls.Status();
@@ -77,7 +77,7 @@ namespace MissionPlanner
             this.MenuConnect,
             this.toolStripConnectionControl,
             this.MenuArduPilot,
-            this.toolStripMenuItem1});
+            this.MenuExit});
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.ShowItemToolTips = true;
             this.MainMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MainMenu_ItemClicked);
@@ -205,14 +205,15 @@ namespace MissionPlanner
             this.MenuArduPilot.Name = "MenuArduPilot";
             this.MenuArduPilot.Click += new System.EventHandler(this.MenuArduPilot_Click);
             // 
-            // toolStripMenuItem1
+            // MenuExit
             // 
-            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.toolStripMenuItem1.Image = global::MissionPlanner.Properties.Resources.exit;
-            this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 0);
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.menuexit_click);
+            this.MenuExit.AutoToolTip = true;
+            this.MenuExit.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.MenuExit.Image = global::MissionPlanner.Properties.Resources.exit;
+            resources.ApplyResources(this.MenuExit, "MenuExit");
+            this.MenuExit.Margin = new System.Windows.Forms.Padding(1, 3, 1, 0);
+            this.MenuExit.Name = "MenuExit";
+            this.MenuExit.Click += new System.EventHandler(this.menuexit_click);
             // 
             // menu
             // 
@@ -277,6 +278,6 @@ namespace MissionPlanner
         public System.Windows.Forms.ToolStripButton MenuHelp;
         public System.Windows.Forms.ToolStripButton MenuArduPilot;
         public Controls.Status status1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        public System.Windows.Forms.ToolStripMenuItem MenuExit;
     }
 }

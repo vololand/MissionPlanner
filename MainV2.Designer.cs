@@ -209,6 +209,7 @@ namespace MissionPlanner
             // 
             this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.toolStripMenuItem1.Image = global::MissionPlanner.Properties.Resources.exit;
+            this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 0);
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Click += new System.EventHandler(this.menuexit_click);

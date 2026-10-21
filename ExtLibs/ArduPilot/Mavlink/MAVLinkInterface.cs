@@ -268,8 +268,14 @@ namespace MissionPlanner
         private volatile bool _giveComport = false;
 
         bool _gcsAuthActive;
+        bool _gcsAuthReading;
         byte _gcsAuthSysid;
         byte _gcsAuthCompid;
+
+        internal void SetGcsAuthReading(bool reading)
+        {
+            _gcsAuthReading = reading;
+        }
 
         internal void SetGcsAuthSession(byte sysid, byte compid, byte[] signingKey)
         {
@@ -1417,6 +1423,19 @@ Mission Planner waits for 2 valid heartbeat packets before connecting
                 {
                     // trim packet for mavlink2
                     MavlinkUtil.trim_payload(ref data);
+
+                    // Keep AUTH_* at its minimum length. The user id and hashes are
+                    // padded with zeros, and trimming those zeros can drop the
+                    // packet below the length the flight controller expects.
+                    if (messageType == (int)MAVLINK_MSG_ID.AUTH_REQUEST ||
+                        messageType == (int)MAVLINK_MSG_ID.AUTH_CHALLENGE ||
+                        messageType == (int)MAVLINK_MSG_ID.AUTH_RESPONSE ||
+                        messageType == (int)MAVLINK_MSG_ID.AUTH_RESULT)
+                    {
+                        var authInfo = MAVLINK_MESSAGE_INFOS.GetMessageInfo((uint)messageType);
+                        if (authInfo.minlength > data.Length)
+                            Array.Resize(ref data, (int)authInfo.minlength);
+                    }
 
                     // space for signing if needed
                     if (MAVlist[sysid, compid].signing || forcesigning)
@@ -5159,8 +5178,20 @@ Mission Planner waits for 2 valid heartbeat packets before connecting
 
                         if (!valid)
                         {
-                            log.InfoFormat("Packet failed signature but passed crc");
-                            return MAVLinkMessage.Invalid;
+                            // Login runs before this GCS has the session key. A flight
+                            // controller that still signs with the previous key would
+                            // otherwise hide AUTH_CHALLENGE and the wait times out.
+                            bool authHandshake = _gcsAuthReading &&
+                                                 (msgid == (uint)MAVLINK_MSG_ID.AUTH_CHALLENGE ||
+                                                  msgid == (uint)MAVLINK_MSG_ID.AUTH_RESULT ||
+                                                  msgid == (uint)MAVLINK_MSG_ID.STATUSTEXT);
+                            if (!authHandshake)
+                            {
+                                log.InfoFormat("Packet failed signature but passed crc");
+                                return MAVLinkMessage.Invalid;
+                            }
+
+                            log.InfoFormat("GCS auth keeping msgid {0} despite signature", msgid);
                         }
                     }
 

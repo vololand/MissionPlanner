@@ -62,6 +62,21 @@ namespace MissionPlanner.ArduPilot.Mavlink
             Array.Copy(userBytes, request.user_id, userBytes.Length);
 
             log.Info("GCS auth login request user='" + userId + "'");
+            port.SetGcsAuthReading(true);
+            try
+            {
+                return LoginAfterRequest(port, progress, request, userBytes, password, out error);
+            }
+            finally
+            {
+                port.SetGcsAuthReading(false);
+            }
+        }
+
+        static bool LoginAfterRequest(global::MissionPlanner.MAVLinkInterface port, IProgressReporterDialogue progress,
+            MAVLink.mavlink_auth_request_t request, byte[] userBytes, string password, out string error)
+        {
+            error = null;
             port.generatePacket((int)MAVLink.MAVLINK_MSG_ID.AUTH_REQUEST, request, 0, 0, true, false);
 
             byte[] challenge = null;
@@ -72,6 +87,8 @@ namespace MissionPlanner.ArduPilot.Mavlink
             bool sawChallenge = false;
             string exitText = null;
             bool unsignedSession = false;
+            int otherPackets = 0;
+            uint lastOther = 0;
 
             DateTime deadline = DateTime.UtcNow.AddMilliseconds(AuthTimeoutMs);
             while (DateTime.UtcNow < deadline)
@@ -128,11 +145,16 @@ namespace MissionPlanner.ArduPilot.Mavlink
                     error = exitText ?? "User authentication failed.";
                     return false;
                 }
+
+                otherPackets++;
+                lastOther = msg.msgid;
             }
 
             if (!sawChallenge)
             {
-                error = exitText ?? "User authentication timed out waiting for AUTH_CHALLENGE.";
+                error = exitText ?? (otherPackets == 0
+                    ? "User authentication timed out waiting for AUTH_CHALLENGE."
+                    : "User authentication timed out waiting for AUTH_CHALLENGE. Last message id " + lastOther + ".");
                 return false;
             }
 

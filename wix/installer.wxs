@@ -1,0 +1,2143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension" xmlns:difx="http://schemas.microsoft.com/wix/DifxAppExtension" xmlns:iis='http://schemas.microsoft.com/wix/IIsExtension' >
+
+
+    <Product Id="*" Name="Mission Planner" Language="1033" Version="1.3.83" Manufacturer="Michael Oborne" UpgradeCode="{625389D7-EB3C-4d77-A5F6-A285CF99437D}">
+
+    <Package Description="Mission Planner Installer" Comments="Mission Planner Installer" Manufacturer="Michael Oborne" InstallerVersion="200" Compressed="yes" />
+
+    <Upgrade Id="{625389D7-EB3C-4d77-A5F6-A285CF99437D}">
+        <UpgradeVersion OnlyDetect="yes" Minimum="1.3.83" Property="NEWERVERSIONDETECTED" IncludeMinimum="no" />
+        <UpgradeVersion OnlyDetect="no" Minimum="0.0.0" Maximum="1.3.83" Property="OLDERVERSIONBEINGUPGRADED" IncludeMinimum="yes" IncludeMaximum="yes" />
+    </Upgrade>
+
+    <InstallExecuteSequence>
+        <RemoveExistingProducts After="InstallInitialize" />
+    </InstallExecuteSequence>
+
+    <SetProperty Action='SetTARGETDIR' Before='LaunchConditions' Id='TARGETDIR' Value="[ProgramFilesFolder]" />
+
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_46_OR_LATER_INSTALLED" />
+
+    <Condition Message="This application requires .NET Framework 4.6.1. Please install the .NET Framework then run this installer again."><![CDATA[Installed OR WIX_IS_NETFRAMEWORK_46_OR_LATER_INSTALLED]]></Condition>
+
+    <Media Id="1" Cabinet="product.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+                
+    <Directory Id="INSTALLDIR" Name="Mission Planner">
+        <Component Id="InstallDirPermissions" Guid="{525389D7-EB3C-4d77-A5F6-A285CF99437D}" KeyPath="yes"> 
+            <CreateFolder> 
+                <Permission User="Everyone" GenericAll="yes" /> 
+            </CreateFolder>
+        </Component>
+		<Component Id="net461" Guid="931e3efb-3656-4eae-8a21-1d61dda5aa15">
+			<File Id="_7zip_dll" Source="..\bin\Release\net461\7zip.dll" />
+			<File Id="_7zip_pdb" Source="..\bin\Release\net461\7zip.pdb" />
+			<File Id="Accord_dll" Source="..\bin\Release\net461\Accord.dll" />
+			<File Id="Accord_dll_config" Source="..\bin\Release\net461\Accord.dll.config" />
+			<File Id="Accord_Imaging_dll" Source="..\bin\Release\net461\Accord.Imaging.dll" />
+			<File Id="Accord_MachineLearning_dll" Source="..\bin\Release\net461\Accord.MachineLearning.dll" />
+			<File Id="Accord_Math_Core_dll" Source="..\bin\Release\net461\Accord.Math.Core.dll" />
+			<File Id="Accord_Math_dll" Source="..\bin\Release\net461\Accord.Math.dll" />
+			<File Id="Accord_Statistics_dll" Source="..\bin\Release\net461\Accord.Statistics.dll" />
+			<File Id="Accord_Video_dll" Source="..\bin\Release\net461\Accord.Video.dll" />
+			<File Id="Accord_Vision_dll" Source="..\bin\Release\net461\Accord.Vision.dll" />
+			<File Id="acsimplepids_xml" Source="..\bin\Release\net461\acsimplepids.xml" />
+			<File Id="adb_exe" Source="..\bin\Release\net461\adb.exe" />
+			<File Id="AdbWinApi_dll" Source="..\bin\Release\net461\AdbWinApi.dll" />
+			<File Id="aircraft_xml" Source="..\bin\Release\net461\aircraft.xml" />
+			<File Id="airports_csv" Source="..\bin\Release\net461\airports.csv" />
+			<File Id="alglibnet_dll" Source="..\bin\Release\net461\alglibnet.dll" />
+			<File Id="alglibnet_pdb" Source="..\bin\Release\net461\alglibnet.pdb" />
+			<File Id="aot_sh" Source="..\bin\Release\net461\aot.sh" />
+			<File Id="APMotorLayout_json" Source="..\bin\Release\net461\APMotorLayout.json" />
+			<File Id="appxmanifest_xml" Source="..\bin\Release\net461\appxmanifest.xml" />
+			<File Id="ArduCopterConfig_xml" Source="..\bin\Release\net461\ArduCopterConfig.xml" />
+			<File Id="Arduino_dll" Source="..\bin\Release\net461\Arduino.dll" />
+			<File Id="Arduino_pdb" Source="..\bin\Release\net461\Arduino.pdb" />
+			<File Id="AviFile_dll" Source="..\bin\Release\net461\AviFile.dll" />
+			<File Id="AviFile_pdb" Source="..\bin\Release\net461\AviFile.pdb" />
+			<File Id="BaseClasses_dll" Source="..\bin\Release\net461\BaseClasses.dll" />
+			<File Id="BaseClasses_pdb" Source="..\bin\Release\net461\BaseClasses.pdb" />
+			<File Id="BitMiracle_LibTiff_NET40_dll" Source="..\bin\Release\net461\BitMiracle.LibTiff.NET40.dll" />
+			<File Id="BitMiracle_LibTiff_NetStandard_dll" Source="..\bin\Release\net461\BitMiracle.LibTiff.NetStandard.dll" />
+			<File Id="block_plane_0_dae" Source="..\bin\Release\net461\block_plane_0.dae" />
+			<File Id="BouncyCastle_Cryptography_dll" Source="..\bin\Release\net461\BouncyCastle.Cryptography.dll" />
+			<File Id="BruTile_dll" Source="..\bin\Release\net461\BruTile.dll" />
+			<File Id="BSE_Windows_Forms_dll" Source="..\bin\Release\net461\BSE.Windows.Forms.dll" />
+			<File Id="BSE_Windows_Forms_pdb" Source="..\bin\Release\net461\BSE.Windows.Forms.pdb" />
+			<File Id="BurntKermit_mpsystheme" Source="..\bin\Release\net461\BurntKermit.mpsystheme" />
+			<File Id="camerasBuiltin_xml" Source="..\bin\Release\net461\camerasBuiltin.xml" />
+			<File Id="ChangeLog_txt" Source="..\bin\Release\net461\ChangeLog.txt" />
+			<File Id="checklistDefault_xml" Source="..\bin\Release\net461\checklistDefault.xml" />
+			<File Id="Core_dll" Source="..\bin\Release\net461\Core.dll" />
+			<File Id="Core_pdb" Source="..\bin\Release\net461\Core.pdb" />
+			<File Id="Crc32_NET_dll" Source="..\bin\Release\net461\Crc32.NET.dll" />
+			<File Id="csmatio_dll" Source="..\bin\Release\net461\csmatio.dll" />
+			<File Id="dataflashlog_xml" Source="..\bin\Release\net461\dataflashlog.xml" />
+			<File Id="DeviceProgramming_dll" Source="..\bin\Release\net461\DeviceProgramming.dll" />
+			<File Id="DirectShowLib_dll" Source="..\bin\Release\net461\DirectShowLib.dll" />
+			<File Id="DirectShowLib_pdb" Source="..\bin\Release\net461\DirectShowLib.pdb" />
+			<File Id="DotNetZip_dll" Source="..\bin\Release\net461\DotNetZip.dll" />
+			<File Id="DotSpatial_Data_dll" Source="..\bin\Release\net461\DotSpatial.Data.dll" />
+			<File Id="DotSpatial_NTSExtension_dll" Source="..\bin\Release\net461\DotSpatial.NTSExtension.dll" />
+			<File Id="DotSpatial_Projections_dll" Source="..\bin\Release\net461\DotSpatial.Projections.dll" />
+			<File Id="DotSpatial_Serialization_dll" Source="..\bin\Release\net461\DotSpatial.Serialization.dll" />
+			<File Id="DroneCAN_dll" Source="..\bin\Release\net461\DroneCAN.dll" />
+			<File Id="DroneCAN_pdb" Source="..\bin\Release\net461\DroneCAN.pdb" />
+			<File Id="exif_xslt" Source="..\bin\Release\net461\exif.xslt" />
+			<File Id="ExifLibrary_dll" Source="..\bin\Release\net461\ExifLibrary.dll" />
+			<File Id="FirmwareHistory_txt" Source="..\bin\Release\net461\FirmwareHistory.txt" />
+			<File Id="Flurl_dll" Source="..\bin\Release\net461\Flurl.dll" />
+			<File Id="Flurl_Http_dll" Source="..\bin\Release\net461\Flurl.Http.dll" />
+			<File Id="GDAL_NET_dll" Source="..\bin\Release\net461\GDAL.NET.dll" />
+			<File Id="GDAL_NET_pdb" Source="..\bin\Release\net461\GDAL.NET.pdb" />
+			<File Id="gdalconst_csharp_dll" Source="..\bin\Release\net461\gdalconst_csharp.dll" />
+			<File Id="gdal_csharp_dll" Source="..\bin\Release\net461\gdal_csharp.dll" />
+			<File Id="GeoAPI_CoordinateSystems_dll" Source="..\bin\Release\net461\GeoAPI.CoordinateSystems.dll" />
+			<File Id="GeoAPI_dll" Source="..\bin\Release\net461\GeoAPI.dll" />
+			<File Id="GeoidHeights_dll" Source="..\bin\Release\net461\GeoidHeights.dll" />
+			<File Id="GeoJSON_Net_dll" Source="..\bin\Release\net461\GeoJSON.Net.dll" />
+			<File Id="GeoUtility_dll" Source="..\bin\Release\net461\GeoUtility.dll" />
+			<File Id="GeoUtility_pdb" Source="..\bin\Release\net461\GeoUtility.pdb" />
+			<File Id="GMap_NET_Core_dll" Source="..\bin\Release\net461\GMap.NET.Core.dll" />
+			<File Id="GMap_NET_Core_pdb" Source="..\bin\Release\net461\GMap.NET.Core.pdb" />
+			<File Id="GMap_NET_Drawing_dll" Source="..\bin\Release\net461\GMap.NET.Drawing.dll" />
+			<File Id="GMap_NET_Drawing_pdb" Source="..\bin\Release\net461\GMap.NET.Drawing.pdb" />
+			<File Id="GMap_NET_WindowsForms_dll" Source="..\bin\Release\net461\GMap.NET.WindowsForms.dll" />
+			<File Id="GMap_NET_WindowsForms_pdb" Source="..\bin\Release\net461\GMap.NET.WindowsForms.pdb" />
+			<File Id="HighContrast_mpsystheme" Source="..\bin\Release\net461\HighContrast.mpsystheme" />
+			<File Id="hud_html" Source="..\bin\Release\net461\hud.html" />
+			<File Id="ICSharpCode_SharpZipLib_dll" Source="..\bin\Release\net461\ICSharpCode.SharpZipLib.dll" />
+			<File Id="ICSharpCode_SharpZipLib_pdb" Source="..\bin\Release\net461\ICSharpCode.SharpZipLib.pdb" />
+			<File Id="Interfaces_dll" Source="..\bin\Release\net461\Interfaces.dll" />
+			<File Id="Interfaces_pdb" Source="..\bin\Release\net461\Interfaces.pdb" />
+			<File Id="IronPython_dll" Source="..\bin\Release\net461\IronPython.dll" />
+			<File Id="IronPython_Modules_dll" Source="..\bin\Release\net461\IronPython.Modules.dll" />
+			<File Id="IronPython_SQLite_dll" Source="..\bin\Release\net461\IronPython.SQLite.dll" />
+			<File Id="IronPython_Wpf_dll" Source="..\bin\Release\net461\IronPython.Wpf.dll" />
+			<File Id="JetBrains_Profiler_Api_dll" Source="..\bin\Release\net461\JetBrains.Profiler.Api.dll" />
+			<File Id="JetBrains_Profiler_SelfApi_dll" Source="..\bin\Release\net461\JetBrains.Profiler.SelfApi.dll" />
+			<File Id="KMLib_dll" Source="..\bin\Release\net461\KMLib.dll" />
+			<File Id="KMLib_pdb" Source="..\bin\Release\net461\KMLib.pdb" />
+			<File Id="libSkiaSharp_dylib" Source="..\bin\Release\net461\libSkiaSharp.dylib" />
+			<File Id="LibTessDotNet_dll" Source="..\bin\Release\net461\LibTessDotNet.dll" />
+			<File Id="LibTessDotNet_pdb" Source="..\bin\Release\net461\LibTessDotNet.pdb" />
+			<File Id="libusb_1_0_dll" Source="..\bin\Release\net461\libusb-1.0.dll" />
+			<File Id="LibUsbDfu_dll" Source="..\bin\Release\net461\LibUsbDfu.dll" />
+			<File Id="LibUsbDotNet_LibUsbDotNet_dll" Source="..\bin\Release\net461\LibUsbDotNet.LibUsbDotNet.dll" />
+			<File Id="LibVLC_NET_dll" Source="..\bin\Release\net461\LibVLC.NET.dll" />
+			<File Id="LibVLC_NET_pdb" Source="..\bin\Release\net461\LibVLC.NET.pdb" />
+			<File Id="log4net_dll" Source="..\bin\Release\net461\log4net.dll" />
+			<File Id="ManagedNativeWifi_Simple_dll" Source="..\bin\Release\net461\ManagedNativeWifi.Simple.dll" />
+			<File Id="ManagedNativeWifi_Simple_pdb" Source="..\bin\Release\net461\ManagedNativeWifi.Simple.pdb" />
+			<File Id="MathParser_org_mXparser_dll" Source="..\bin\Release\net461\MathParser.org-mXparser.dll" />
+			<File Id="mavcmd_xml" Source="..\bin\Release\net461\mavcmd.xml" />
+			<File Id="mavextra_py" Source="..\bin\Release\net461\mavextra.py" />
+			<File Id="MAVLink_dll" Source="..\bin\Release\net461\MAVLink.dll" />
+			<File Id="MAVLink_pdb" Source="..\bin\Release\net461\MAVLink.pdb" />
+			<File Id="mavutil_py" Source="..\bin\Release\net461\mavutil.py" />
+			<File Id="MetaDataExtractor_dll" Source="..\bin\Release\net461\MetaDataExtractor.dll" />
+			<File Id="MetadataExtractor_dtd" Source="..\bin\Release\net461\MetadataExtractor.dtd" />
+			<File Id="MetaDataExtractor_pdb" Source="..\bin\Release\net461\MetaDataExtractor.pdb" />
+			<File Id="MetadataExtractorNew_dtd" Source="..\bin\Release\net461\MetadataExtractorNew.dtd" />
+			<File Id="Microsoft_CodeAnalysis_CSharp_dll" Source="..\bin\Release\net461\Microsoft.CodeAnalysis.CSharp.dll" />
+			<File Id="Microsoft_CodeAnalysis_dll" Source="..\bin\Release\net461\Microsoft.CodeAnalysis.dll" />
+			<File Id="Microsoft_Diagnostics_Runtime_dll" Source="..\bin\Release\net461\Microsoft.Diagnostics.Runtime.dll" />
+			<File Id="Microsoft_Dynamic_dll" Source="..\bin\Release\net461\Microsoft.Dynamic.dll" />
+			<File Id="Microsoft_Extensions_Caching_Abstractions_dll" Source="..\bin\Release\net461\Microsoft.Extensions.Caching.Abstractions.dll" />
+			<File Id="Microsoft_Extensions_Caching_Memory_dll" Source="..\bin\Release\net461\Microsoft.Extensions.Caching.Memory.dll" />
+			<File Id="Microsoft_Extensions_DependencyInjection_Abstractions_dll" Source="..\bin\Release\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+			<File Id="Microsoft_Extensions_Logging_Abstractions_dll" Source="..\bin\Release\net461\Microsoft.Extensions.Logging.Abstractions.dll" />
+			<File Id="Microsoft_Extensions_Options_dll" Source="..\bin\Release\net461\Microsoft.Extensions.Options.dll" />
+			<File Id="Microsoft_Extensions_Primitives_dll" Source="..\bin\Release\net461\Microsoft.Extensions.Primitives.dll" />
+			<File Id="Microsoft_Scripting_dll" Source="..\bin\Release\net461\Microsoft.Scripting.dll" />
+			<File Id="Microsoft_Scripting_Metadata_dll" Source="..\bin\Release\net461\Microsoft.Scripting.Metadata.dll" />
+			<File Id="Microsoft_Win32_Registry_dll" Source="..\bin\Release\net461\Microsoft.Win32.Registry.dll" />
+			<File Id="MissionPlanner_Antenna_dll" Source="..\bin\Release\net461\MissionPlanner.Antenna.dll" />
+			<File Id="MissionPlanner_Antenna_pdb" Source="..\bin\Release\net461\MissionPlanner.Antenna.pdb" />
+			<File Id="MissionPlanner_ArduPilot_dll" Source="..\bin\Release\net461\MissionPlanner.ArduPilot.dll" />
+			<File Id="MissionPlanner_ArduPilot_pdb" Source="..\bin\Release\net461\MissionPlanner.ArduPilot.pdb" />
+			<File Id="MissionPlanner_Comms_dll" Source="..\bin\Release\net461\MissionPlanner.Comms.dll" />
+			<File Id="MissionPlanner_Comms_pdb" Source="..\bin\Release\net461\MissionPlanner.Comms.pdb" />
+			<File Id="MissionPlanner_Controls_dll" Source="..\bin\Release\net461\MissionPlanner.Controls.dll" />
+			<File Id="MissionPlanner_Controls_pdb" Source="..\bin\Release\net461\MissionPlanner.Controls.pdb" />
+			<File Id="MissionPlanner_Drawing_dll" Source="..\bin\Release\net461\MissionPlanner.Drawing.dll" />
+			<File Id="MissionPlanner_Drawing_pdb" Source="..\bin\Release\net461\MissionPlanner.Drawing.pdb" />
+			<File Id="_135" Source="..\bin\Release\net461\MissionPlanner.exe" ><netfx:NativeImage Id="ngen_MissionPlannerexe"/> </File>
+<ProgId Id='MissionPlanner.tlog' Description='Telemetry Log'>
+  <Extension Id='tlog' ContentType='application/tlog'>
+     <Verb Id='open' Command='Open' TargetFile='_135' Argument='"%1"' />
+  </Extension>
+</ProgId>
+<ProgId Id='MissionPlanner.dfbin' Description='Binary Log'>
+  <Extension Id='dfbin' ContentType='application/dflog'>
+     <Verb Id='open' Command='Open' TargetFile='_135' Argument='"%1"' />
+  </Extension>
+</ProgId>
+<ProgId Id='MissionPlanner.log' Description='DF Log'>
+  <Extension Id='log' ContentType='application/dflog'>
+     <Verb Id='open' Command='Open' TargetFile='_135' Argument='"%1"' />
+  </Extension>
+</ProgId>
+ <RegistryValue Root="HKCR" Key="MissionPlanner.tlog\shellex\{BB2E617C-0920-11D1-9A0B-00C04FC2D6C1}" Value="{f3b857f1-0b79-4e77-9d0b-8b8b7e874f56}" Type="string" Action="write" />
+ <RegistryValue Root="HKCR" Key="MissionPlanner.tlog\shellex\{e357fccd-a995-4576-b01f-234630154e96}" Value="{f3b857f1-0b79-4e77-9d0b-8b8b7e874f56}" Type="string" Action="write" />
+
+ <RegistryValue Root="HKCR" Key="MissionPlanner.dfbin\shellex\{BB2E617C-0920-11D1-9A0B-00C04FC2D6C1}" Value="{f3b857f1-0b79-4e77-9d0b-8b8b7e874f56}" Type="string" Action="write" />
+ <RegistryValue Root="HKCR" Key="MissionPlanner.dfbin\shellex\{e357fccd-a995-4576-b01f-234630154e96}" Value="{f3b857f1-0b79-4e77-9d0b-8b8b7e874f56}" Type="string" Action="write" />
+
+ <RegistryValue Root="HKCR" Key="MissionPlanner.log\shellex\{BB2E617C-0920-11D1-9A0B-00C04FC2D6C1}" Value="{f3b857f1-0b79-4e77-9d0b-8b8b7e874f56}" Type="string" Action="write" />
+ <RegistryValue Root="HKCR" Key="MissionPlanner.log\shellex\{e357fccd-a995-4576-b01f-234630154e96}" Value="{f3b857f1-0b79-4e77-9d0b-8b8b7e874f56}" Type="string" Action="write" />
+
+			<File Id="MissionPlanner_exe_config" Source="..\bin\Release\net461\MissionPlanner.exe.config" />
+			<File Id="MissionPlanner_HIL_dll" Source="..\bin\Release\net461\MissionPlanner.HIL.dll" />
+			<File Id="MissionPlanner_HIL_pdb" Source="..\bin\Release\net461\MissionPlanner.HIL.pdb" />
+			<File Id="MissionPlanner_Maps_dll" Source="..\bin\Release\net461\MissionPlanner.Maps.dll" />
+			<File Id="MissionPlanner_Maps_pdb" Source="..\bin\Release\net461\MissionPlanner.Maps.pdb" />
+			<File Id="MissionPlanner_pdb" Source="..\bin\Release\net461\MissionPlanner.pdb" />
+			<File Id="MissionPlanner_Strings_dll" Source="..\bin\Release\net461\MissionPlanner.Strings.dll" />
+			<File Id="MissionPlanner_Strings_pdb" Source="..\bin\Release\net461\MissionPlanner.Strings.pdb" />
+			<File Id="MissionPlanner_Utilities_dll" Source="..\bin\Release\net461\MissionPlanner.Utilities.dll" />
+			<File Id="MissionPlanner_Utilities_pdb" Source="..\bin\Release\net461\MissionPlanner.Utilities.pdb" />
+			<File Id="MissionPlanner_WebAPIs_deps_json" Source="..\bin\Release\net461\MissionPlanner.WebAPIs.deps.json" />
+			<File Id="MissionPlanner_WebAPIs_dll" Source="..\bin\Release\net461\MissionPlanner.WebAPIs.dll" />
+			<File Id="MissionPlanner_WebAPIs_pdb" Source="..\bin\Release\net461\MissionPlanner.WebAPIs.pdb" />
+			<File Id="Mono_Posix_NETStandard_dll" Source="..\bin\Release\net461\Mono.Posix.NETStandard.dll" />
+			<File Id="mpdesktop_ico" Source="..\bin\Release\net461\mpdesktop.ico" />
+			<File Id="mpdesktop150_png" Source="..\bin\Release\net461\mpdesktop150.png" />
+			<File Id="mpdesktop44_png" Source="..\bin\Release\net461\mpdesktop44.png" />
+			<File Id="netDxf_dll" Source="..\bin\Release\net461\netDxf.dll" />
+			<File Id="netDxf_pdb" Source="..\bin\Release\net461\netDxf.pdb" />
+			<File Id="NetTopologySuite_dll" Source="..\bin\Release\net461\NetTopologySuite.dll" />
+			<File Id="Newtonsoft_Json_dll" Source="..\bin\Release\net461\Newtonsoft.Json.dll" />
+			<File Id="ObjectListView_dll" Source="..\bin\Release\net461\ObjectListView.dll" />
+			<File Id="ogr_csharp_dll" Source="..\bin\Release\net461\ogr_csharp.dll" />
+			<File Id="Onvif_Core_dll" Source="..\bin\Release\net461\Onvif.Core.dll" />
+			<File Id="Onvif_dll" Source="..\bin\Release\net461\Onvif.dll" />
+			<File Id="Onvif_pdb" Source="..\bin\Release\net461\Onvif.pdb" />
+			<File Id="OpenTK_dll" Source="..\bin\Release\net461\OpenTK.dll" />
+			<File Id="OpenTK_GLControl_dll" Source="..\bin\Release\net461\OpenTK.GLControl.dll" />
+			<File Id="OSDConfigurator_dll" Source="..\bin\Release\net461\OSDConfigurator.dll" />
+			<File Id="OSDConfigurator_pdb" Source="..\bin\Release\net461\OSDConfigurator.pdb" />
+			<File Id="osr_csharp_dll" Source="..\bin\Release\net461\osr_csharp.dll" />
+			<File Id="ParameterFactMetaData_xml" Source="..\bin\Release\net461\ParameterFactMetaData.xml" />
+			<File Id="ParameterMetaDataBackup_xml" Source="..\bin\Release\net461\ParameterMetaDataBackup.xml" />
+			<File Id="ProjNET_dll" Source="..\bin\Release\net461\ProjNET.dll" />
+			<File Id="ProjNET_pdb" Source="..\bin\Release\net461\ProjNET.pdb" />
+			<File Id="px4uploader_deps_json" Source="..\bin\Release\net461\px4uploader.deps.json" />
+			<File Id="px4uploader_dll" Source="..\bin\Release\net461\px4uploader.dll" />
+			<File Id="px4uploader_dll_config" Source="..\bin\Release\net461\px4uploader.dll.config" />
+			<File Id="px4uploader_pdb" Source="..\bin\Release\net461\px4uploader.pdb" />
+			<File Id="quaternion_py" Source="..\bin\Release\net461\quaternion.py" />
+			<File Id="Renci_SshNet_dll" Source="..\bin\Release\net461\Renci.SshNet.dll" />
+			<File Id="RestSharp_dll" Source="..\bin\Release\net461\RestSharp.dll" />
+			<File Id="rotmat_py" Source="..\bin\Release\net461\rotmat.py" />
+			<File Id="SerialOptionRules_json" Source="..\bin\Release\net461\SerialOptionRules.json" />
+			<File Id="SharpAdbClient_dll" Source="..\bin\Release\net461\SharpAdbClient.dll" />
+			<File Id="SharpAdbClient_pdb" Source="..\bin\Release\net461\SharpAdbClient.pdb" />
+			<File Id="SharpCompress_dll" Source="..\bin\Release\net461\SharpCompress.dll" />
+			<File Id="SharpDX_DirectInput_dll" Source="..\bin\Release\net461\SharpDX.DirectInput.dll" />
+			<File Id="SharpDX_dll" Source="..\bin\Release\net461\SharpDX.dll" />
+			<File Id="SharpKml_dll" Source="..\bin\Release\net461\SharpKml.dll" />
+			<File Id="SharpKml_pdb" Source="..\bin\Release\net461\SharpKml.pdb" />
+			<File Id="simpleble_c_dll" Source="..\bin\Release\net461\simpleble-c.dll" />
+			<File Id="simpleble_dll" Source="..\bin\Release\net461\simpleble.dll" />
+			<File Id="SixLabors_ImageSharp_dll" Source="..\bin\Release\net461\SixLabors.ImageSharp.dll" />
+			<File Id="SkiaSharp_dll" Source="..\bin\Release\net461\SkiaSharp.dll" />
+			<File Id="SkiaSharp_Views_Desktop_Common_dll" Source="..\bin\Release\net461\SkiaSharp.Views.Desktop.Common.dll" />
+			<File Id="SkiaSharp_Views_Desktop_dll" Source="..\bin\Release\net461\SkiaSharp.Views.Desktop.dll" />
+			<File Id="SkiaSharp_Views_Gtk_dll" Source="..\bin\Release\net461\SkiaSharp.Views.Gtk.dll" />
+			<File Id="SkiaSharp_Views_WindowsForms_dll" Source="..\bin\Release\net461\SkiaSharp.Views.WindowsForms.dll" />
+			<File Id="SkiaSharp_Views_WPF_dll" Source="..\bin\Release\net461\SkiaSharp.Views.WPF.dll" />
+			<File Id="SocketIOClient_dll" Source="..\bin\Release\net461\SocketIOClient.dll" />
+			<File Id="solo_deps_json" Source="..\bin\Release\net461\solo.deps.json" />
+			<File Id="solo_dll" Source="..\bin\Release\net461\solo.dll" />
+			<File Id="solo_dll_config" Source="..\bin\Release\net461\solo.dll.config" />
+			<File Id="solo_pdb" Source="..\bin\Release\net461\solo.pdb" />
+			<File Id="SuperSocket_ClientEngine_dll" Source="..\bin\Release\net461\SuperSocket.ClientEngine.dll" />
+			<File Id="SvgNet_dll" Source="..\bin\Release\net461\SvgNet.dll" />
+			<File Id="SvgNet_pdb" Source="..\bin\Release\net461\SvgNet.pdb" />
+			<File Id="System_Buffers_dll" Source="..\bin\Release\net461\System.Buffers.dll" />
+			<File Id="System_CodeDom_dll" Source="..\bin\Release\net461\System.CodeDom.dll" />
+			<File Id="System_Collections_Immutable_dll" Source="..\bin\Release\net461\System.Collections.Immutable.dll" />
+			<File Id="System_ComponentModel_Annotations_dll" Source="..\bin\Release\net461\System.ComponentModel.Annotations.dll" />
+			<File Id="System_Configuration_ConfigurationManager_dll" Source="..\bin\Release\net461\System.Configuration.ConfigurationManager.dll" />
+			<File Id="System_Data_OleDb_dll" Source="..\bin\Release\net461\System.Data.OleDb.dll" />
+			<File Id="System_Drawing_Common_dll" Source="..\bin\Release\net461\System.Drawing.Common.dll" />
+			<File Id="System_Geometry_dll" Source="..\bin\Release\net461\System.Geometry.dll" />
+			<File Id="System_Geometry_Text_dll" Source="..\bin\Release\net461\System.Geometry.Text.dll" />
+			<File Id="System_IO_Compression_dll" Source="..\bin\Release\net461\System.IO.Compression.dll" />
+			<File Id="System_IO_Ports_dll" Source="..\bin\Release\net461\System.IO.Ports.dll" />
+			<File Id="System_Memory_dll" Source="..\bin\Release\net461\System.Memory.dll" />
+			<File Id="System_Numerics_Vectors_dll" Source="..\bin\Release\net461\System.Numerics.Vectors.dll" />
+			<File Id="System_Reactive_Core_dll" Source="..\bin\Release\net461\System.Reactive.Core.dll" />
+			<File Id="System_Reactive_dll" Source="..\bin\Release\net461\System.Reactive.dll" />
+			<File Id="System_Reactive_Linq_dll" Source="..\bin\Release\net461\System.Reactive.Linq.dll" />
+			<File Id="System_Reflection_Metadata_dll" Source="..\bin\Release\net461\System.Reflection.Metadata.dll" />
+			<File Id="System_Resources_Extensions_dll" Source="..\bin\Release\net461\System.Resources.Extensions.dll" />
+			<File Id="System_Runtime_CompilerServices_Unsafe_dll" Source="..\bin\Release\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+			<File Id="System_Security_AccessControl_dll" Source="..\bin\Release\net461\System.Security.AccessControl.dll" />
+			<File Id="System_Security_Permissions_dll" Source="..\bin\Release\net461\System.Security.Permissions.dll" />
+			<File Id="System_Security_Principal_Windows_dll" Source="..\bin\Release\net461\System.Security.Principal.Windows.dll" />
+			<File Id="System_ServiceModel_Duplex_dll" Source="..\bin\Release\net461\System.ServiceModel.Duplex.dll" />
+			<File Id="System_ServiceModel_Http_dll" Source="..\bin\Release\net461\System.ServiceModel.Http.dll" />
+			<File Id="System_ServiceModel_NetTcp_dll" Source="..\bin\Release\net461\System.ServiceModel.NetTcp.dll" />
+			<File Id="System_ServiceModel_Primitives_dll" Source="..\bin\Release\net461\System.ServiceModel.Primitives.dll" />
+			<File Id="System_ServiceModel_Security_dll" Source="..\bin\Release\net461\System.ServiceModel.Security.dll" />
+			<File Id="System_Speech_dll" Source="..\bin\Release\net461\System.Speech.dll" />
+			<File Id="System_Text_Encoding_CodePages_dll" Source="..\bin\Release\net461\System.Text.Encoding.CodePages.dll" />
+			<File Id="System_Threading_Tasks_Extensions_dll" Source="..\bin\Release\net461\System.Threading.Tasks.Extensions.dll" />
+			<File Id="System_ValueTuple_dll" Source="..\bin\Release\net461\System.ValueTuple.dll" />
+			<File Id="tlogThumbnailHandler_dll" Source="..\bin\Release\net461\tlogThumbnailHandler.dll" />
+			<File Id="tlogThumbnailHandler_pdb" Source="..\bin\Release\net461\tlogThumbnailHandler.pdb" />
+			<File Id="Transitions_dll" Source="..\bin\Release\net461\Transitions.dll" />
+			<File Id="Transitions_pdb" Source="..\bin\Release\net461\Transitions.pdb" />
+			<File Id="Updater_exe" Source="..\bin\Release\net461\Updater.exe" />
+			<File Id="Updater_exe_config" Source="..\bin\Release\net461\Updater.exe.config" />
+			<File Id="validcertificates_xml" Source="..\bin\Release\net461\validcertificates.xml" />
+			<File Id="version_exe" Source="..\bin\Release\net461\version.exe" />
+			<File Id="version_txt" Source="..\bin\Release\net461\version.txt" />
+			<File Id="WebCamService_dll" Source="..\bin\Release\net461\WebCamService.dll" />
+			<File Id="WebCamService_pdb" Source="..\bin\Release\net461\WebCamService.pdb" />
+			<File Id="WebSocket4Net_dll" Source="..\bin\Release\net461\WebSocket4Net.dll" />
+			<File Id="Xamarin_Essentials_dll" Source="..\bin\Release\net461\Xamarin.Essentials.dll" />
+			<File Id="Xamarin_Forms_Core_dll" Source="..\bin\Release\net461\Xamarin.Forms.Core.dll" />
+			<File Id="Xamarin_Forms_Platform_dll" Source="..\bin\Release\net461\Xamarin.Forms.Platform.dll" />
+			<File Id="Xamarin_Forms_Platform_WinForms_dll" Source="..\bin\Release\net461\Xamarin.Forms.Platform.WinForms.dll" />
+			<File Id="Xamarin_Forms_Platform_WinForms_dll_config" Source="..\bin\Release\net461\Xamarin.Forms.Platform.WinForms.dll.config" />
+			<File Id="Xamarin_Forms_Platform_WinForms_pdb" Source="..\bin\Release\net461\Xamarin.Forms.Platform.WinForms.pdb" />
+			<File Id="Xamarin_Forms_Xaml_dll" Source="..\bin\Release\net461\Xamarin.Forms.Xaml.dll" />
+			<File Id="ZedGraph_dll" Source="..\bin\Release\net461\ZedGraph.dll" />
+			<File Id="ZedGraph_pdb" Source="..\bin\Release\net461\ZedGraph.pdb" />
+			<File Id="Zeroconf_dll" Source="..\bin\Release\net461\Zeroconf.dll" />
+			<File Id="Zeroconf_pdb" Source="..\bin\Release\net461\Zeroconf.pdb" />
+			<File Id="Zeroconf_xml" Source="..\bin\Release\net461\Zeroconf.xml" />
+			<File Id="zlib_net_dll" Source="..\bin\Release\net461\zlib.net.dll" />
+		</Component>
+		<Directory Id="ar" Name="ar">
+			<Component Id="ar" Guid="c617021c-e564-4491-adb9-4f0e73ea9c09">
+				<File Id="MissionPlanner_resources_dll" Source="..\bin\Release\net461\ar\MissionPlanner.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="arm" Name="arm">
+			<Component Id="arm" Guid="0f81326f-60c8-4385-a073-93a3d6b361fd">
+				<File Id="libSkiaSharp_so" Source="..\bin\Release\net461\arm\libSkiaSharp.so" />
+			</Component>
+		</Directory>
+		<Directory Id="arm64" Name="arm64">
+			<Component Id="arm64" Guid="ed1d7e6c-089c-4f18-b978-effb31c2e7b8">
+				<File Id="libSkiaSharp_dll" Source="..\bin\Release\net461\arm64\libSkiaSharp.dll" />
+				<File Id="libSkiaSharp_so_1" Source="..\bin\Release\net461\arm64\libSkiaSharp.so" />
+			</Component>
+		</Directory>
+		<Directory Id="az_Latn_AZ" Name="az-Latn-AZ">
+			<Component Id="az_Latn_AZ" Guid="bed9165b-0892-442b-a4a7-cd8be36327a2">
+				<File Id="MissionPlanner_resources_dll_1" Source="..\bin\Release\net461\az-Latn-AZ\MissionPlanner.resources.dll" />
+				<File Id="MissionPlanner_Strings_resources_dll" Source="..\bin\Release\net461\az-Latn-AZ\MissionPlanner.Strings.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="cs" Name="cs">
+			<Component Id="cs" Guid="765a5591-eafc-4f8a-836f-0e433d5861f0">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll" Source="..\bin\Release\net461\cs\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll" Source="..\bin\Release\net461\cs\Microsoft.CodeAnalysis.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="de" Name="de">
+			<Component Id="de" Guid="5d237eb9-9fee-4c6d-b9d3-99792b5d179f">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_1" Source="..\bin\Release\net461\de\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_1" Source="..\bin\Release\net461\de\Microsoft.CodeAnalysis.resources.dll" />
+				<File Id="ZedGraph_resources_dll" Source="..\bin\Release\net461\de\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="de_DE" Name="de-DE">
+			<Component Id="de_DE" Guid="58a64c37-7482-48de-812c-e9b5289542f1">
+				<File Id="MissionPlanner_resources_dll_2" Source="..\bin\Release\net461\de-DE\MissionPlanner.resources.dll" />
+				<File Id="MissionPlanner_Strings_resources_dll_1" Source="..\bin\Release\net461\de-DE\MissionPlanner.Strings.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="Drivers" Name="Drivers">
+			<Component Id="Drivers" Guid="73d67bba-10e4-4d53-ba3f-fa93cbfca753">
+				<File Id="arduino_cat" Source="..\bin\Release\net461\Drivers\arduino.cat" />
+				<File Id="arduino_inf" Source="..\bin\Release\net461\Drivers\arduino.inf" />
+				<File Id="chibios_cat" Source="..\bin\Release\net461\Drivers\chibios.cat" />
+				<File Id="ChibiOS_inf" Source="..\bin\Release\net461\Drivers\ChibiOS.inf" />
+				<File Id="chibioscomp_cat" Source="..\bin\Release\net461\Drivers\chibioscomp.cat" />
+				<File Id="ChibiOSComp_inf" Source="..\bin\Release\net461\Drivers\ChibiOSComp.inf" />
+				<File Id="cube_cat" Source="..\bin\Release\net461\Drivers\cube.cat" />
+				<File Id="Cube_inf" Source="..\bin\Release\net461\Drivers\Cube.inf" />
+				<File Id="cubecomp_cat" Source="..\bin\Release\net461\Drivers\cubecomp.cat" />
+				<File Id="CubeComp_inf" Source="..\bin\Release\net461\Drivers\CubeComp.inf" />
+				<File Id="cubeorangeplus_cat" Source="..\bin\Release\net461\Drivers\cubeorangeplus.cat" />
+				<File Id="CubeOrangePlus_inf" Source="..\bin\Release\net461\Drivers\CubeOrangePlus.inf" />
+				<File Id="devcon_exe" Source="..\bin\Release\net461\Drivers\devcon.exe" />
+				<File Id="dpinst_xml" Source="..\bin\Release\net461\Drivers\dpinst.xml" />
+				<File Id="DPInstx64_exe" Source="..\bin\Release\net461\Drivers\DPInstx64.exe" />
+				<File Id="DPInstx86_exe" Source="..\bin\Release\net461\Drivers\DPInstx86.exe" />
+				<File Id="DriverCleanup_exe" Source="..\bin\Release\net461\Drivers\DriverCleanup.exe" />
+				<File Id="DriverCleanup_exe_config" Source="..\bin\Release\net461\Drivers\DriverCleanup.exe.config" />
+				<File Id="holybro_cat" Source="..\bin\Release\net461\Drivers\holybro.cat" />
+				<File Id="Holybro_inf" Source="..\bin\Release\net461\Drivers\Holybro.inf" />
+				<File Id="mindpx_cat" Source="..\bin\Release\net461\Drivers\mindpx.cat" />
+				<File Id="mindpx_inf" Source="..\bin\Release\net461\Drivers\mindpx.inf" />
+				<File Id="nxp_cat" Source="..\bin\Release\net461\Drivers\nxp.cat" />
+				<File Id="nxp_inf" Source="..\bin\Release\net461\Drivers\nxp.inf" />
+				<File Id="px4flow_cat" Source="..\bin\Release\net461\Drivers\px4flow.cat" />
+				<File Id="px4flow_inf" Source="..\bin\Release\net461\Drivers\px4flow.inf" />
+				<File Id="px4fmu_cat" Source="..\bin\Release\net461\Drivers\px4fmu.cat" />
+				<File Id="px4fmu_inf" Source="..\bin\Release\net461\Drivers\px4fmu.inf" />
+				<File Id="px4mav_cat" Source="..\bin\Release\net461\Drivers\px4mav.cat" />
+				<File Id="px4mav_inf" Source="..\bin\Release\net461\Drivers\px4mav.inf" />
+				<File Id="signed_cer" Source="..\bin\Release\net461\Drivers\signed.cer" />
+				<File Id="stm32bootloader_cat" Source="..\bin\Release\net461\Drivers\stm32bootloader.cat" />
+				<File Id="STM32Bootloader_inf" Source="..\bin\Release\net461\Drivers\STM32Bootloader.inf" />
+				<File Id="stmcdc_cat" Source="..\bin\Release\net461\Drivers\stmcdc.cat" />
+				<File Id="stmcdc_inf" Source="..\bin\Release\net461\Drivers\stmcdc.inf" />
+				<File Id="ubloxusb_cat" Source="..\bin\Release\net461\Drivers\ubloxusb.cat" />
+				<File Id="ubloxusb_inf" Source="..\bin\Release\net461\Drivers\ubloxusb.inf" />
+				<File Id="ubloxusb_sys" Source="..\bin\Release\net461\Drivers\ubloxusb.sys" />
+				<File Id="ubloxusb64_sys" Source="..\bin\Release\net461\Drivers\ubloxusb64.sys" />
+				<File Id="vrbrain_cat" Source="..\bin\Release\net461\Drivers\vrbrain.cat" />
+				<File Id="vrbrain_inf" Source="..\bin\Release\net461\Drivers\vrbrain.inf" />
+				<File Id="vrcore_cat" Source="..\bin\Release\net461\Drivers\vrcore.cat" />
+				<File Id="vrcore_inf" Source="..\bin\Release\net461\Drivers\vrcore.inf" />
+				<File Id="vrflightstop_cat" Source="..\bin\Release\net461\Drivers\vrflightstop.cat" />
+				<File Id="vrflightstop_inf" Source="..\bin\Release\net461\Drivers\vrflightstop.inf" />
+				<File Id="vrgimbal_cat" Source="..\bin\Release\net461\Drivers\vrgimbal.cat" />
+				<File Id="vrgimbal_inf" Source="..\bin\Release\net461\Drivers\vrgimbal.inf" />
+				<File Id="vrhero_cat" Source="..\bin\Release\net461\Drivers\vrhero.cat" />
+				<File Id="vrhero_inf" Source="..\bin\Release\net461\Drivers\vrhero.inf" />
+				<File Id="vrmapper_cat" Source="..\bin\Release\net461\Drivers\vrmapper.cat" />
+				<File Id="vrmapper_inf" Source="..\bin\Release\net461\Drivers\vrmapper.inf" />
+				<File Id="vrspark_cat" Source="..\bin\Release\net461\Drivers\vrspark.cat" />
+				<File Id="vrspark_inf" Source="..\bin\Release\net461\Drivers\vrspark.inf" />
+				<File Id="vrthermal_cat" Source="..\bin\Release\net461\Drivers\vrthermal.cat" />
+				<File Id="vrthermal_inf" Source="..\bin\Release\net461\Drivers\vrthermal.inf" />
+				<File Id="vrubrain_cat" Source="..\bin\Release\net461\Drivers\vrubrain.cat" />
+				<File Id="vrubrain_inf" Source="..\bin\Release\net461\Drivers\vrubrain.inf" />
+				<File Id="vrugimbal_cat" Source="..\bin\Release\net461\Drivers\vrugimbal.cat" />
+				<File Id="vrugimbal_inf" Source="..\bin\Release\net461\Drivers\vrugimbal.inf" />
+			</Component>
+			<Directory Id="amd64" Name="amd64">
+				<Component Id="amd64" Guid="3c43f68a-a920-4e16-ae0a-519f2fb4374c">
+					<File Id="WdfCoInstaller01009_dll" Source="..\bin\Release\net461\Drivers\amd64\WdfCoInstaller01009.dll" />
+					<File Id="winusbcoinstaller2_dll" Source="..\bin\Release\net461\Drivers\amd64\winusbcoinstaller2.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="x86" Name="x86">
+				<Component Id="x86" Guid="d9bc56f6-85fd-495e-96c6-8bde8493a269">
+					<File Id="WdfCoInstaller01009_dll_1" Source="..\bin\Release\net461\Drivers\x86\WdfCoInstaller01009.dll" />
+					<File Id="winusbcoinstaller2_dll_1" Source="..\bin\Release\net461\Drivers\x86\winusbcoinstaller2.dll" />
+				</Component>
+			</Directory>
+		</Directory>
+		<Directory Id="es" Name="es">
+			<Component Id="es" Guid="1cc2312c-42a0-4b86-a4eb-3e27c562a4db">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_2" Source="..\bin\Release\net461\es\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_2" Source="..\bin\Release\net461\es\Microsoft.CodeAnalysis.resources.dll" />
+				<File Id="ZedGraph_resources_dll_1" Source="..\bin\Release\net461\es\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="es_ES" Name="es-ES">
+			<Component Id="es_ES" Guid="08c75d0f-53bd-4439-bea5-87b03057a77f">
+				<File Id="MissionPlanner_resources_dll_3" Source="..\bin\Release\net461\es-ES\MissionPlanner.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="fr" Name="fr">
+			<Component Id="fr" Guid="e8555880-362e-4597-931f-66a4418d87fd">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_3" Source="..\bin\Release\net461\fr\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_3" Source="..\bin\Release\net461\fr\Microsoft.CodeAnalysis.resources.dll" />
+				<File Id="MissionPlanner_resources_dll_4" Source="..\bin\Release\net461\fr\MissionPlanner.resources.dll" />
+				<File Id="ZedGraph_resources_dll_2" Source="..\bin\Release\net461\fr\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="gdal" Name="gdal">
+			<Component Id="gdal" Guid="cdbd5cfa-5257-472b-9d43-fb117531135f">
+				<File Id="GDALLicense_rtf" Source="..\bin\Release\net461\gdal\GDALLicense.rtf" />
+				<File Id="GISInternalsLicense_rtf" Source="..\bin\Release\net461\gdal\GISInternalsLicense.rtf" />
+				<File Id="license_txt" Source="..\bin\Release\net461\gdal\license.txt" />
+			</Component>
+			<Directory Id="data" Name="data">
+				<Component Id="data" Guid="535e7945-02db-4969-9726-21fe292d5b60">
+					<File Id="compdcs_csv" Source="..\bin\Release\net461\gdal\data\compdcs.csv" />
+					<File Id="coordinate_axis_csv" Source="..\bin\Release\net461\gdal\data\coordinate_axis.csv" />
+					<File Id="cubewerx_extra_wkt" Source="..\bin\Release\net461\gdal\data\cubewerx_extra.wkt" />
+					<File Id="datum_shift_csv" Source="..\bin\Release\net461\gdal\data\datum_shift.csv" />
+					<File Id="default_rsc" Source="..\bin\Release\net461\gdal\data\default.rsc" />
+					<File Id="ecw_cs_wkt" Source="..\bin\Release\net461\gdal\data\ecw_cs.wkt" />
+					<File Id="ellipsoid_csv" Source="..\bin\Release\net461\gdal\data\ellipsoid.csv" />
+					<File Id="epsg_wkt" Source="..\bin\Release\net461\gdal\data\epsg.wkt" />
+					<File Id="esri_epsg_wkt" Source="..\bin\Release\net461\gdal\data\esri_epsg.wkt" />
+					<File Id="esri_extra_wkt" Source="..\bin\Release\net461\gdal\data\esri_extra.wkt" />
+					<File Id="esri_StatePlane_extra_wkt" Source="..\bin\Release\net461\gdal\data\esri_StatePlane_extra.wkt" />
+					<File Id="esri_Wisconsin_extra_wkt" Source="..\bin\Release\net461\gdal\data\esri_Wisconsin_extra.wkt" />
+					<File Id="gcs_csv" Source="..\bin\Release\net461\gdal\data\gcs.csv" />
+					<File Id="gcs_override_csv" Source="..\bin\Release\net461\gdal\data\gcs.override.csv" />
+					<File Id="gdalicon_png" Source="..\bin\Release\net461\gdal\data\gdalicon.png" />
+					<File Id="GDALLogoBW_svg" Source="..\bin\Release\net461\gdal\data\GDALLogoBW.svg" />
+					<File Id="GDALLogoColor_svg" Source="..\bin\Release\net461\gdal\data\GDALLogoColor.svg" />
+					<File Id="GDALLogoGS_svg" Source="..\bin\Release\net461\gdal\data\GDALLogoGS.svg" />
+					<File Id="gdalvrt_xsd" Source="..\bin\Release\net461\gdal\data\gdalvrt.xsd" />
+					<File Id="gdal_datum_csv" Source="..\bin\Release\net461\gdal\data\gdal_datum.csv" />
+					<File Id="geoccs_csv" Source="..\bin\Release\net461\gdal\data\geoccs.csv" />
+					<File Id="gmlasconf_xml" Source="..\bin\Release\net461\gdal\data\gmlasconf.xml" />
+					<File Id="gmlasconf_xsd" Source="..\bin\Release\net461\gdal\data\gmlasconf.xsd" />
+					<File Id="gml_registry_xml" Source="..\bin\Release\net461\gdal\data\gml_registry.xml" />
+					<File Id="gt_datum_csv" Source="..\bin\Release\net461\gdal\data\gt_datum.csv" />
+					<File Id="gt_ellips_csv" Source="..\bin\Release\net461\gdal\data\gt_ellips.csv" />
+					<File Id="header_dxf" Source="..\bin\Release\net461\gdal\data\header.dxf" />
+					<File Id="inspire_cp_BasicPropertyUnit_gfs" Source="..\bin\Release\net461\gdal\data\inspire_cp_BasicPropertyUnit.gfs" />
+					<File Id="inspire_cp_CadastralBoundary_gfs" Source="..\bin\Release\net461\gdal\data\inspire_cp_CadastralBoundary.gfs" />
+					<File Id="inspire_cp_CadastralParcel_gfs" Source="..\bin\Release\net461\gdal\data\inspire_cp_CadastralParcel.gfs" />
+					<File Id="inspire_cp_CadastralZoning_gfs" Source="..\bin\Release\net461\gdal\data\inspire_cp_CadastralZoning.gfs" />
+					<File Id="jpfgdgml_AdmArea_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_AdmArea.gfs" />
+					<File Id="jpfgdgml_AdmBdry_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_AdmBdry.gfs" />
+					<File Id="jpfgdgml_AdmPt_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_AdmPt.gfs" />
+					<File Id="jpfgdgml_BldA_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_BldA.gfs" />
+					<File Id="jpfgdgml_BldL_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_BldL.gfs" />
+					<File Id="jpfgdgml_Cntr_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_Cntr.gfs" />
+					<File Id="jpfgdgml_CommBdry_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_CommBdry.gfs" />
+					<File Id="jpfgdgml_CommPt_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_CommPt.gfs" />
+					<File Id="jpfgdgml_Cstline_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_Cstline.gfs" />
+					<File Id="jpfgdgml_ElevPt_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_ElevPt.gfs" />
+					<File Id="jpfgdgml_GCP_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_GCP.gfs" />
+					<File Id="jpfgdgml_LeveeEdge_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_LeveeEdge.gfs" />
+					<File Id="jpfgdgml_RailCL_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_RailCL.gfs" />
+					<File Id="jpfgdgml_RdArea_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_RdArea.gfs" />
+					<File Id="jpfgdgml_RdASL_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_RdASL.gfs" />
+					<File Id="jpfgdgml_RdCompt_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_RdCompt.gfs" />
+					<File Id="jpfgdgml_RdEdg_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_RdEdg.gfs" />
+					<File Id="jpfgdgml_RdMgtBdry_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_RdMgtBdry.gfs" />
+					<File Id="jpfgdgml_RdSgmtA_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_RdSgmtA.gfs" />
+					<File Id="jpfgdgml_RvrMgtBdry_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_RvrMgtBdry.gfs" />
+					<File Id="jpfgdgml_SBAPt_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_SBAPt.gfs" />
+					<File Id="jpfgdgml_SBArea_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_SBArea.gfs" />
+					<File Id="jpfgdgml_SBBdry_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_SBBdry.gfs" />
+					<File Id="jpfgdgml_WA_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_WA.gfs" />
+					<File Id="jpfgdgml_WL_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_WL.gfs" />
+					<File Id="jpfgdgml_WStrA_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_WStrA.gfs" />
+					<File Id="jpfgdgml_WStrL_gfs" Source="..\bin\Release\net461\gdal\data\jpfgdgml_WStrL.gfs" />
+					<File Id="netcdf_config_xsd" Source="..\bin\Release\net461\gdal\data\netcdf_config.xsd" />
+					<File Id="nitf_spec_xml" Source="..\bin\Release\net461\gdal\data\nitf_spec.xml" />
+					<File Id="nitf_spec_xsd" Source="..\bin\Release\net461\gdal\data\nitf_spec.xsd" />
+					<File Id="ogrvrt_xsd" Source="..\bin\Release\net461\gdal\data\ogrvrt.xsd" />
+					<File Id="osmconf_ini" Source="..\bin\Release\net461\gdal\data\osmconf.ini" />
+					<File Id="ozi_datum_csv" Source="..\bin\Release\net461\gdal\data\ozi_datum.csv" />
+					<File Id="ozi_ellips_csv" Source="..\bin\Release\net461\gdal\data\ozi_ellips.csv" />
+					<File Id="pci_datum_txt" Source="..\bin\Release\net461\gdal\data\pci_datum.txt" />
+					<File Id="pci_ellips_txt" Source="..\bin\Release\net461\gdal\data\pci_ellips.txt" />
+					<File Id="pcs_csv" Source="..\bin\Release\net461\gdal\data\pcs.csv" />
+					<File Id="pcs_override_csv" Source="..\bin\Release\net461\gdal\data\pcs.override.csv" />
+					<File Id="pds4_template_xml" Source="..\bin\Release\net461\gdal\data\pds4_template.xml" />
+					<File Id="plscenesconf_json" Source="..\bin\Release\net461\gdal\data\plscenesconf.json" />
+					<File Id="prime_meridian_csv" Source="..\bin\Release\net461\gdal\data\prime_meridian.csv" />
+					<File Id="projop_wparm_csv" Source="..\bin\Release\net461\gdal\data\projop_wparm.csv" />
+					<File Id="ruian_vf_ob_v1_gfs" Source="..\bin\Release\net461\gdal\data\ruian_vf_ob_v1.gfs" />
+					<File Id="ruian_vf_st_uvoh_v1_gfs" Source="..\bin\Release\net461\gdal\data\ruian_vf_st_uvoh_v1.gfs" />
+					<File Id="ruian_vf_st_v1_gfs" Source="..\bin\Release\net461\gdal\data\ruian_vf_st_v1.gfs" />
+					<File Id="ruian_vf_v1_gfs" Source="..\bin\Release\net461\gdal\data\ruian_vf_v1.gfs" />
+					<File Id="s57agencies_csv" Source="..\bin\Release\net461\gdal\data\s57agencies.csv" />
+					<File Id="s57attributes_csv" Source="..\bin\Release\net461\gdal\data\s57attributes.csv" />
+					<File Id="s57expectedinput_csv" Source="..\bin\Release\net461\gdal\data\s57expectedinput.csv" />
+					<File Id="s57objectclasses_csv" Source="..\bin\Release\net461\gdal\data\s57objectclasses.csv" />
+					<File Id="seed_2d_dgn" Source="..\bin\Release\net461\gdal\data\seed_2d.dgn" />
+					<File Id="seed_3d_dgn" Source="..\bin\Release\net461\gdal\data\seed_3d.dgn" />
+					<File Id="stateplane_csv" Source="..\bin\Release\net461\gdal\data\stateplane.csv" />
+					<File Id="trailer_dxf" Source="..\bin\Release\net461\gdal\data\trailer.dxf" />
+					<File Id="unit_of_measure_csv" Source="..\bin\Release\net461\gdal\data\unit_of_measure.csv" />
+					<File Id="vdv452_xml" Source="..\bin\Release\net461\gdal\data\vdv452.xml" />
+					<File Id="vdv452_xsd" Source="..\bin\Release\net461\gdal\data\vdv452.xsd" />
+					<File Id="vertcs_csv" Source="..\bin\Release\net461\gdal\data\vertcs.csv" />
+					<File Id="vertcs_override_csv" Source="..\bin\Release\net461\gdal\data\vertcs.override.csv" />
+				</Component>
+			</Directory>
+			<Directory Id="share" Name="share">
+				<Component Id="share" Guid="dfc12c7a-3ec5-4204-ae32-424d15091067">
+					<File Id="esri_extra" Source="..\bin\Release\net461\gdal\share\esri.extra" />
+					<File Id="nad_lst" Source="..\bin\Release\net461\gdal\share\nad.lst" />
+					<File Id="ntf_r93_gsb" Source="..\bin\Release\net461\gdal\share\ntf_r93.gsb" />
+					<File Id="ntv1_can_dat" Source="..\bin\Release\net461\gdal\share\ntv1_can.dat" />
+					<File Id="nzgd2kgrid0005_gsb" Source="..\bin\Release\net461\gdal\share\nzgd2kgrid0005.gsb" />
+					<File Id="other_extra" Source="..\bin\Release\net461\gdal\share\other.extra" />
+					<File Id="proj_def_dat" Source="..\bin\Release\net461\gdal\share\proj_def.dat" />
+				</Component>
+			</Directory>
+			<Directory Id="x64" Name="x64">
+				<Component Id="x64" Guid="715afaca-067b-4f30-86d7-76dad27a6533">
+					<File Id="expat_dll" Source="..\bin\Release\net461\gdal\x64\expat.dll" />
+					<File Id="freexl_dll" Source="..\bin\Release\net461\gdal\x64\freexl.dll" />
+					<File Id="gdal203_dll" Source="..\bin\Release\net461\gdal\x64\gdal203.dll" />
+					<File Id="gdalconst_wrap_dll" Source="..\bin\Release\net461\gdal\x64\gdalconst_wrap.dll" />
+					<File Id="gdal_wrap_dll" Source="..\bin\Release\net461\gdal\x64\gdal_wrap.dll" />
+					<File Id="geos_dll" Source="..\bin\Release\net461\gdal\x64\geos.dll" />
+					<File Id="geos_c_dll" Source="..\bin\Release\net461\gdal\x64\geos_c.dll" />
+					<File Id="iconv_dll" Source="..\bin\Release\net461\gdal\x64\iconv.dll" />
+					<File Id="libcurl_dll" Source="..\bin\Release\net461\gdal\x64\libcurl.dll" />
+					<File Id="libeay32_dll" Source="..\bin\Release\net461\gdal\x64\libeay32.dll" />
+					<File Id="libmysql_dll" Source="..\bin\Release\net461\gdal\x64\libmysql.dll" />
+					<File Id="libpq_dll" Source="..\bin\Release\net461\gdal\x64\libpq.dll" />
+					<File Id="libxml2_dll" Source="..\bin\Release\net461\gdal\x64\libxml2.dll" />
+					<File Id="msvcp140_dll" Source="..\bin\Release\net461\gdal\x64\msvcp140.dll" />
+					<File Id="ogr_wrap_dll" Source="..\bin\Release\net461\gdal\x64\ogr_wrap.dll" />
+					<File Id="openjp2_dll" Source="..\bin\Release\net461\gdal\x64\openjp2.dll" />
+					<File Id="osr_wrap_dll" Source="..\bin\Release\net461\gdal\x64\osr_wrap.dll" />
+					<File Id="proj_dll" Source="..\bin\Release\net461\gdal\x64\proj.dll" />
+					<File Id="spatialite_dll" Source="..\bin\Release\net461\gdal\x64\spatialite.dll" />
+					<File Id="sqlite3_dll" Source="..\bin\Release\net461\gdal\x64\sqlite3.dll" />
+					<File Id="ssleay32_dll" Source="..\bin\Release\net461\gdal\x64\ssleay32.dll" />
+					<File Id="vcruntime140_dll" Source="..\bin\Release\net461\gdal\x64\vcruntime140.dll" />
+					<File Id="xerces_c_3_2_dll" Source="..\bin\Release\net461\gdal\x64\xerces-c_3_2.dll" />
+					<File Id="zlib1_dll" Source="..\bin\Release\net461\gdal\x64\zlib1.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="x86484" Name="x86">
+				<Component Id="x86_1" Guid="23656796-88ac-4ed1-89e2-21c59fc15f0b">
+					<File Id="expat_dll_1" Source="..\bin\Release\net461\gdal\x86\expat.dll" />
+					<File Id="freexl_dll_1" Source="..\bin\Release\net461\gdal\x86\freexl.dll" />
+					<File Id="gdal203_dll_1" Source="..\bin\Release\net461\gdal\x86\gdal203.dll" />
+					<File Id="gdalconst_wrap_dll_1" Source="..\bin\Release\net461\gdal\x86\gdalconst_wrap.dll" />
+					<File Id="gdal_wrap_dll_1" Source="..\bin\Release\net461\gdal\x86\gdal_wrap.dll" />
+					<File Id="geos_dll_1" Source="..\bin\Release\net461\gdal\x86\geos.dll" />
+					<File Id="geos_c_dll_1" Source="..\bin\Release\net461\gdal\x86\geos_c.dll" />
+					<File Id="iconv_dll_1" Source="..\bin\Release\net461\gdal\x86\iconv.dll" />
+					<File Id="libcurl_dll_1" Source="..\bin\Release\net461\gdal\x86\libcurl.dll" />
+					<File Id="libeay32_dll_1" Source="..\bin\Release\net461\gdal\x86\libeay32.dll" />
+					<File Id="libmysql_dll_1" Source="..\bin\Release\net461\gdal\x86\libmysql.dll" />
+					<File Id="libpq_dll_1" Source="..\bin\Release\net461\gdal\x86\libpq.dll" />
+					<File Id="libxml2_dll_1" Source="..\bin\Release\net461\gdal\x86\libxml2.dll" />
+					<File Id="msvcp140_dll_1" Source="..\bin\Release\net461\gdal\x86\msvcp140.dll" />
+					<File Id="ogr_wrap_dll_1" Source="..\bin\Release\net461\gdal\x86\ogr_wrap.dll" />
+					<File Id="openjp2_dll_1" Source="..\bin\Release\net461\gdal\x86\openjp2.dll" />
+					<File Id="osr_wrap_dll_1" Source="..\bin\Release\net461\gdal\x86\osr_wrap.dll" />
+					<File Id="proj_dll_1" Source="..\bin\Release\net461\gdal\x86\proj.dll" />
+					<File Id="spatialite_dll_1" Source="..\bin\Release\net461\gdal\x86\spatialite.dll" />
+					<File Id="sqlite3_dll_1" Source="..\bin\Release\net461\gdal\x86\sqlite3.dll" />
+					<File Id="ssleay32_dll_1" Source="..\bin\Release\net461\gdal\x86\ssleay32.dll" />
+					<File Id="vcruntime140_dll_1" Source="..\bin\Release\net461\gdal\x86\vcruntime140.dll" />
+					<File Id="xerces_c_3_2_dll_1" Source="..\bin\Release\net461\gdal\x86\xerces-c_3_2.dll" />
+					<File Id="zlib1_dll_1" Source="..\bin\Release\net461\gdal\x86\zlib1.dll" />
+				</Component>
+			</Directory>
+		</Directory>
+		<Directory Id="graphs" Name="graphs">
+			<Component Id="graphs" Guid="fdd9080d-0e27-4d91-80b3-be5de7cd8837">
+				<File Id="ekf3Graphs_xml" Source="..\bin\Release\net461\graphs\ekf3Graphs.xml" />
+				<File Id="ekfGraphs_xml" Source="..\bin\Release\net461\graphs\ekfGraphs.xml" />
+				<File Id="mavgraphs_xml" Source="..\bin\Release\net461\graphs\mavgraphs.xml" />
+				<File Id="mavgraphs2_xml" Source="..\bin\Release\net461\graphs\mavgraphs2.xml" />
+				<File Id="mavgraphsMP_xml" Source="..\bin\Release\net461\graphs\mavgraphsMP.xml" />
+			</Component>
+		</Directory>
+		<Directory Id="hu" Name="hu">
+			<Component Id="hu" Guid="972a21cc-c1ca-4f2b-8ff8-5df8c5182c26">
+				<File Id="ZedGraph_resources_dll_3" Source="..\bin\Release\net461\hu\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="HW" Name="HW">
+			<Component Id="HW" Guid="2f368d5e-f50b-4e1c-a6d2-047cc7a8d39a">
+				<File Id="ADIS16470_json" Source="..\bin\Release\net461\HW\ADIS16470.json" />
+				<File Id="AK8963_json" Source="..\bin\Release\net461\HW\AK8963.json" />
+				<File Id="HMC5883_json" Source="..\bin\Release\net461\HW\HMC5883.json" />
+				<File Id="ICM20602_json" Source="..\bin\Release\net461\HW\ICM20602.json" />
+				<File Id="ICM20649_json" Source="..\bin\Release\net461\HW\ICM20649.json" />
+				<File Id="ICM20948_json" Source="..\bin\Release\net461\HW\ICM20948.json" />
+				<File Id="L3GD20_json" Source="..\bin\Release\net461\HW\L3GD20.json" />
+				<File Id="LSM303D_json" Source="..\bin\Release\net461\HW\LSM303D.json" />
+				<File Id="LSM9DS0_json" Source="..\bin\Release\net461\HW\LSM9DS0.json" />
+				<File Id="MPU60X0_json" Source="..\bin\Release\net461\HW\MPU60X0.json" />
+				<File Id="MPU9250_json" Source="..\bin\Release\net461\HW\MPU9250.json" />
+				<File Id="MS5611_json" Source="..\bin\Release\net461\HW\MS5611.json" />
+				<File Id="RAMTRON_json" Source="..\bin\Release\net461\HW\RAMTRON.json" />
+			</Component>
+		</Directory>
+		<Directory Id="id_ID" Name="id-ID">
+			<Component Id="id_ID" Guid="3ccfdd86-167e-4a94-b89a-e5413734409a">
+				<File Id="MissionPlanner_resources_dll_5" Source="..\bin\Release\net461\id-ID\MissionPlanner.resources.dll" />
+				<File Id="MissionPlanner_Strings_resources_dll_2" Source="..\bin\Release\net461\id-ID\MissionPlanner.Strings.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="it" Name="it">
+			<Component Id="it" Guid="1631cacf-6844-42ef-aee5-21b509355f67">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_4" Source="..\bin\Release\net461\it\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_4" Source="..\bin\Release\net461\it\Microsoft.CodeAnalysis.resources.dll" />
+				<File Id="ZedGraph_resources_dll_4" Source="..\bin\Release\net461\it\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="it_IT" Name="it-IT">
+			<Component Id="it_IT" Guid="e0e28181-fac2-4a77-8513-0589e8dd69eb">
+				<File Id="MissionPlanner_resources_dll_6" Source="..\bin\Release\net461\it-IT\MissionPlanner.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="ja" Name="ja">
+			<Component Id="ja" Guid="e363943c-7ebe-460a-906b-97db481e3704">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_5" Source="..\bin\Release\net461\ja\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_5" Source="..\bin\Release\net461\ja\Microsoft.CodeAnalysis.resources.dll" />
+				<File Id="ZedGraph_resources_dll_5" Source="..\bin\Release\net461\ja\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="ja_JP" Name="ja-JP">
+			<Component Id="ja_JP" Guid="5980e3fa-d306-40fc-8920-e16c4accecbe">
+				<File Id="MissionPlanner_resources_dll_7" Source="..\bin\Release\net461\ja-JP\MissionPlanner.resources.dll" />
+				<File Id="MissionPlanner_Strings_resources_dll_3" Source="..\bin\Release\net461\ja-JP\MissionPlanner.Strings.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="ko" Name="ko">
+			<Component Id="ko" Guid="a9156ec6-ec7a-4fb7-a9b4-67e1092f4ebb">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_6" Source="..\bin\Release\net461\ko\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_6" Source="..\bin\Release\net461\ko\Microsoft.CodeAnalysis.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="ko_KR" Name="ko-KR">
+			<Component Id="ko_KR" Guid="bdd725e9-8645-4932-a73e-acbdb514c8fc">
+				<File Id="MissionPlanner_resources_dll_8" Source="..\bin\Release\net461\ko-KR\MissionPlanner.resources.dll" />
+				<File Id="MissionPlanner_Strings_resources_dll_4" Source="..\bin\Release\net461\ko-KR\MissionPlanner.Strings.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="lib" Name="lib">
+			<Component Id="lib" Guid="f829fc1f-999f-402b-b5a4-72ef427fb244">
+				<File Id="abc_py" Source="..\bin\Release\net461\lib\abc.py" />
+				<File Id="aifc_py" Source="..\bin\Release\net461\lib\aifc.py" />
+				<File Id="antigravity_py" Source="..\bin\Release\net461\lib\antigravity.py" />
+				<File Id="argparse_py" Source="..\bin\Release\net461\lib\argparse.py" />
+				<File Id="ast_py" Source="..\bin\Release\net461\lib\ast.py" />
+				<File Id="asynchat_py" Source="..\bin\Release\net461\lib\asynchat.py" />
+				<File Id="asyncore_py" Source="..\bin\Release\net461\lib\asyncore.py" />
+				<File Id="base64_py" Source="..\bin\Release\net461\lib\base64.py" />
+				<File Id="bdb_py" Source="..\bin\Release\net461\lib\bdb.py" />
+				<File Id="binhex_py" Source="..\bin\Release\net461\lib\binhex.py" />
+				<File Id="bisect_py" Source="..\bin\Release\net461\lib\bisect.py" />
+				<File Id="bz2_py" Source="..\bin\Release\net461\lib\bz2.py" />
+				<File Id="calendar_py" Source="..\bin\Release\net461\lib\calendar.py" />
+				<File Id="cgi_py" Source="..\bin\Release\net461\lib\cgi.py" />
+				<File Id="cgitb_py" Source="..\bin\Release\net461\lib\cgitb.py" />
+				<File Id="chunk_py" Source="..\bin\Release\net461\lib\chunk.py" />
+				<File Id="clrtype_py" Source="..\bin\Release\net461\lib\clrtype.py" />
+				<File Id="cmd_py" Source="..\bin\Release\net461\lib\cmd.py" />
+				<File Id="code_py" Source="..\bin\Release\net461\lib\code.py" />
+				<File Id="codecs_py" Source="..\bin\Release\net461\lib\codecs.py" />
+				<File Id="codeop_py" Source="..\bin\Release\net461\lib\codeop.py" />
+				<File Id="colorsys_py" Source="..\bin\Release\net461\lib\colorsys.py" />
+				<File Id="compileall_py" Source="..\bin\Release\net461\lib\compileall.py" />
+				<File Id="configparser_py" Source="..\bin\Release\net461\lib\configparser.py" />
+				<File Id="contextlib_py" Source="..\bin\Release\net461\lib\contextlib.py" />
+				<File Id="copy_py" Source="..\bin\Release\net461\lib\copy.py" />
+				<File Id="copyreg_py" Source="..\bin\Release\net461\lib\copyreg.py" />
+				<File Id="cProfile_py" Source="..\bin\Release\net461\lib\cProfile.py" />
+				<File Id="crypt_py" Source="..\bin\Release\net461\lib\crypt.py" />
+				<File Id="csv_py" Source="..\bin\Release\net461\lib\csv.py" />
+				<File Id="datetime_py" Source="..\bin\Release\net461\lib\datetime.py" />
+				<File Id="decimal_py" Source="..\bin\Release\net461\lib\decimal.py" />
+				<File Id="difflib_py" Source="..\bin\Release\net461\lib\difflib.py" />
+				<File Id="dis_py" Source="..\bin\Release\net461\lib\dis.py" />
+				<File Id="doctest_py" Source="..\bin\Release\net461\lib\doctest.py" />
+				<File Id="dummy_threading_py" Source="..\bin\Release\net461\lib\dummy_threading.py" />
+				<File Id="enum_py" Source="..\bin\Release\net461\lib\enum.py" />
+				<File Id="filecmp_py" Source="..\bin\Release\net461\lib\filecmp.py" />
+				<File Id="fileinput_py" Source="..\bin\Release\net461\lib\fileinput.py" />
+				<File Id="fnmatch_py" Source="..\bin\Release\net461\lib\fnmatch.py" />
+				<File Id="formatter_py" Source="..\bin\Release\net461\lib\formatter.py" />
+				<File Id="fractions_py" Source="..\bin\Release\net461\lib\fractions.py" />
+				<File Id="ftplib_py" Source="..\bin\Release\net461\lib\ftplib.py" />
+				<File Id="functools_py" Source="..\bin\Release\net461\lib\functools.py" />
+				<File Id="genericpath_py" Source="..\bin\Release\net461\lib\genericpath.py" />
+				<File Id="getopt_py" Source="..\bin\Release\net461\lib\getopt.py" />
+				<File Id="getpass_py" Source="..\bin\Release\net461\lib\getpass.py" />
+				<File Id="gettext_py" Source="..\bin\Release\net461\lib\gettext.py" />
+				<File Id="glob_py" Source="..\bin\Release\net461\lib\glob.py" />
+				<File Id="gzip_py" Source="..\bin\Release\net461\lib\gzip.py" />
+				<File Id="hashlib_py" Source="..\bin\Release\net461\lib\hashlib.py" />
+				<File Id="heapq_py" Source="..\bin\Release\net461\lib\heapq.py" />
+				<File Id="hmac_py" Source="..\bin\Release\net461\lib\hmac.py" />
+				<File Id="imaplib_py" Source="..\bin\Release\net461\lib\imaplib.py" />
+				<File Id="imghdr_py" Source="..\bin\Release\net461\lib\imghdr.py" />
+				<File Id="imp_py" Source="..\bin\Release\net461\lib\imp.py" />
+				<File Id="inspect_py" Source="..\bin\Release\net461\lib\inspect.py" />
+				<File Id="io_py" Source="..\bin\Release\net461\lib\io.py" />
+				<File Id="ipaddress_py" Source="..\bin\Release\net461\lib\ipaddress.py" />
+				<File Id="keyword_py" Source="..\bin\Release\net461\lib\keyword.py" />
+				<File Id="linecache_py" Source="..\bin\Release\net461\lib\linecache.py" />
+				<File Id="locale_py" Source="..\bin\Release\net461\lib\locale.py" />
+				<File Id="lzma_py" Source="..\bin\Release\net461\lib\lzma.py" />
+				<File Id="macpath_py" Source="..\bin\Release\net461\lib\macpath.py" />
+				<File Id="macurl2path_py" Source="..\bin\Release\net461\lib\macurl2path.py" />
+				<File Id="mailbox_py" Source="..\bin\Release\net461\lib\mailbox.py" />
+				<File Id="mailcap_py" Source="..\bin\Release\net461\lib\mailcap.py" />
+				<File Id="mimetypes_py" Source="..\bin\Release\net461\lib\mimetypes.py" />
+				<File Id="modulefinder_py" Source="..\bin\Release\net461\lib\modulefinder.py" />
+				<File Id="netrc_py" Source="..\bin\Release\net461\lib\netrc.py" />
+				<File Id="nntplib_py" Source="..\bin\Release\net461\lib\nntplib.py" />
+				<File Id="ntpath_py" Source="..\bin\Release\net461\lib\ntpath.py" />
+				<File Id="nturl2path_py" Source="..\bin\Release\net461\lib\nturl2path.py" />
+				<File Id="numbers_py" Source="..\bin\Release\net461\lib\numbers.py" />
+				<File Id="opcode_py" Source="..\bin\Release\net461\lib\opcode.py" />
+				<File Id="operator_py" Source="..\bin\Release\net461\lib\operator.py" />
+				<File Id="optparse_py" Source="..\bin\Release\net461\lib\optparse.py" />
+				<File Id="os_py" Source="..\bin\Release\net461\lib\os.py" />
+				<File Id="pathlib_py" Source="..\bin\Release\net461\lib\pathlib.py" />
+				<File Id="pdb_py" Source="..\bin\Release\net461\lib\pdb.py" />
+				<File Id="pickle_py" Source="..\bin\Release\net461\lib\pickle.py" />
+				<File Id="pickletools_py" Source="..\bin\Release\net461\lib\pickletools.py" />
+				<File Id="pipes_py" Source="..\bin\Release\net461\lib\pipes.py" />
+				<File Id="pkgutil_py" Source="..\bin\Release\net461\lib\pkgutil.py" />
+				<File Id="platform_py" Source="..\bin\Release\net461\lib\platform.py" />
+				<File Id="plistlib_py" Source="..\bin\Release\net461\lib\plistlib.py" />
+				<File Id="poplib_py" Source="..\bin\Release\net461\lib\poplib.py" />
+				<File Id="posixpath_py" Source="..\bin\Release\net461\lib\posixpath.py" />
+				<File Id="pprint_py" Source="..\bin\Release\net461\lib\pprint.py" />
+				<File Id="profile_py" Source="..\bin\Release\net461\lib\profile.py" />
+				<File Id="pstats_py" Source="..\bin\Release\net461\lib\pstats.py" />
+				<File Id="pty_py" Source="..\bin\Release\net461\lib\pty.py" />
+				<File Id="pyclbr_py" Source="..\bin\Release\net461\lib\pyclbr.py" />
+				<File Id="pydoc_py" Source="..\bin\Release\net461\lib\pydoc.py" />
+				<File Id="py_compile_py" Source="..\bin\Release\net461\lib\py_compile.py" />
+				<File Id="queue_py" Source="..\bin\Release\net461\lib\queue.py" />
+				<File Id="quopri_py" Source="..\bin\Release\net461\lib\quopri.py" />
+				<File Id="random_py" Source="..\bin\Release\net461\lib\random.py" />
+				<File Id="re_py" Source="..\bin\Release\net461\lib\re.py" />
+				<File Id="reprlib_py" Source="..\bin\Release\net461\lib\reprlib.py" />
+				<File Id="rlcompleter_py" Source="..\bin\Release\net461\lib\rlcompleter.py" />
+				<File Id="runpy_py" Source="..\bin\Release\net461\lib\runpy.py" />
+				<File Id="sched_py" Source="..\bin\Release\net461\lib\sched.py" />
+				<File Id="selectors_py" Source="..\bin\Release\net461\lib\selectors.py" />
+				<File Id="shelve_py" Source="..\bin\Release\net461\lib\shelve.py" />
+				<File Id="shlex_py" Source="..\bin\Release\net461\lib\shlex.py" />
+				<File Id="shutil_py" Source="..\bin\Release\net461\lib\shutil.py" />
+				<File Id="site_py" Source="..\bin\Release\net461\lib\site.py" />
+				<File Id="smtpd_py" Source="..\bin\Release\net461\lib\smtpd.py" />
+				<File Id="smtplib_py" Source="..\bin\Release\net461\lib\smtplib.py" />
+				<File Id="sndhdr_py" Source="..\bin\Release\net461\lib\sndhdr.py" />
+				<File Id="socket_py" Source="..\bin\Release\net461\lib\socket.py" />
+				<File Id="socketserver_py" Source="..\bin\Release\net461\lib\socketserver.py" />
+				<File Id="sre_compile_py" Source="..\bin\Release\net461\lib\sre_compile.py" />
+				<File Id="sre_constants_py" Source="..\bin\Release\net461\lib\sre_constants.py" />
+				<File Id="sre_parse_py" Source="..\bin\Release\net461\lib\sre_parse.py" />
+				<File Id="ssl_py" Source="..\bin\Release\net461\lib\ssl.py" />
+				<File Id="stat_py" Source="..\bin\Release\net461\lib\stat.py" />
+				<File Id="statistics_py" Source="..\bin\Release\net461\lib\statistics.py" />
+				<File Id="string_py" Source="..\bin\Release\net461\lib\string.py" />
+				<File Id="stringprep_py" Source="..\bin\Release\net461\lib\stringprep.py" />
+				<File Id="struct_py" Source="..\bin\Release\net461\lib\struct.py" />
+				<File Id="subprocess_py" Source="..\bin\Release\net461\lib\subprocess.py" />
+				<File Id="sunau_py" Source="..\bin\Release\net461\lib\sunau.py" />
+				<File Id="symbol_py" Source="..\bin\Release\net461\lib\symbol.py" />
+				<File Id="symtable_py" Source="..\bin\Release\net461\lib\symtable.py" />
+				<File Id="sysconfig_py" Source="..\bin\Release\net461\lib\sysconfig.py" />
+				<File Id="tabnanny_py" Source="..\bin\Release\net461\lib\tabnanny.py" />
+				<File Id="tarfile_py" Source="..\bin\Release\net461\lib\tarfile.py" />
+				<File Id="telnetlib_py" Source="..\bin\Release\net461\lib\telnetlib.py" />
+				<File Id="tempfile_py" Source="..\bin\Release\net461\lib\tempfile.py" />
+				<File Id="textwrap_py" Source="..\bin\Release\net461\lib\textwrap.py" />
+				<File Id="this_py" Source="..\bin\Release\net461\lib\this.py" />
+				<File Id="threading_py" Source="..\bin\Release\net461\lib\threading.py" />
+				<File Id="timeit_py" Source="..\bin\Release\net461\lib\timeit.py" />
+				<File Id="token_py" Source="..\bin\Release\net461\lib\token.py" />
+				<File Id="tokenize_py" Source="..\bin\Release\net461\lib\tokenize.py" />
+				<File Id="trace_py" Source="..\bin\Release\net461\lib\trace.py" />
+				<File Id="traceback_py" Source="..\bin\Release\net461\lib\traceback.py" />
+				<File Id="tracemalloc_py" Source="..\bin\Release\net461\lib\tracemalloc.py" />
+				<File Id="tty_py" Source="..\bin\Release\net461\lib\tty.py" />
+				<File Id="turtle_py" Source="..\bin\Release\net461\lib\turtle.py" />
+				<File Id="types_py" Source="..\bin\Release\net461\lib\types.py" />
+				<File Id="typing_py" Source="..\bin\Release\net461\lib\typing.py" />
+				<File Id="uu_py" Source="..\bin\Release\net461\lib\uu.py" />
+				<File Id="uuid_py" Source="..\bin\Release\net461\lib\uuid.py" />
+				<File Id="warnings_py" Source="..\bin\Release\net461\lib\warnings.py" />
+				<File Id="wave_py" Source="..\bin\Release\net461\lib\wave.py" />
+				<File Id="weakref_py" Source="..\bin\Release\net461\lib\weakref.py" />
+				<File Id="webbrowser_py" Source="..\bin\Release\net461\lib\webbrowser.py" />
+				<File Id="wpf_py" Source="..\bin\Release\net461\lib\wpf.py" />
+				<File Id="xdrlib_py" Source="..\bin\Release\net461\lib\xdrlib.py" />
+				<File Id="zipfile_py" Source="..\bin\Release\net461\lib\zipfile.py" />
+				<File Id="_bootlocale_py" Source="..\bin\Release\net461\lib\_bootlocale.py" />
+				<File Id="_collections_abc_py" Source="..\bin\Release\net461\lib\_collections_abc.py" />
+				<File Id="_compat_pickle_py" Source="..\bin\Release\net461\lib\_compat_pickle.py" />
+				<File Id="_dummy_thread_py" Source="..\bin\Release\net461\lib\_dummy_thread.py" />
+				<File Id="_markupbase_py" Source="..\bin\Release\net461\lib\_markupbase.py" />
+				<File Id="_osx_support_py" Source="..\bin\Release\net461\lib\_osx_support.py" />
+				<File Id="_pyio_py" Source="..\bin\Release\net461\lib\_pyio.py" />
+				<File Id="_sitebuiltins_py" Source="..\bin\Release\net461\lib\_sitebuiltins.py" />
+				<File Id="_strptime_py" Source="..\bin\Release\net461\lib\_strptime.py" />
+				<File Id="_threading_local_py" Source="..\bin\Release\net461\lib\_threading_local.py" />
+				<File Id="_weakrefset_py" Source="..\bin\Release\net461\lib\_weakrefset.py" />
+				<File Id="__future___py" Source="..\bin\Release\net461\lib\__future__.py" />
+				<File Id="__phello___foo_py" Source="..\bin\Release\net461\lib\__phello__.foo.py" />
+			</Component>
+			<Directory Id="asyncio" Name="asyncio">
+				<Component Id="asyncio" Guid="2cff9b64-0e6b-428a-be04-18421c0acb2e">
+					<File Id="base_events_py" Source="..\bin\Release\net461\lib\asyncio\base_events.py" />
+					<File Id="base_subprocess_py" Source="..\bin\Release\net461\lib\asyncio\base_subprocess.py" />
+					<File Id="compat_py" Source="..\bin\Release\net461\lib\asyncio\compat.py" />
+					<File Id="constants_py" Source="..\bin\Release\net461\lib\asyncio\constants.py" />
+					<File Id="coroutines_py" Source="..\bin\Release\net461\lib\asyncio\coroutines.py" />
+					<File Id="events_py" Source="..\bin\Release\net461\lib\asyncio\events.py" />
+					<File Id="futures_py" Source="..\bin\Release\net461\lib\asyncio\futures.py" />
+					<File Id="locks_py" Source="..\bin\Release\net461\lib\asyncio\locks.py" />
+					<File Id="log_py" Source="..\bin\Release\net461\lib\asyncio\log.py" />
+					<File Id="proactor_events_py" Source="..\bin\Release\net461\lib\asyncio\proactor_events.py" />
+					<File Id="protocols_py" Source="..\bin\Release\net461\lib\asyncio\protocols.py" />
+					<File Id="queues_py" Source="..\bin\Release\net461\lib\asyncio\queues.py" />
+					<File Id="selector_events_py" Source="..\bin\Release\net461\lib\asyncio\selector_events.py" />
+					<File Id="sslproto_py" Source="..\bin\Release\net461\lib\asyncio\sslproto.py" />
+					<File Id="streams_py" Source="..\bin\Release\net461\lib\asyncio\streams.py" />
+					<File Id="subprocess_py_1" Source="..\bin\Release\net461\lib\asyncio\subprocess.py" />
+					<File Id="tasks_py" Source="..\bin\Release\net461\lib\asyncio\tasks.py" />
+					<File Id="test_utils_py" Source="..\bin\Release\net461\lib\asyncio\test_utils.py" />
+					<File Id="transports_py" Source="..\bin\Release\net461\lib\asyncio\transports.py" />
+					<File Id="unix_events_py" Source="..\bin\Release\net461\lib\asyncio\unix_events.py" />
+					<File Id="windows_events_py" Source="..\bin\Release\net461\lib\asyncio\windows_events.py" />
+					<File Id="windows_utils_py" Source="..\bin\Release\net461\lib\asyncio\windows_utils.py" />
+					<File Id="__init___py" Source="..\bin\Release\net461\lib\asyncio\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="collections" Name="collections">
+				<Component Id="collections" Guid="015832ba-df66-4ef3-931f-bdbb22fdefd1">
+					<File Id="abc_py_1" Source="..\bin\Release\net461\lib\collections\abc.py" />
+					<File Id="__init___py_1" Source="..\bin\Release\net461\lib\collections\__init__.py" />
+					<File Id="__main___py" Source="..\bin\Release\net461\lib\collections\__main__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="concurrent" Name="concurrent">
+				<Component Id="concurrent" Guid="1aa283eb-80b9-43cc-addf-3424d644f954">
+					<File Id="__init___py_2" Source="..\bin\Release\net461\lib\concurrent\__init__.py" />
+				</Component>
+				<Directory Id="futures" Name="futures">
+					<Component Id="futures" Guid="48b1a2a2-95eb-4000-af5b-7944e3d41708">
+						<File Id="process_py" Source="..\bin\Release\net461\lib\concurrent\futures\process.py" />
+						<File Id="thread_py" Source="..\bin\Release\net461\lib\concurrent\futures\thread.py" />
+						<File Id="_base_py" Source="..\bin\Release\net461\lib\concurrent\futures\_base.py" />
+						<File Id="__init___py_3" Source="..\bin\Release\net461\lib\concurrent\futures\__init__.py" />
+					</Component>
+				</Directory>
+			</Directory>
+			<Directory Id="ctypes" Name="ctypes">
+				<Component Id="ctypes" Guid="d19a9da5-a7c1-457d-823d-1b89af949b0b">
+					<File Id="util_py" Source="..\bin\Release\net461\lib\ctypes\util.py" />
+					<File Id="wintypes_py" Source="..\bin\Release\net461\lib\ctypes\wintypes.py" />
+					<File Id="_endian_py" Source="..\bin\Release\net461\lib\ctypes\_endian.py" />
+					<File Id="__init___py_4" Source="..\bin\Release\net461\lib\ctypes\__init__.py" />
+				</Component>
+				<Directory Id="macholib" Name="macholib">
+					<Component Id="macholib" Guid="5740f933-6011-4f2f-8c5f-7afa2af5a63c">
+						<File Id="dyld_py" Source="..\bin\Release\net461\lib\ctypes\macholib\dyld.py" />
+						<File Id="dylib_py" Source="..\bin\Release\net461\lib\ctypes\macholib\dylib.py" />
+						<File Id="fetch_macholib" Source="..\bin\Release\net461\lib\ctypes\macholib\fetch_macholib" />
+						<File Id="fetch_macholib_bat" Source="..\bin\Release\net461\lib\ctypes\macholib\fetch_macholib.bat" />
+						<File Id="framework_py" Source="..\bin\Release\net461\lib\ctypes\macholib\framework.py" />
+						<File Id="README_ctypes" Source="..\bin\Release\net461\lib\ctypes\macholib\README.ctypes" />
+						<File Id="__init___py_5" Source="..\bin\Release\net461\lib\ctypes\macholib\__init__.py" />
+					</Component>
+				</Directory>
+			</Directory>
+			<Directory Id="curses" Name="curses">
+				<Component Id="curses" Guid="eebf1887-8c99-482b-8637-a44594678f04">
+					<File Id="ascii_py" Source="..\bin\Release\net461\lib\curses\ascii.py" />
+					<File Id="has_key_py" Source="..\bin\Release\net461\lib\curses\has_key.py" />
+					<File Id="panel_py" Source="..\bin\Release\net461\lib\curses\panel.py" />
+					<File Id="textpad_py" Source="..\bin\Release\net461\lib\curses\textpad.py" />
+					<File Id="__init___py_6" Source="..\bin\Release\net461\lib\curses\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="dbm" Name="dbm">
+				<Component Id="dbm" Guid="f52f124e-24d7-4e61-91de-cc47e59a8db5">
+					<File Id="dumb_py" Source="..\bin\Release\net461\lib\dbm\dumb.py" />
+					<File Id="gnu_py" Source="..\bin\Release\net461\lib\dbm\gnu.py" />
+					<File Id="ndbm_py" Source="..\bin\Release\net461\lib\dbm\ndbm.py" />
+					<File Id="__init___py_7" Source="..\bin\Release\net461\lib\dbm\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="distutils" Name="distutils">
+				<Component Id="distutils" Guid="2b66e913-653b-497e-85d4-c5a5ff541ea0">
+					<File Id="archive_util_py" Source="..\bin\Release\net461\lib\distutils\archive_util.py" />
+					<File Id="bcppcompiler_py" Source="..\bin\Release\net461\lib\distutils\bcppcompiler.py" />
+					<File Id="ccompiler_py" Source="..\bin\Release\net461\lib\distutils\ccompiler.py" />
+					<File Id="cmd_py_1" Source="..\bin\Release\net461\lib\distutils\cmd.py" />
+					<File Id="config_py" Source="..\bin\Release\net461\lib\distutils\config.py" />
+					<File Id="core_py" Source="..\bin\Release\net461\lib\distutils\core.py" />
+					<File Id="cygwinccompiler_py" Source="..\bin\Release\net461\lib\distutils\cygwinccompiler.py" />
+					<File Id="debug_py" Source="..\bin\Release\net461\lib\distutils\debug.py" />
+					<File Id="dep_util_py" Source="..\bin\Release\net461\lib\distutils\dep_util.py" />
+					<File Id="dir_util_py" Source="..\bin\Release\net461\lib\distutils\dir_util.py" />
+					<File Id="dist_py" Source="..\bin\Release\net461\lib\distutils\dist.py" />
+					<File Id="errors_py" Source="..\bin\Release\net461\lib\distutils\errors.py" />
+					<File Id="extension_py" Source="..\bin\Release\net461\lib\distutils\extension.py" />
+					<File Id="fancy_getopt_py" Source="..\bin\Release\net461\lib\distutils\fancy_getopt.py" />
+					<File Id="filelist_py" Source="..\bin\Release\net461\lib\distutils\filelist.py" />
+					<File Id="file_util_py" Source="..\bin\Release\net461\lib\distutils\file_util.py" />
+					<File Id="log_py_1" Source="..\bin\Release\net461\lib\distutils\log.py" />
+					<File Id="msvc9compiler_py" Source="..\bin\Release\net461\lib\distutils\msvc9compiler.py" />
+					<File Id="msvccompiler_py" Source="..\bin\Release\net461\lib\distutils\msvccompiler.py" />
+					<File Id="README" Source="..\bin\Release\net461\lib\distutils\README" />
+					<File Id="spawn_py" Source="..\bin\Release\net461\lib\distutils\spawn.py" />
+					<File Id="sysconfig_py_1" Source="..\bin\Release\net461\lib\distutils\sysconfig.py" />
+					<File Id="text_file_py" Source="..\bin\Release\net461\lib\distutils\text_file.py" />
+					<File Id="unixccompiler_py" Source="..\bin\Release\net461\lib\distutils\unixccompiler.py" />
+					<File Id="util_py_1" Source="..\bin\Release\net461\lib\distutils\util.py" />
+					<File Id="version_py" Source="..\bin\Release\net461\lib\distutils\version.py" />
+					<File Id="versionpredicate_py" Source="..\bin\Release\net461\lib\distutils\versionpredicate.py" />
+					<File Id="__init___py_8" Source="..\bin\Release\net461\lib\distutils\__init__.py" />
+				</Component>
+				<Directory Id="command" Name="command">
+					<Component Id="command" Guid="79f19912-f3cd-452f-bd57-112b6b5c8827">
+						<File Id="bdist_py" Source="..\bin\Release\net461\lib\distutils\command\bdist.py" />
+						<File Id="bdist_dumb_py" Source="..\bin\Release\net461\lib\distutils\command\bdist_dumb.py" />
+						<File Id="bdist_msi_py" Source="..\bin\Release\net461\lib\distutils\command\bdist_msi.py" />
+						<File Id="bdist_rpm_py" Source="..\bin\Release\net461\lib\distutils\command\bdist_rpm.py" />
+						<File Id="bdist_wininst_py" Source="..\bin\Release\net461\lib\distutils\command\bdist_wininst.py" />
+						<File Id="build_py" Source="..\bin\Release\net461\lib\distutils\command\build.py" />
+						<File Id="build_clib_py" Source="..\bin\Release\net461\lib\distutils\command\build_clib.py" />
+						<File Id="build_ext_py" Source="..\bin\Release\net461\lib\distutils\command\build_ext.py" />
+						<File Id="build_py_py" Source="..\bin\Release\net461\lib\distutils\command\build_py.py" />
+						<File Id="build_scripts_py" Source="..\bin\Release\net461\lib\distutils\command\build_scripts.py" />
+						<File Id="check_py" Source="..\bin\Release\net461\lib\distutils\command\check.py" />
+						<File Id="clean_py" Source="..\bin\Release\net461\lib\distutils\command\clean.py" />
+						<File Id="command_template" Source="..\bin\Release\net461\lib\distutils\command\command_template" />
+						<File Id="config_py_1" Source="..\bin\Release\net461\lib\distutils\command\config.py" />
+						<File Id="install_py" Source="..\bin\Release\net461\lib\distutils\command\install.py" />
+						<File Id="install_data_py" Source="..\bin\Release\net461\lib\distutils\command\install_data.py" />
+						<File Id="install_egg_info_py" Source="..\bin\Release\net461\lib\distutils\command\install_egg_info.py" />
+						<File Id="install_headers_py" Source="..\bin\Release\net461\lib\distutils\command\install_headers.py" />
+						<File Id="install_lib_py" Source="..\bin\Release\net461\lib\distutils\command\install_lib.py" />
+						<File Id="install_scripts_py" Source="..\bin\Release\net461\lib\distutils\command\install_scripts.py" />
+						<File Id="register_py" Source="..\bin\Release\net461\lib\distutils\command\register.py" />
+						<File Id="sdist_py" Source="..\bin\Release\net461\lib\distutils\command\sdist.py" />
+						<File Id="upload_py" Source="..\bin\Release\net461\lib\distutils\command\upload.py" />
+						<File Id="wininst_10_0_amd64_exe" Source="..\bin\Release\net461\lib\distutils\command\wininst-10.0-amd64.exe" />
+						<File Id="wininst_10_0_exe" Source="..\bin\Release\net461\lib\distutils\command\wininst-10.0.exe" />
+						<File Id="wininst_6_0_exe" Source="..\bin\Release\net461\lib\distutils\command\wininst-6.0.exe" />
+						<File Id="wininst_7_1_exe" Source="..\bin\Release\net461\lib\distutils\command\wininst-7.1.exe" />
+						<File Id="wininst_8_0_exe" Source="..\bin\Release\net461\lib\distutils\command\wininst-8.0.exe" />
+						<File Id="wininst_9_0_amd64_exe" Source="..\bin\Release\net461\lib\distutils\command\wininst-9.0-amd64.exe" />
+						<File Id="wininst_9_0_exe" Source="..\bin\Release\net461\lib\distutils\command\wininst-9.0.exe" />
+						<File Id="__init___py_9" Source="..\bin\Release\net461\lib\distutils\command\__init__.py" />
+					</Component>
+				</Directory>
+			</Directory>
+			<Directory Id="email" Name="email">
+				<Component Id="email" Guid="d18454ca-ebdb-42bd-b4c1-6bc908f15a94">
+					<File Id="architecture_rst" Source="..\bin\Release\net461\lib\email\architecture.rst" />
+					<File Id="base64mime_py" Source="..\bin\Release\net461\lib\email\base64mime.py" />
+					<File Id="charset_py" Source="..\bin\Release\net461\lib\email\charset.py" />
+					<File Id="contentmanager_py" Source="..\bin\Release\net461\lib\email\contentmanager.py" />
+					<File Id="encoders_py" Source="..\bin\Release\net461\lib\email\encoders.py" />
+					<File Id="errors_py_1" Source="..\bin\Release\net461\lib\email\errors.py" />
+					<File Id="feedparser_py" Source="..\bin\Release\net461\lib\email\feedparser.py" />
+					<File Id="generator_py" Source="..\bin\Release\net461\lib\email\generator.py" />
+					<File Id="header_py" Source="..\bin\Release\net461\lib\email\header.py" />
+					<File Id="headerregistry_py" Source="..\bin\Release\net461\lib\email\headerregistry.py" />
+					<File Id="iterators_py" Source="..\bin\Release\net461\lib\email\iterators.py" />
+					<File Id="message_py" Source="..\bin\Release\net461\lib\email\message.py" />
+					<File Id="parser_py" Source="..\bin\Release\net461\lib\email\parser.py" />
+					<File Id="policy_py" Source="..\bin\Release\net461\lib\email\policy.py" />
+					<File Id="quoprimime_py" Source="..\bin\Release\net461\lib\email\quoprimime.py" />
+					<File Id="utils_py" Source="..\bin\Release\net461\lib\email\utils.py" />
+					<File Id="_encoded_words_py" Source="..\bin\Release\net461\lib\email\_encoded_words.py" />
+					<File Id="_header_value_parser_py" Source="..\bin\Release\net461\lib\email\_header_value_parser.py" />
+					<File Id="_parseaddr_py" Source="..\bin\Release\net461\lib\email\_parseaddr.py" />
+					<File Id="_policybase_py" Source="..\bin\Release\net461\lib\email\_policybase.py" />
+					<File Id="__init___py_10" Source="..\bin\Release\net461\lib\email\__init__.py" />
+				</Component>
+				<Directory Id="mime" Name="mime">
+					<Component Id="mime" Guid="cdbc3e8f-b39e-4b6f-8e44-62b22d6ad890">
+						<File Id="application_py" Source="..\bin\Release\net461\lib\email\mime\application.py" />
+						<File Id="audio_py" Source="..\bin\Release\net461\lib\email\mime\audio.py" />
+						<File Id="base_py" Source="..\bin\Release\net461\lib\email\mime\base.py" />
+						<File Id="image_py" Source="..\bin\Release\net461\lib\email\mime\image.py" />
+						<File Id="message_py_1" Source="..\bin\Release\net461\lib\email\mime\message.py" />
+						<File Id="multipart_py" Source="..\bin\Release\net461\lib\email\mime\multipart.py" />
+						<File Id="nonmultipart_py" Source="..\bin\Release\net461\lib\email\mime\nonmultipart.py" />
+						<File Id="text_py" Source="..\bin\Release\net461\lib\email\mime\text.py" />
+						<File Id="__init___py_11" Source="..\bin\Release\net461\lib\email\mime\__init__.py" />
+					</Component>
+				</Directory>
+			</Directory>
+			<Directory Id="encodings" Name="encodings">
+				<Component Id="encodings" Guid="31ad3fbc-c9a5-4038-84e9-b4989652158c">
+					<File Id="aliases_py" Source="..\bin\Release\net461\lib\encodings\aliases.py" />
+					<File Id="ascii_py_1" Source="..\bin\Release\net461\lib\encodings\ascii.py" />
+					<File Id="base64_codec_py" Source="..\bin\Release\net461\lib\encodings\base64_codec.py" />
+					<File Id="big5_py" Source="..\bin\Release\net461\lib\encodings\big5.py" />
+					<File Id="big5hkscs_py" Source="..\bin\Release\net461\lib\encodings\big5hkscs.py" />
+					<File Id="bz2_codec_py" Source="..\bin\Release\net461\lib\encodings\bz2_codec.py" />
+					<File Id="charmap_py" Source="..\bin\Release\net461\lib\encodings\charmap.py" />
+					<File Id="cp037_py" Source="..\bin\Release\net461\lib\encodings\cp037.py" />
+					<File Id="cp1006_py" Source="..\bin\Release\net461\lib\encodings\cp1006.py" />
+					<File Id="cp1026_py" Source="..\bin\Release\net461\lib\encodings\cp1026.py" />
+					<File Id="cp1125_py" Source="..\bin\Release\net461\lib\encodings\cp1125.py" />
+					<File Id="cp1140_py" Source="..\bin\Release\net461\lib\encodings\cp1140.py" />
+					<File Id="cp1250_py" Source="..\bin\Release\net461\lib\encodings\cp1250.py" />
+					<File Id="cp1251_py" Source="..\bin\Release\net461\lib\encodings\cp1251.py" />
+					<File Id="cp1252_py" Source="..\bin\Release\net461\lib\encodings\cp1252.py" />
+					<File Id="cp1253_py" Source="..\bin\Release\net461\lib\encodings\cp1253.py" />
+					<File Id="cp1254_py" Source="..\bin\Release\net461\lib\encodings\cp1254.py" />
+					<File Id="cp1255_py" Source="..\bin\Release\net461\lib\encodings\cp1255.py" />
+					<File Id="cp1256_py" Source="..\bin\Release\net461\lib\encodings\cp1256.py" />
+					<File Id="cp1257_py" Source="..\bin\Release\net461\lib\encodings\cp1257.py" />
+					<File Id="cp1258_py" Source="..\bin\Release\net461\lib\encodings\cp1258.py" />
+					<File Id="cp273_py" Source="..\bin\Release\net461\lib\encodings\cp273.py" />
+					<File Id="cp424_py" Source="..\bin\Release\net461\lib\encodings\cp424.py" />
+					<File Id="cp437_py" Source="..\bin\Release\net461\lib\encodings\cp437.py" />
+					<File Id="cp500_py" Source="..\bin\Release\net461\lib\encodings\cp500.py" />
+					<File Id="cp65001_py" Source="..\bin\Release\net461\lib\encodings\cp65001.py" />
+					<File Id="cp720_py" Source="..\bin\Release\net461\lib\encodings\cp720.py" />
+					<File Id="cp737_py" Source="..\bin\Release\net461\lib\encodings\cp737.py" />
+					<File Id="cp775_py" Source="..\bin\Release\net461\lib\encodings\cp775.py" />
+					<File Id="cp850_py" Source="..\bin\Release\net461\lib\encodings\cp850.py" />
+					<File Id="cp852_py" Source="..\bin\Release\net461\lib\encodings\cp852.py" />
+					<File Id="cp855_py" Source="..\bin\Release\net461\lib\encodings\cp855.py" />
+					<File Id="cp856_py" Source="..\bin\Release\net461\lib\encodings\cp856.py" />
+					<File Id="cp857_py" Source="..\bin\Release\net461\lib\encodings\cp857.py" />
+					<File Id="cp858_py" Source="..\bin\Release\net461\lib\encodings\cp858.py" />
+					<File Id="cp860_py" Source="..\bin\Release\net461\lib\encodings\cp860.py" />
+					<File Id="cp861_py" Source="..\bin\Release\net461\lib\encodings\cp861.py" />
+					<File Id="cp862_py" Source="..\bin\Release\net461\lib\encodings\cp862.py" />
+					<File Id="cp863_py" Source="..\bin\Release\net461\lib\encodings\cp863.py" />
+					<File Id="cp864_py" Source="..\bin\Release\net461\lib\encodings\cp864.py" />
+					<File Id="cp865_py" Source="..\bin\Release\net461\lib\encodings\cp865.py" />
+					<File Id="cp866_py" Source="..\bin\Release\net461\lib\encodings\cp866.py" />
+					<File Id="cp869_py" Source="..\bin\Release\net461\lib\encodings\cp869.py" />
+					<File Id="cp874_py" Source="..\bin\Release\net461\lib\encodings\cp874.py" />
+					<File Id="cp875_py" Source="..\bin\Release\net461\lib\encodings\cp875.py" />
+					<File Id="cp932_py" Source="..\bin\Release\net461\lib\encodings\cp932.py" />
+					<File Id="cp949_py" Source="..\bin\Release\net461\lib\encodings\cp949.py" />
+					<File Id="cp950_py" Source="..\bin\Release\net461\lib\encodings\cp950.py" />
+					<File Id="euc_jisx0213_py" Source="..\bin\Release\net461\lib\encodings\euc_jisx0213.py" />
+					<File Id="euc_jis_2004_py" Source="..\bin\Release\net461\lib\encodings\euc_jis_2004.py" />
+					<File Id="euc_jp_py" Source="..\bin\Release\net461\lib\encodings\euc_jp.py" />
+					<File Id="euc_kr_py" Source="..\bin\Release\net461\lib\encodings\euc_kr.py" />
+					<File Id="gb18030_py" Source="..\bin\Release\net461\lib\encodings\gb18030.py" />
+					<File Id="gb2312_py" Source="..\bin\Release\net461\lib\encodings\gb2312.py" />
+					<File Id="gbk_py" Source="..\bin\Release\net461\lib\encodings\gbk.py" />
+					<File Id="hex_codec_py" Source="..\bin\Release\net461\lib\encodings\hex_codec.py" />
+					<File Id="hp_roman8_py" Source="..\bin\Release\net461\lib\encodings\hp_roman8.py" />
+					<File Id="hz_py" Source="..\bin\Release\net461\lib\encodings\hz.py" />
+					<File Id="idna_py" Source="..\bin\Release\net461\lib\encodings\idna.py" />
+					<File Id="iso2022_jp_py" Source="..\bin\Release\net461\lib\encodings\iso2022_jp.py" />
+					<File Id="iso2022_jp_1_py" Source="..\bin\Release\net461\lib\encodings\iso2022_jp_1.py" />
+					<File Id="iso2022_jp_2_py" Source="..\bin\Release\net461\lib\encodings\iso2022_jp_2.py" />
+					<File Id="iso2022_jp_2004_py" Source="..\bin\Release\net461\lib\encodings\iso2022_jp_2004.py" />
+					<File Id="iso2022_jp_3_py" Source="..\bin\Release\net461\lib\encodings\iso2022_jp_3.py" />
+					<File Id="iso2022_jp_ext_py" Source="..\bin\Release\net461\lib\encodings\iso2022_jp_ext.py" />
+					<File Id="iso2022_kr_py" Source="..\bin\Release\net461\lib\encodings\iso2022_kr.py" />
+					<File Id="iso8859_1_py" Source="..\bin\Release\net461\lib\encodings\iso8859_1.py" />
+					<File Id="iso8859_10_py" Source="..\bin\Release\net461\lib\encodings\iso8859_10.py" />
+					<File Id="iso8859_11_py" Source="..\bin\Release\net461\lib\encodings\iso8859_11.py" />
+					<File Id="iso8859_13_py" Source="..\bin\Release\net461\lib\encodings\iso8859_13.py" />
+					<File Id="iso8859_14_py" Source="..\bin\Release\net461\lib\encodings\iso8859_14.py" />
+					<File Id="iso8859_15_py" Source="..\bin\Release\net461\lib\encodings\iso8859_15.py" />
+					<File Id="iso8859_16_py" Source="..\bin\Release\net461\lib\encodings\iso8859_16.py" />
+					<File Id="iso8859_2_py" Source="..\bin\Release\net461\lib\encodings\iso8859_2.py" />
+					<File Id="iso8859_3_py" Source="..\bin\Release\net461\lib\encodings\iso8859_3.py" />
+					<File Id="iso8859_4_py" Source="..\bin\Release\net461\lib\encodings\iso8859_4.py" />
+					<File Id="iso8859_5_py" Source="..\bin\Release\net461\lib\encodings\iso8859_5.py" />
+					<File Id="iso8859_6_py" Source="..\bin\Release\net461\lib\encodings\iso8859_6.py" />
+					<File Id="iso8859_7_py" Source="..\bin\Release\net461\lib\encodings\iso8859_7.py" />
+					<File Id="iso8859_8_py" Source="..\bin\Release\net461\lib\encodings\iso8859_8.py" />
+					<File Id="iso8859_9_py" Source="..\bin\Release\net461\lib\encodings\iso8859_9.py" />
+					<File Id="johab_py" Source="..\bin\Release\net461\lib\encodings\johab.py" />
+					<File Id="koi8_r_py" Source="..\bin\Release\net461\lib\encodings\koi8_r.py" />
+					<File Id="koi8_u_py" Source="..\bin\Release\net461\lib\encodings\koi8_u.py" />
+					<File Id="latin_1_py" Source="..\bin\Release\net461\lib\encodings\latin_1.py" />
+					<File Id="mac_arabic_py" Source="..\bin\Release\net461\lib\encodings\mac_arabic.py" />
+					<File Id="mac_centeuro_py" Source="..\bin\Release\net461\lib\encodings\mac_centeuro.py" />
+					<File Id="mac_croatian_py" Source="..\bin\Release\net461\lib\encodings\mac_croatian.py" />
+					<File Id="mac_cyrillic_py" Source="..\bin\Release\net461\lib\encodings\mac_cyrillic.py" />
+					<File Id="mac_farsi_py" Source="..\bin\Release\net461\lib\encodings\mac_farsi.py" />
+					<File Id="mac_greek_py" Source="..\bin\Release\net461\lib\encodings\mac_greek.py" />
+					<File Id="mac_iceland_py" Source="..\bin\Release\net461\lib\encodings\mac_iceland.py" />
+					<File Id="mac_latin2_py" Source="..\bin\Release\net461\lib\encodings\mac_latin2.py" />
+					<File Id="mac_roman_py" Source="..\bin\Release\net461\lib\encodings\mac_roman.py" />
+					<File Id="mac_romanian_py" Source="..\bin\Release\net461\lib\encodings\mac_romanian.py" />
+					<File Id="mac_turkish_py" Source="..\bin\Release\net461\lib\encodings\mac_turkish.py" />
+					<File Id="mbcs_py" Source="..\bin\Release\net461\lib\encodings\mbcs.py" />
+					<File Id="palmos_py" Source="..\bin\Release\net461\lib\encodings\palmos.py" />
+					<File Id="ptcp154_py" Source="..\bin\Release\net461\lib\encodings\ptcp154.py" />
+					<File Id="punycode_py" Source="..\bin\Release\net461\lib\encodings\punycode.py" />
+					<File Id="quopri_codec_py" Source="..\bin\Release\net461\lib\encodings\quopri_codec.py" />
+					<File Id="raw_unicode_escape_py" Source="..\bin\Release\net461\lib\encodings\raw_unicode_escape.py" />
+					<File Id="rot_13_py" Source="..\bin\Release\net461\lib\encodings\rot_13.py" />
+					<File Id="shift_jis_py" Source="..\bin\Release\net461\lib\encodings\shift_jis.py" />
+					<File Id="shift_jisx0213_py" Source="..\bin\Release\net461\lib\encodings\shift_jisx0213.py" />
+					<File Id="shift_jis_2004_py" Source="..\bin\Release\net461\lib\encodings\shift_jis_2004.py" />
+					<File Id="tis_620_py" Source="..\bin\Release\net461\lib\encodings\tis_620.py" />
+					<File Id="undefined_py" Source="..\bin\Release\net461\lib\encodings\undefined.py" />
+					<File Id="unicode_escape_py" Source="..\bin\Release\net461\lib\encodings\unicode_escape.py" />
+					<File Id="unicode_internal_py" Source="..\bin\Release\net461\lib\encodings\unicode_internal.py" />
+					<File Id="utf_16_py" Source="..\bin\Release\net461\lib\encodings\utf_16.py" />
+					<File Id="utf_16_be_py" Source="..\bin\Release\net461\lib\encodings\utf_16_be.py" />
+					<File Id="utf_16_le_py" Source="..\bin\Release\net461\lib\encodings\utf_16_le.py" />
+					<File Id="utf_32_py" Source="..\bin\Release\net461\lib\encodings\utf_32.py" />
+					<File Id="utf_32_be_py" Source="..\bin\Release\net461\lib\encodings\utf_32_be.py" />
+					<File Id="utf_32_le_py" Source="..\bin\Release\net461\lib\encodings\utf_32_le.py" />
+					<File Id="utf_7_py" Source="..\bin\Release\net461\lib\encodings\utf_7.py" />
+					<File Id="utf_8_py" Source="..\bin\Release\net461\lib\encodings\utf_8.py" />
+					<File Id="utf_8_sig_py" Source="..\bin\Release\net461\lib\encodings\utf_8_sig.py" />
+					<File Id="uu_codec_py" Source="..\bin\Release\net461\lib\encodings\uu_codec.py" />
+					<File Id="zlib_codec_py" Source="..\bin\Release\net461\lib\encodings\zlib_codec.py" />
+					<File Id="__init___py_12" Source="..\bin\Release\net461\lib\encodings\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="ensurepip" Name="ensurepip">
+				<Component Id="ensurepip" Guid="8625f27f-e40c-44be-bada-0742f1dbdc87">
+					<File Id="_uninstall_py" Source="..\bin\Release\net461\lib\ensurepip\_uninstall.py" />
+					<File Id="__init___py_13" Source="..\bin\Release\net461\lib\ensurepip\__init__.py" />
+					<File Id="__main___py_1" Source="..\bin\Release\net461\lib\ensurepip\__main__.py" />
+				</Component>
+				<Directory Id="_bundled" Name="_bundled">
+					<Component Id="_bundled" Guid="077c3b37-91f3-4819-abc5-fd607cb36e16">
+						<File Id="pip_18_1_py2_py3_none_any_whl" Source="..\bin\Release\net461\lib\ensurepip\_bundled\pip-18.1-py2.py3-none-any.whl" />
+						<File Id="setuptools_40_6_2_py2_py3_none_any_whl" Source="..\bin\Release\net461\lib\ensurepip\_bundled\setuptools-40.6.2-py2.py3-none-any.whl" />
+					</Component>
+				</Directory>
+			</Directory>
+			<Directory Id="html" Name="html">
+				<Component Id="html" Guid="1b87e12a-6103-41fe-890a-e6b9eb3bbe51">
+					<File Id="entities_py" Source="..\bin\Release\net461\lib\html\entities.py" />
+					<File Id="parser_py_1" Source="..\bin\Release\net461\lib\html\parser.py" />
+					<File Id="__init___py_14" Source="..\bin\Release\net461\lib\html\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="http" Name="http">
+				<Component Id="http" Guid="fb8fbcad-e7d9-41a4-9122-5374b5138516">
+					<File Id="client_py" Source="..\bin\Release\net461\lib\http\client.py" />
+					<File Id="cookiejar_py" Source="..\bin\Release\net461\lib\http\cookiejar.py" />
+					<File Id="cookies_py" Source="..\bin\Release\net461\lib\http\cookies.py" />
+					<File Id="server_py" Source="..\bin\Release\net461\lib\http\server.py" />
+					<File Id="__init___py_15" Source="..\bin\Release\net461\lib\http\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="importlib" Name="importlib">
+				<Component Id="importlib" Guid="d2854efa-9cf5-4a04-92e0-de2ca12f7bd3">
+					<File Id="abc_py_2" Source="..\bin\Release\net461\lib\importlib\abc.py" />
+					<File Id="machinery_py" Source="..\bin\Release\net461\lib\importlib\machinery.py" />
+					<File Id="util_py_2" Source="..\bin\Release\net461\lib\importlib\util.py" />
+					<File Id="_bootstrap_py" Source="..\bin\Release\net461\lib\importlib\_bootstrap.py" />
+					<File Id="__init___py_16" Source="..\bin\Release\net461\lib\importlib\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="json" Name="json">
+				<Component Id="json" Guid="954f009a-afb5-4de7-8bee-8ee71fb0487c">
+					<File Id="decoder_py" Source="..\bin\Release\net461\lib\json\decoder.py" />
+					<File Id="encoder_py" Source="..\bin\Release\net461\lib\json\encoder.py" />
+					<File Id="scanner_py" Source="..\bin\Release\net461\lib\json\scanner.py" />
+					<File Id="tool_py" Source="..\bin\Release\net461\lib\json\tool.py" />
+					<File Id="__init___py_17" Source="..\bin\Release\net461\lib\json\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="lib2to3" Name="lib2to3">
+				<Component Id="lib2to3" Guid="dccf7142-d463-4364-8c07-b38c3c8d22bf">
+					<File Id="btm_matcher_py" Source="..\bin\Release\net461\lib\lib2to3\btm_matcher.py" />
+					<File Id="btm_utils_py" Source="..\bin\Release\net461\lib\lib2to3\btm_utils.py" />
+					<File Id="fixer_base_py" Source="..\bin\Release\net461\lib\lib2to3\fixer_base.py" />
+					<File Id="fixer_util_py" Source="..\bin\Release\net461\lib\lib2to3\fixer_util.py" />
+					<File Id="Grammar_txt" Source="..\bin\Release\net461\lib\lib2to3\Grammar.txt" />
+					<File Id="main_py" Source="..\bin\Release\net461\lib\lib2to3\main.py" />
+					<File Id="patcomp_py" Source="..\bin\Release\net461\lib\lib2to3\patcomp.py" />
+					<File Id="PatternGrammar_txt" Source="..\bin\Release\net461\lib\lib2to3\PatternGrammar.txt" />
+					<File Id="pygram_py" Source="..\bin\Release\net461\lib\lib2to3\pygram.py" />
+					<File Id="pytree_py" Source="..\bin\Release\net461\lib\lib2to3\pytree.py" />
+					<File Id="refactor_py" Source="..\bin\Release\net461\lib\lib2to3\refactor.py" />
+					<File Id="__init___py_18" Source="..\bin\Release\net461\lib\lib2to3\__init__.py" />
+					<File Id="__main___py_2" Source="..\bin\Release\net461\lib\lib2to3\__main__.py" />
+				</Component>
+				<Directory Id="fixes" Name="fixes">
+					<Component Id="fixes" Guid="03ca84de-95db-4571-919f-13c7cb717414">
+						<File Id="fix_apply_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_apply.py" />
+						<File Id="fix_asserts_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_asserts.py" />
+						<File Id="fix_basestring_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_basestring.py" />
+						<File Id="fix_buffer_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_buffer.py" />
+						<File Id="fix_callable_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_callable.py" />
+						<File Id="fix_dict_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_dict.py" />
+						<File Id="fix_except_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_except.py" />
+						<File Id="fix_exec_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_exec.py" />
+						<File Id="fix_execfile_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_execfile.py" />
+						<File Id="fix_exitfunc_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_exitfunc.py" />
+						<File Id="fix_filter_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_filter.py" />
+						<File Id="fix_funcattrs_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_funcattrs.py" />
+						<File Id="fix_future_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_future.py" />
+						<File Id="fix_getcwdu_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_getcwdu.py" />
+						<File Id="fix_has_key_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_has_key.py" />
+						<File Id="fix_idioms_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_idioms.py" />
+						<File Id="fix_import_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_import.py" />
+						<File Id="fix_imports_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_imports.py" />
+						<File Id="fix_imports2_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_imports2.py" />
+						<File Id="fix_input_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_input.py" />
+						<File Id="fix_intern_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_intern.py" />
+						<File Id="fix_isinstance_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_isinstance.py" />
+						<File Id="fix_itertools_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_itertools.py" />
+						<File Id="fix_itertools_imports_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_itertools_imports.py" />
+						<File Id="fix_long_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_long.py" />
+						<File Id="fix_map_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_map.py" />
+						<File Id="fix_metaclass_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_metaclass.py" />
+						<File Id="fix_methodattrs_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_methodattrs.py" />
+						<File Id="fix_ne_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_ne.py" />
+						<File Id="fix_next_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_next.py" />
+						<File Id="fix_nonzero_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_nonzero.py" />
+						<File Id="fix_numliterals_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_numliterals.py" />
+						<File Id="fix_operator_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_operator.py" />
+						<File Id="fix_paren_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_paren.py" />
+						<File Id="fix_print_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_print.py" />
+						<File Id="fix_raise_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_raise.py" />
+						<File Id="fix_raw_input_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_raw_input.py" />
+						<File Id="fix_reduce_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_reduce.py" />
+						<File Id="fix_reload_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_reload.py" />
+						<File Id="fix_renames_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_renames.py" />
+						<File Id="fix_repr_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_repr.py" />
+						<File Id="fix_set_literal_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_set_literal.py" />
+						<File Id="fix_standarderror_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_standarderror.py" />
+						<File Id="fix_sys_exc_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_sys_exc.py" />
+						<File Id="fix_throw_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_throw.py" />
+						<File Id="fix_tuple_params_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_tuple_params.py" />
+						<File Id="fix_types_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_types.py" />
+						<File Id="fix_unicode_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_unicode.py" />
+						<File Id="fix_urllib_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_urllib.py" />
+						<File Id="fix_ws_comma_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_ws_comma.py" />
+						<File Id="fix_xrange_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_xrange.py" />
+						<File Id="fix_xreadlines_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_xreadlines.py" />
+						<File Id="fix_zip_py" Source="..\bin\Release\net461\lib\lib2to3\fixes\fix_zip.py" />
+						<File Id="__init___py_19" Source="..\bin\Release\net461\lib\lib2to3\fixes\__init__.py" />
+					</Component>
+				</Directory>
+				<Directory Id="pgen2" Name="pgen2">
+					<Component Id="pgen2" Guid="d8b5175b-7224-4fcb-b656-24e792f78a5e">
+						<File Id="conv_py" Source="..\bin\Release\net461\lib\lib2to3\pgen2\conv.py" />
+						<File Id="driver_py" Source="..\bin\Release\net461\lib\lib2to3\pgen2\driver.py" />
+						<File Id="grammar_py" Source="..\bin\Release\net461\lib\lib2to3\pgen2\grammar.py" />
+						<File Id="literals_py" Source="..\bin\Release\net461\lib\lib2to3\pgen2\literals.py" />
+						<File Id="parse_py" Source="..\bin\Release\net461\lib\lib2to3\pgen2\parse.py" />
+						<File Id="pgen_py" Source="..\bin\Release\net461\lib\lib2to3\pgen2\pgen.py" />
+						<File Id="token_py_1" Source="..\bin\Release\net461\lib\lib2to3\pgen2\token.py" />
+						<File Id="tokenize_py_1" Source="..\bin\Release\net461\lib\lib2to3\pgen2\tokenize.py" />
+						<File Id="__init___py_20" Source="..\bin\Release\net461\lib\lib2to3\pgen2\__init__.py" />
+					</Component>
+				</Directory>
+			</Directory>
+			<Directory Id="logging" Name="logging">
+				<Component Id="logging" Guid="8345d3a4-1935-4142-8aaa-a8947a04d2f0">
+					<File Id="config_py_2" Source="..\bin\Release\net461\lib\logging\config.py" />
+					<File Id="handlers_py" Source="..\bin\Release\net461\lib\logging\handlers.py" />
+					<File Id="__init___py_21" Source="..\bin\Release\net461\lib\logging\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="msilib" Name="msilib">
+				<Component Id="msilib" Guid="fced0ca4-6bef-4661-a1e7-492a11d2d6f2">
+					<File Id="schema_py" Source="..\bin\Release\net461\lib\msilib\schema.py" />
+					<File Id="sequence_py" Source="..\bin\Release\net461\lib\msilib\sequence.py" />
+					<File Id="text_py_1" Source="..\bin\Release\net461\lib\msilib\text.py" />
+					<File Id="__init___py_22" Source="..\bin\Release\net461\lib\msilib\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="multiprocessing" Name="multiprocessing">
+				<Component Id="multiprocessing" Guid="4a3a99c1-8cdc-44dc-bb30-efc1465a551f">
+					<File Id="connection_py" Source="..\bin\Release\net461\lib\multiprocessing\connection.py" />
+					<File Id="context_py" Source="..\bin\Release\net461\lib\multiprocessing\context.py" />
+					<File Id="forkserver_py" Source="..\bin\Release\net461\lib\multiprocessing\forkserver.py" />
+					<File Id="heap_py" Source="..\bin\Release\net461\lib\multiprocessing\heap.py" />
+					<File Id="managers_py" Source="..\bin\Release\net461\lib\multiprocessing\managers.py" />
+					<File Id="pool_py" Source="..\bin\Release\net461\lib\multiprocessing\pool.py" />
+					<File Id="popen_fork_py" Source="..\bin\Release\net461\lib\multiprocessing\popen_fork.py" />
+					<File Id="popen_forkserver_py" Source="..\bin\Release\net461\lib\multiprocessing\popen_forkserver.py" />
+					<File Id="popen_spawn_posix_py" Source="..\bin\Release\net461\lib\multiprocessing\popen_spawn_posix.py" />
+					<File Id="popen_spawn_win32_py" Source="..\bin\Release\net461\lib\multiprocessing\popen_spawn_win32.py" />
+					<File Id="process_py_1" Source="..\bin\Release\net461\lib\multiprocessing\process.py" />
+					<File Id="queues_py_1" Source="..\bin\Release\net461\lib\multiprocessing\queues.py" />
+					<File Id="reduction_py" Source="..\bin\Release\net461\lib\multiprocessing\reduction.py" />
+					<File Id="resource_sharer_py" Source="..\bin\Release\net461\lib\multiprocessing\resource_sharer.py" />
+					<File Id="semaphore_tracker_py" Source="..\bin\Release\net461\lib\multiprocessing\semaphore_tracker.py" />
+					<File Id="sharedctypes_py" Source="..\bin\Release\net461\lib\multiprocessing\sharedctypes.py" />
+					<File Id="spawn_py_1" Source="..\bin\Release\net461\lib\multiprocessing\spawn.py" />
+					<File Id="synchronize_py" Source="..\bin\Release\net461\lib\multiprocessing\synchronize.py" />
+					<File Id="util_py_3" Source="..\bin\Release\net461\lib\multiprocessing\util.py" />
+					<File Id="__init___py_23" Source="..\bin\Release\net461\lib\multiprocessing\__init__.py" />
+				</Component>
+				<Directory Id="dummy" Name="dummy">
+					<Component Id="dummy" Guid="84362c1e-8c3a-49ba-9f89-9a1b5de85a26">
+						<File Id="connection_py_1" Source="..\bin\Release\net461\lib\multiprocessing\dummy\connection.py" />
+						<File Id="__init___py_24" Source="..\bin\Release\net461\lib\multiprocessing\dummy\__init__.py" />
+					</Component>
+				</Directory>
+			</Directory>
+			<Directory Id="pydoc_data" Name="pydoc_data">
+				<Component Id="pydoc_data" Guid="d1a05b39-2a3b-4364-a705-cb66b20aef07">
+					<File Id="topics_py" Source="..\bin\Release\net461\lib\pydoc_data\topics.py" />
+					<File Id="_pydoc_css" Source="..\bin\Release\net461\lib\pydoc_data\_pydoc.css" />
+					<File Id="__init___py_25" Source="..\bin\Release\net461\lib\pydoc_data\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="site_packages" Name="site-packages">
+				<Component Id="site_packages" Guid="41fa037c-9cef-4070-be38-2baf2875720a">
+					<File Id="README_1" Source="..\bin\Release\net461\lib\site-packages\README" />
+				</Component>
+			</Directory>
+			<Directory Id="sqlite3" Name="sqlite3">
+				<Component Id="sqlite3" Guid="6f61a06c-82de-43fc-8d26-58b50786d9f8">
+					<File Id="dbapi2_py" Source="..\bin\Release\net461\lib\sqlite3\dbapi2.py" />
+					<File Id="dump_py" Source="..\bin\Release\net461\lib\sqlite3\dump.py" />
+					<File Id="__init___py_26" Source="..\bin\Release\net461\lib\sqlite3\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="turtledemo" Name="turtledemo">
+				<Component Id="turtledemo" Guid="444777ea-e9c7-48e3-bf46-101a8507ecfe">
+					<File Id="bytedesign_py" Source="..\bin\Release\net461\lib\turtledemo\bytedesign.py" />
+					<File Id="chaos_py" Source="..\bin\Release\net461\lib\turtledemo\chaos.py" />
+					<File Id="clock_py" Source="..\bin\Release\net461\lib\turtledemo\clock.py" />
+					<File Id="colormixer_py" Source="..\bin\Release\net461\lib\turtledemo\colormixer.py" />
+					<File Id="forest_py" Source="..\bin\Release\net461\lib\turtledemo\forest.py" />
+					<File Id="fractalcurves_py" Source="..\bin\Release\net461\lib\turtledemo\fractalcurves.py" />
+					<File Id="lindenmayer_py" Source="..\bin\Release\net461\lib\turtledemo\lindenmayer.py" />
+					<File Id="minimal_hanoi_py" Source="..\bin\Release\net461\lib\turtledemo\minimal_hanoi.py" />
+					<File Id="nim_py" Source="..\bin\Release\net461\lib\turtledemo\nim.py" />
+					<File Id="paint_py" Source="..\bin\Release\net461\lib\turtledemo\paint.py" />
+					<File Id="peace_py" Source="..\bin\Release\net461\lib\turtledemo\peace.py" />
+					<File Id="penrose_py" Source="..\bin\Release\net461\lib\turtledemo\penrose.py" />
+					<File Id="planet_and_moon_py" Source="..\bin\Release\net461\lib\turtledemo\planet_and_moon.py" />
+					<File Id="round_dance_py" Source="..\bin\Release\net461\lib\turtledemo\round_dance.py" />
+					<File Id="tree_py" Source="..\bin\Release\net461\lib\turtledemo\tree.py" />
+					<File Id="turtle_cfg" Source="..\bin\Release\net461\lib\turtledemo\turtle.cfg" />
+					<File Id="two_canvases_py" Source="..\bin\Release\net461\lib\turtledemo\two_canvases.py" />
+					<File Id="wikipedia_py" Source="..\bin\Release\net461\lib\turtledemo\wikipedia.py" />
+					<File Id="yinyang_py" Source="..\bin\Release\net461\lib\turtledemo\yinyang.py" />
+					<File Id="__init___py_27" Source="..\bin\Release\net461\lib\turtledemo\__init__.py" />
+					<File Id="__main___py_3" Source="..\bin\Release\net461\lib\turtledemo\__main__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="unittest" Name="unittest">
+				<Component Id="unittest" Guid="1b8f1c1e-6821-49d5-bf11-881b5eca7e79">
+					<File Id="case_py" Source="..\bin\Release\net461\lib\unittest\case.py" />
+					<File Id="loader_py" Source="..\bin\Release\net461\lib\unittest\loader.py" />
+					<File Id="main_py_1" Source="..\bin\Release\net461\lib\unittest\main.py" />
+					<File Id="mock_py" Source="..\bin\Release\net461\lib\unittest\mock.py" />
+					<File Id="result_py" Source="..\bin\Release\net461\lib\unittest\result.py" />
+					<File Id="runner_py" Source="..\bin\Release\net461\lib\unittest\runner.py" />
+					<File Id="signals_py" Source="..\bin\Release\net461\lib\unittest\signals.py" />
+					<File Id="suite_py" Source="..\bin\Release\net461\lib\unittest\suite.py" />
+					<File Id="util_py_4" Source="..\bin\Release\net461\lib\unittest\util.py" />
+					<File Id="__init___py_28" Source="..\bin\Release\net461\lib\unittest\__init__.py" />
+					<File Id="__main___py_4" Source="..\bin\Release\net461\lib\unittest\__main__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="urllib" Name="urllib">
+				<Component Id="urllib" Guid="3265bd43-078c-4eff-96c6-c9ec432d637f">
+					<File Id="error_py" Source="..\bin\Release\net461\lib\urllib\error.py" />
+					<File Id="parse_py_1" Source="..\bin\Release\net461\lib\urllib\parse.py" />
+					<File Id="request_py" Source="..\bin\Release\net461\lib\urllib\request.py" />
+					<File Id="response_py" Source="..\bin\Release\net461\lib\urllib\response.py" />
+					<File Id="robotparser_py" Source="..\bin\Release\net461\lib\urllib\robotparser.py" />
+					<File Id="__init___py_29" Source="..\bin\Release\net461\lib\urllib\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="venv" Name="venv">
+				<Component Id="venv" Guid="51f8bfec-ef03-4b59-a801-9dab12567b38">
+					<File Id="__init___py_30" Source="..\bin\Release\net461\lib\venv\__init__.py" />
+					<File Id="__main___py_5" Source="..\bin\Release\net461\lib\venv\__main__.py" />
+				</Component>
+				<Directory Id="scripts" Name="scripts">
+					<Component Id="scripts" Guid="71cfefb2-7136-474f-843d-cf5b62b8fb24">
+					</Component>
+					<Directory Id="nt" Name="nt">
+						<Component Id="nt" Guid="b11d139d-e6fa-434b-85de-2c49d25927da">
+							<File Id="activate_bat" Source="..\bin\Release\net461\lib\venv\scripts\nt\activate.bat" />
+							<File Id="Activate_ps1" Source="..\bin\Release\net461\lib\venv\scripts\nt\Activate.ps1" />
+							<File Id="deactivate_bat" Source="..\bin\Release\net461\lib\venv\scripts\nt\deactivate.bat" />
+						</Component>
+					</Directory>
+					<Directory Id="posix" Name="posix">
+						<Component Id="posix" Guid="8e92557d-70e2-4e24-b170-c9f798e46c48">
+							<File Id="activate" Source="..\bin\Release\net461\lib\venv\scripts\posix\activate" />
+							<File Id="activate_csh" Source="..\bin\Release\net461\lib\venv\scripts\posix\activate.csh" />
+							<File Id="activate_fish" Source="..\bin\Release\net461\lib\venv\scripts\posix\activate.fish" />
+						</Component>
+					</Directory>
+				</Directory>
+			</Directory>
+			<Directory Id="wsgiref" Name="wsgiref">
+				<Component Id="wsgiref" Guid="f6c29be4-ac91-437e-ba83-f09fc15f1ed6">
+					<File Id="handlers_py_1" Source="..\bin\Release\net461\lib\wsgiref\handlers.py" />
+					<File Id="headers_py" Source="..\bin\Release\net461\lib\wsgiref\headers.py" />
+					<File Id="simple_server_py" Source="..\bin\Release\net461\lib\wsgiref\simple_server.py" />
+					<File Id="util_py_5" Source="..\bin\Release\net461\lib\wsgiref\util.py" />
+					<File Id="validate_py" Source="..\bin\Release\net461\lib\wsgiref\validate.py" />
+					<File Id="__init___py_31" Source="..\bin\Release\net461\lib\wsgiref\__init__.py" />
+				</Component>
+			</Directory>
+			<Directory Id="xml" Name="xml">
+				<Component Id="xml" Guid="702e51e3-f07b-44e1-be73-3f8cd8a8392d">
+					<File Id="__init___py_32" Source="..\bin\Release\net461\lib\xml\__init__.py" />
+				</Component>
+				<Directory Id="dom" Name="dom">
+					<Component Id="dom" Guid="f91fbeb0-060d-4844-b74e-e339cffd8af2">
+						<File Id="domreg_py" Source="..\bin\Release\net461\lib\xml\dom\domreg.py" />
+						<File Id="expatbuilder_py" Source="..\bin\Release\net461\lib\xml\dom\expatbuilder.py" />
+						<File Id="minicompat_py" Source="..\bin\Release\net461\lib\xml\dom\minicompat.py" />
+						<File Id="minidom_py" Source="..\bin\Release\net461\lib\xml\dom\minidom.py" />
+						<File Id="NodeFilter_py" Source="..\bin\Release\net461\lib\xml\dom\NodeFilter.py" />
+						<File Id="pulldom_py" Source="..\bin\Release\net461\lib\xml\dom\pulldom.py" />
+						<File Id="xmlbuilder_py" Source="..\bin\Release\net461\lib\xml\dom\xmlbuilder.py" />
+						<File Id="__init___py_33" Source="..\bin\Release\net461\lib\xml\dom\__init__.py" />
+					</Component>
+				</Directory>
+				<Directory Id="etree" Name="etree">
+					<Component Id="etree" Guid="4b1a982d-bfcf-4533-984b-6240edf7537d">
+						<File Id="cElementTree_py" Source="..\bin\Release\net461\lib\xml\etree\cElementTree.py" />
+						<File Id="ElementInclude_py" Source="..\bin\Release\net461\lib\xml\etree\ElementInclude.py" />
+						<File Id="ElementPath_py" Source="..\bin\Release\net461\lib\xml\etree\ElementPath.py" />
+						<File Id="ElementTree_py" Source="..\bin\Release\net461\lib\xml\etree\ElementTree.py" />
+						<File Id="__init___py_34" Source="..\bin\Release\net461\lib\xml\etree\__init__.py" />
+					</Component>
+				</Directory>
+				<Directory Id="parsers" Name="parsers">
+					<Component Id="parsers" Guid="e778bb71-d025-4bea-9c49-7a2774e2fd87">
+						<File Id="expat_py" Source="..\bin\Release\net461\lib\xml\parsers\expat.py" />
+						<File Id="__init___py_35" Source="..\bin\Release\net461\lib\xml\parsers\__init__.py" />
+					</Component>
+				</Directory>
+				<Directory Id="sax" Name="sax">
+					<Component Id="sax" Guid="7a4511ac-6829-44a2-be16-83e6051fb84d">
+						<File Id="expatreader_py" Source="..\bin\Release\net461\lib\xml\sax\expatreader.py" />
+						<File Id="handler_py" Source="..\bin\Release\net461\lib\xml\sax\handler.py" />
+						<File Id="saxutils_py" Source="..\bin\Release\net461\lib\xml\sax\saxutils.py" />
+						<File Id="xmlreader_py" Source="..\bin\Release\net461\lib\xml\sax\xmlreader.py" />
+						<File Id="_exceptions_py" Source="..\bin\Release\net461\lib\xml\sax\_exceptions.py" />
+						<File Id="__init___py_36" Source="..\bin\Release\net461\lib\xml\sax\__init__.py" />
+					</Component>
+				</Directory>
+			</Directory>
+			<Directory Id="xmlrpc" Name="xmlrpc">
+				<Component Id="xmlrpc" Guid="cebd1c7d-38ff-463f-99c4-adf067e76456">
+					<File Id="client_py_1" Source="..\bin\Release\net461\lib\xmlrpc\client.py" />
+					<File Id="server_py_1" Source="..\bin\Release\net461\lib\xmlrpc\server.py" />
+					<File Id="__init___py_37" Source="..\bin\Release\net461\lib\xmlrpc\__init__.py" />
+				</Component>
+			</Directory>
+		</Directory>
+		<Directory Id="m3u" Name="m3u">
+			<Component Id="m3u" Guid="aeb4c791-f114-4eb9-a927-2da3459c874a">
+				<File Id="both_m3u" Source="..\bin\Release\net461\m3u\both.m3u" />
+				<File Id="GeoRefnetworklink_kml" Source="..\bin\Release\net461\m3u\GeoRefnetworklink.kml" />
+				<File Id="hud_m3u" Source="..\bin\Release\net461\m3u\hud.m3u" />
+				<File Id="map_m3u" Source="..\bin\Release\net461\m3u\map.m3u" />
+				<File Id="networklink_kml" Source="..\bin\Release\net461\m3u\networklink.kml" />
+			</Component>
+		</Directory>
+		<Directory Id="NoFly" Name="NoFly">
+			<Component Id="NoFly" Guid="f87b4f9e-3adb-424c-a250-f87cf4421ded">
+				<File Id="Drone_No_Fly_Zones_kmz" Source="..\bin\Release\net461\NoFly\Drone No Fly Zones.kmz" />
+				<File Id="SouthAfricaNoRPASOutlined_kmz" Source="..\bin\Release\net461\NoFly\SouthAfricaNoRPASOutlined.kmz" />
+			</Component>
+		</Directory>
+		<Directory Id="pl" Name="pl">
+			<Component Id="pl" Guid="ea80c220-e05b-4e80-8e87-d63cfd0717f2">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_7" Source="..\bin\Release\net461\pl\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_7" Source="..\bin\Release\net461\pl\Microsoft.CodeAnalysis.resources.dll" />
+				<File Id="MissionPlanner_resources_dll_9" Source="..\bin\Release\net461\pl\MissionPlanner.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="plugins" Name="plugins">
+			<Component Id="plugins" Guid="78b3afc5-5f84-413d-8fc4-34b1c694b9ed">
+				<File Id="AltitudeAngelWings_dll" Source="..\bin\Release\net461\plugins\AltitudeAngelWings.dll" />
+				<File Id="AltitudeAngelWings_pdb" Source="..\bin\Release\net461\plugins\AltitudeAngelWings.pdb" />
+				<File Id="AltitudeAngelWings_Plugin_dll" Source="..\bin\Release\net461\plugins\AltitudeAngelWings.Plugin.dll" />
+				<File Id="AltitudeAngelWings_Plugin_pdb" Source="..\bin\Release\net461\plugins\AltitudeAngelWings.Plugin.pdb" />
+				<File Id="Bulb_dll" Source="..\bin\Release\net461\plugins\Bulb.dll" />
+				<File Id="Bulb_pdb" Source="..\bin\Release\net461\plugins\Bulb.pdb" />
+				<File Id="example_watchbutton_cs" Source="..\bin\Release\net461\plugins\example-watchbutton.cs" />
+				<File Id="example_cs" Source="..\bin\Release\net461\plugins\example.cs" />
+				<File Id="example10_canlogfile_cs" Source="..\bin\Release\net461\plugins\example10-canlogfile.cs" />
+				<File Id="example11_trace_cs" Source="..\bin\Release\net461\plugins\example11-trace.cs" />
+				<File Id="example12_forwarding_cs" Source="..\bin\Release\net461\plugins\example12-forwarding.cs" />
+				<File Id="example13_herelink2_cs" Source="..\bin\Release\net461\plugins\example13-herelink2.cs" />
+				<File Id="example14_mass_cs" Source="..\bin\Release\net461\plugins\example14-mass.cs" />
+				<File Id="example15_leds_cs" Source="..\bin\Release\net461\plugins\example15-leds.cs" />
+				<File Id="example16_donate_cs" Source="..\bin\Release\net461\plugins\example16-donate.cs" />
+				<File Id="example17_menuremove_cs" Source="..\bin\Release\net461\plugins\example17-menuremove.cs" />
+				<File Id="example18_externalapi_cs" Source="..\bin\Release\net461\plugins\example18-externalapi.cs" />
+				<File Id="example19_multiforward_cs" Source="..\bin\Release\net461\plugins\example19-multiforward.cs" />
+				<File Id="example2_menu_cs" Source="..\bin\Release\net461\plugins\example2-menu.cs" />
+				<File Id="example2_cs" Source="..\bin\Release\net461\plugins\example2.cs" />
+				<File Id="example20_multiplepositions_cs" Source="..\bin\Release\net461\plugins\example20-multiplepositions.cs" />
+				<File Id="example21_persistentsimple_cs" Source="..\bin\Release\net461\plugins\example21-persistentsimple.cs" />
+				<File Id="example22_payloadconfig_cs" Source="..\bin\Release\net461\plugins\example22-payloadconfig.cs" />
+				<File Id="example23_switch_cs" Source="..\bin\Release\net461\plugins\example23-switch.cs" />
+				<File Id="example3_fencedist_cs" Source="..\bin\Release\net461\plugins\example3-fencedist.cs" />
+				<File Id="example3_cs" Source="..\bin\Release\net461\plugins\example3.cs" />
+				<File Id="example4_herelink_cs" Source="..\bin\Release\net461\plugins\example4-herelink.cs" />
+				<File Id="example4_cs" Source="..\bin\Release\net461\plugins\example4.cs" />
+				<File Id="example5_latencytracker_cs" Source="..\bin\Release\net461\plugins\example5-latencytracker.cs" />
+				<File Id="example5_cs" Source="..\bin\Release\net461\plugins\example5.cs" />
+				<File Id="example6_mapicondesc_cs" Source="..\bin\Release\net461\plugins\example6-mapicondesc.cs" />
+				<File Id="example6_cs" Source="..\bin\Release\net461\plugins\example6.cs" />
+				<File Id="example7_canrtcm_cs" Source="..\bin\Release\net461\plugins\example7-canrtcm.cs" />
+				<File Id="example7_cs" Source="..\bin\Release\net461\plugins\example7.cs" />
+				<File Id="example8_modechange_cs" Source="..\bin\Release\net461\plugins\example8-modechange.cs" />
+				<File Id="example8_cs" Source="..\bin\Release\net461\plugins\example8.cs" />
+				<File Id="example9_hudonoff_cs" Source="..\bin\Release\net461\plugins\example9-hudonoff.cs" />
+				<File Id="FaceMap_dll" Source="..\bin\Release\net461\plugins\FaceMap.dll" />
+				<File Id="FaceMap_pdb" Source="..\bin\Release\net461\plugins\FaceMap.pdb" />
+				<File Id="generator_cs" Source="..\bin\Release\net461\plugins\generator.cs" />
+				<File Id="Markdig_dll" Source="..\bin\Release\net461\plugins\Markdig.dll" />
+				<File Id="MavlinkMessagePlugin_dll" Source="..\bin\Release\net461\plugins\MavlinkMessagePlugin.dll" />
+				<File Id="MavlinkMessagePlugin_pdb" Source="..\bin\Release\net461\plugins\MavlinkMessagePlugin.pdb" />
+				<File Id="Microsoft_Bcl_AsyncInterfaces_dll" Source="..\bin\Release\net461\plugins\Microsoft.Bcl.AsyncInterfaces.dll" />
+				<File Id="Microsoft_IdentityModel_Abstractions_dll" Source="..\bin\Release\net461\plugins\Microsoft.IdentityModel.Abstractions.dll" />
+				<File Id="Microsoft_IdentityModel_JsonWebTokens_dll" Source="..\bin\Release\net461\plugins\Microsoft.IdentityModel.JsonWebTokens.dll" />
+				<File Id="Microsoft_IdentityModel_Logging_dll" Source="..\bin\Release\net461\plugins\Microsoft.IdentityModel.Logging.dll" />
+				<File Id="Microsoft_IdentityModel_Tokens_dll" Source="..\bin\Release\net461\plugins\Microsoft.IdentityModel.Tokens.dll" />
+				<File Id="MissionPlanner_Gridv2_dll" Source="..\bin\Release\net461\plugins\MissionPlanner.Gridv2.dll" />
+				<File Id="MissionPlanner_Gridv2_dll_config" Source="..\bin\Release\net461\plugins\MissionPlanner.Gridv2.dll.config" />
+				<File Id="MissionPlanner_Gridv2_pdb" Source="..\bin\Release\net461\plugins\MissionPlanner.Gridv2.pdb" />
+				<File Id="MissionPlanner_SimpleGrid_dll" Source="..\bin\Release\net461\plugins\MissionPlanner.SimpleGrid.dll" />
+				<File Id="MissionPlanner_SimpleGrid_dll_config" Source="..\bin\Release\net461\plugins\MissionPlanner.SimpleGrid.dll.config" />
+				<File Id="MissionPlanner_SimpleGrid_pdb" Source="..\bin\Release\net461\plugins\MissionPlanner.SimpleGrid.pdb" />
+				<File Id="MissionPlanner_Stats_dll" Source="..\bin\Release\net461\plugins\MissionPlanner.Stats.dll" />
+				<File Id="MissionPlanner_Stats_dll_config" Source="..\bin\Release\net461\plugins\MissionPlanner.Stats.dll.config" />
+				<File Id="MissionPlanner_Stats_pdb" Source="..\bin\Release\net461\plugins\MissionPlanner.Stats.pdb" />
+				<File Id="NodaTime_dll" Source="..\bin\Release\net461\plugins\NodaTime.dll" />
+				<File Id="NodaTime_Serialization_JsonNet_dll" Source="..\bin\Release\net461\plugins\NodaTime.Serialization.JsonNet.dll" />
+				<File Id="opendroneid_dll" Source="..\bin\Release\net461\plugins\opendroneid.dll" />
+				<File Id="opendroneid_pdb" Source="..\bin\Release\net461\plugins\opendroneid.pdb" />
+				<File Id="Polly_dll" Source="..\bin\Release\net461\plugins\Polly.dll" />
+				<File Id="System_IdentityModel_Tokens_Jwt_dll" Source="..\bin\Release\net461\plugins\System.IdentityModel.Tokens.Jwt.dll" />
+				<File Id="System_Text_Encodings_Web_dll" Source="..\bin\Release\net461\plugins\System.Text.Encodings.Web.dll" />
+				<File Id="System_Text_Json_dll" Source="..\bin\Release\net461\plugins\System.Text.Json.dll" />
+				<File Id="TerrainMakerPlugin_dll" Source="..\bin\Release\net461\plugins\TerrainMakerPlugin.dll" />
+				<File Id="TerrainMakerPlugin_pdb" Source="..\bin\Release\net461\plugins\TerrainMakerPlugin.pdb" />
+				<File Id="TrackerHome_dll" Source="..\bin\Release\net461\plugins\TrackerHome.dll" />
+				<File Id="TrackerHome_dll_config" Source="..\bin\Release\net461\plugins\TrackerHome.dll.config" />
+				<File Id="TrackerHome_pdb" Source="..\bin\Release\net461\plugins\TrackerHome.pdb" />
+			</Component>
+			<Directory Id="arm1321" Name="arm">
+				<Component Id="arm_1" Guid="27c57129-653b-4688-aadd-d167ada449b7">
+					<File Id="libSkiaSharp_so_2" Source="..\bin\Release\net461\plugins\arm\libSkiaSharp.so" />
+				</Component>
+			</Directory>
+			<Directory Id="arm641323" Name="arm64">
+				<Component Id="arm64_1" Guid="529fc301-637f-4e74-bcc3-bf5fb7e762ad">
+					<File Id="libSkiaSharp_dll_1" Source="..\bin\Release\net461\plugins\arm64\libSkiaSharp.dll" />
+					<File Id="libSkiaSharp_so_3" Source="..\bin\Release\net461\plugins\arm64\libSkiaSharp.so" />
+				</Component>
+			</Directory>
+			<Directory Id="az_Latn_AZ1326" Name="az-Latn-AZ">
+				<Component Id="az_Latn_AZ_1" Guid="76a6a6b1-fcb9-4bb6-b75a-f6e6f56974ed">
+					<File Id="MissionPlanner_Strings_resources_dll_5" Source="..\bin\Release\net461\plugins\az-Latn-AZ\MissionPlanner.Strings.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="cs1328" Name="cs">
+				<Component Id="cs_1" Guid="45cfd4db-a2e5-4a13-beb1-73740653a13f">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_8" Source="..\bin\Release\net461\plugins\cs\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_8" Source="..\bin\Release\net461\plugins\cs\Microsoft.CodeAnalysis.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="de1331" Name="de">
+				<Component Id="de_1" Guid="5632f2e5-7e7c-45b8-a434-a3199e407c09">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_9" Source="..\bin\Release\net461\plugins\de\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_9" Source="..\bin\Release\net461\plugins\de\Microsoft.CodeAnalysis.resources.dll" />
+					<File Id="ZedGraph_resources_dll_6" Source="..\bin\Release\net461\plugins\de\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="de_DE1335" Name="de-DE">
+				<Component Id="de_DE_1" Guid="b727c7a8-460f-4e83-9b30-cf37e56ac15d">
+					<File Id="MissionPlanner_Strings_resources_dll_6" Source="..\bin\Release\net461\plugins\de-DE\MissionPlanner.Strings.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="es1337" Name="es">
+				<Component Id="es_1" Guid="39801ca9-620b-471e-bef4-b18fecf19df7">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_10" Source="..\bin\Release\net461\plugins\es\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_10" Source="..\bin\Release\net461\plugins\es\Microsoft.CodeAnalysis.resources.dll" />
+					<File Id="ZedGraph_resources_dll_7" Source="..\bin\Release\net461\plugins\es\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="fr1341" Name="fr">
+				<Component Id="fr_1" Guid="a0986c5f-8cb0-4ab1-a874-a54634b76e2a">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_11" Source="..\bin\Release\net461\plugins\fr\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_11" Source="..\bin\Release\net461\plugins\fr\Microsoft.CodeAnalysis.resources.dll" />
+					<File Id="ZedGraph_resources_dll_8" Source="..\bin\Release\net461\plugins\fr\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="hu1345" Name="hu">
+				<Component Id="hu_1" Guid="f1c0af75-82b1-4a0f-8ba4-26e4faf37768">
+					<File Id="ZedGraph_resources_dll_9" Source="..\bin\Release\net461\plugins\hu\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="HW1347" Name="HW">
+				<Component Id="HW_1" Guid="c7dea39a-86dd-48c7-bea5-7c3619508a05">
+					<File Id="ADIS16470_json_1" Source="..\bin\Release\net461\plugins\HW\ADIS16470.json" />
+					<File Id="AK8963_json_1" Source="..\bin\Release\net461\plugins\HW\AK8963.json" />
+					<File Id="HMC5883_json_1" Source="..\bin\Release\net461\plugins\HW\HMC5883.json" />
+					<File Id="ICM20602_json_1" Source="..\bin\Release\net461\plugins\HW\ICM20602.json" />
+					<File Id="ICM20649_json_1" Source="..\bin\Release\net461\plugins\HW\ICM20649.json" />
+					<File Id="ICM20948_json_1" Source="..\bin\Release\net461\plugins\HW\ICM20948.json" />
+					<File Id="L3GD20_json_1" Source="..\bin\Release\net461\plugins\HW\L3GD20.json" />
+					<File Id="LSM303D_json_1" Source="..\bin\Release\net461\plugins\HW\LSM303D.json" />
+					<File Id="LSM9DS0_json_1" Source="..\bin\Release\net461\plugins\HW\LSM9DS0.json" />
+					<File Id="MPU60X0_json_1" Source="..\bin\Release\net461\plugins\HW\MPU60X0.json" />
+					<File Id="MPU9250_json_1" Source="..\bin\Release\net461\plugins\HW\MPU9250.json" />
+					<File Id="MS5611_json_1" Source="..\bin\Release\net461\plugins\HW\MS5611.json" />
+					<File Id="RAMTRON_json_1" Source="..\bin\Release\net461\plugins\HW\RAMTRON.json" />
+				</Component>
+			</Directory>
+			<Directory Id="id_ID1361" Name="id-ID">
+				<Component Id="id_ID_1" Guid="f89b047e-3b85-48c5-a65a-95f0e5ebbbad">
+					<File Id="MissionPlanner_Strings_resources_dll_7" Source="..\bin\Release\net461\plugins\id-ID\MissionPlanner.Strings.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="it1363" Name="it">
+				<Component Id="it_1" Guid="4ffcb582-1afe-4af1-a989-92f6dfb045f0">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_12" Source="..\bin\Release\net461\plugins\it\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_12" Source="..\bin\Release\net461\plugins\it\Microsoft.CodeAnalysis.resources.dll" />
+					<File Id="ZedGraph_resources_dll_10" Source="..\bin\Release\net461\plugins\it\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="ja1367" Name="ja">
+				<Component Id="ja_1" Guid="40f5d960-b455-4b61-b1d8-67d311c4db55">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_13" Source="..\bin\Release\net461\plugins\ja\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_13" Source="..\bin\Release\net461\plugins\ja\Microsoft.CodeAnalysis.resources.dll" />
+					<File Id="ZedGraph_resources_dll_11" Source="..\bin\Release\net461\plugins\ja\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="ja_JP1371" Name="ja-JP">
+				<Component Id="ja_JP_1" Guid="0b679005-5ec1-49cd-8feb-ae3cda5248cb">
+					<File Id="MissionPlanner_Strings_resources_dll_8" Source="..\bin\Release\net461\plugins\ja-JP\MissionPlanner.Strings.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="ko1373" Name="ko">
+				<Component Id="ko_1" Guid="f9653e1e-b717-4b1f-96a1-222ddf5b2202">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_14" Source="..\bin\Release\net461\plugins\ko\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_14" Source="..\bin\Release\net461\plugins\ko\Microsoft.CodeAnalysis.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="ko_KR1376" Name="ko-KR">
+				<Component Id="ko_KR_1" Guid="39f307d7-94a6-4c59-b199-328d9bf845b4">
+					<File Id="MissionPlanner_Gridv2_resources_dll" Source="..\bin\Release\net461\plugins\ko-KR\MissionPlanner.Gridv2.resources.dll" />
+					<File Id="MissionPlanner_SimpleGrid_resources_dll" Source="..\bin\Release\net461\plugins\ko-KR\MissionPlanner.SimpleGrid.resources.dll" />
+					<File Id="MissionPlanner_Strings_resources_dll_9" Source="..\bin\Release\net461\plugins\ko-KR\MissionPlanner.Strings.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="pl1380" Name="pl">
+				<Component Id="pl_1" Guid="e5d75dd2-1132-441c-ad91-50041c5f69c5">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_15" Source="..\bin\Release\net461\plugins\pl\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_15" Source="..\bin\Release\net461\plugins\pl\Microsoft.CodeAnalysis.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="pt" Name="pt">
+				<Component Id="pt" Guid="144de98c-83ab-4045-b053-d723daa3942f">
+					<File Id="MissionPlanner_SimpleGrid_resources_dll_1" Source="..\bin\Release\net461\plugins\pt\MissionPlanner.SimpleGrid.resources.dll" />
+					<File Id="MissionPlanner_Strings_resources_dll_10" Source="..\bin\Release\net461\plugins\pt\MissionPlanner.Strings.resources.dll" />
+					<File Id="ZedGraph_resources_dll_12" Source="..\bin\Release\net461\plugins\pt\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="pt_BR" Name="pt-BR">
+				<Component Id="pt_BR" Guid="bff37d6f-467a-40ac-a808-d0db36046636">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_16" Source="..\bin\Release\net461\plugins\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_16" Source="..\bin\Release\net461\plugins\pt-BR\Microsoft.CodeAnalysis.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="ru" Name="ru">
+				<Component Id="ru" Guid="eb255fde-acb8-4f2e-aba5-3ae450c41de4">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_17" Source="..\bin\Release\net461\plugins\ru\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_17" Source="..\bin\Release\net461\plugins\ru\Microsoft.CodeAnalysis.resources.dll" />
+					<File Id="ZedGraph_resources_dll_13" Source="..\bin\Release\net461\plugins\ru\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="ru_KZ" Name="ru-KZ">
+				<Component Id="ru_KZ" Guid="2dd83ec7-0a92-4da3-bdc8-ed18ccfe490d">
+					<File Id="MissionPlanner_Strings_resources_dll_11" Source="..\bin\Release\net461\plugins\ru-KZ\MissionPlanner.Strings.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="sk" Name="sk">
+				<Component Id="sk" Guid="7c622628-6025-449d-aee5-e80736232f9f">
+					<File Id="ZedGraph_resources_dll_14" Source="..\bin\Release\net461\plugins\sk\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="sv" Name="sv">
+				<Component Id="sv" Guid="aa8049ab-84e1-4558-8371-f3cbb18e5493">
+					<File Id="ZedGraph_resources_dll_15" Source="..\bin\Release\net461\plugins\sv\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="tr" Name="tr">
+				<Component Id="tr" Guid="0f778656-c148-4816-a3f2-79ea4183122a">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_18" Source="..\bin\Release\net461\plugins\tr\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_18" Source="..\bin\Release\net461\plugins\tr\Microsoft.CodeAnalysis.resources.dll" />
+					<File Id="MissionPlanner_Strings_resources_dll_12" Source="..\bin\Release\net461\plugins\tr\MissionPlanner.Strings.resources.dll" />
+					<File Id="ZedGraph_resources_dll_16" Source="..\bin\Release\net461\plugins\tr\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="uk" Name="uk">
+				<Component Id="uk" Guid="7851a59a-d464-486d-b46b-c8f381d0e494">
+					<File Id="MissionPlanner_Strings_resources_dll_13" Source="..\bin\Release\net461\plugins\uk\MissionPlanner.Strings.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="x641407" Name="x64">
+				<Component Id="x64_1" Guid="c6aad4b2-ee77-47e6-8c9f-4b7e84faea64">
+					<File Id="libSkiaSharp_dll_2" Source="..\bin\Release\net461\plugins\x64\libSkiaSharp.dll" />
+					<File Id="libSkiaSharp_so_4" Source="..\bin\Release\net461\plugins\x64\libSkiaSharp.so" />
+				</Component>
+			</Directory>
+			<Directory Id="x861410" Name="x86">
+				<Component Id="x86_2" Guid="491325bb-b88b-4cf4-8ac3-53ee5c6e919a">
+					<File Id="libSkiaSharp_dll_3" Source="..\bin\Release\net461\plugins\x86\libSkiaSharp.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="zh_cn" Name="zh-cn">
+				<Component Id="zh_cn" Guid="52c41f93-440e-42a5-9ffe-786779f26e6e">
+					<File Id="ZedGraph_resources_dll_17" Source="..\bin\Release\net461\plugins\zh-cn\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="zh_Hans" Name="zh-Hans">
+				<Component Id="zh_Hans" Guid="c2ed4ccf-9066-4be3-874d-156488344136">
+					<File Id="GMap_NET_Core_resources_dll" Source="..\bin\Release\net461\plugins\zh-Hans\GMap.NET.Core.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_19" Source="..\bin\Release\net461\plugins\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_19" Source="..\bin\Release\net461\plugins\zh-Hans\Microsoft.CodeAnalysis.resources.dll" />
+					<File Id="MissionPlanner_Controls_resources_dll" Source="..\bin\Release\net461\plugins\zh-Hans\MissionPlanner.Controls.resources.dll" />
+					<File Id="MissionPlanner_Strings_resources_dll_14" Source="..\bin\Release\net461\plugins\zh-Hans\MissionPlanner.Strings.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="zh_Hant" Name="zh-Hant">
+				<Component Id="zh_Hant" Guid="74f5af92-fd30-4c84-93dd-8b6a48e2c909">
+					<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_20" Source="..\bin\Release\net461\plugins\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+					<File Id="Microsoft_CodeAnalysis_resources_dll_20" Source="..\bin\Release\net461\plugins\zh-Hant\Microsoft.CodeAnalysis.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="zh_tw" Name="zh-tw">
+				<Component Id="zh_tw" Guid="ab8ae88d-c3e1-4723-961b-c55b5c96352c">
+					<File Id="ZedGraph_resources_dll_18" Source="..\bin\Release\net461\plugins\zh-tw\ZedGraph.resources.dll" />
+				</Component>
+			</Directory>
+		</Directory>
+		<Directory Id="pt1425" Name="pt">
+			<Component Id="pt_1" Guid="96fb257f-6dd0-40fa-a402-39da0fcb819f">
+				<File Id="MissionPlanner_resources_dll_10" Source="..\bin\Release\net461\pt\MissionPlanner.resources.dll" />
+				<File Id="MissionPlanner_Strings_resources_dll_15" Source="..\bin\Release\net461\pt\MissionPlanner.Strings.resources.dll" />
+				<File Id="ZedGraph_resources_dll_19" Source="..\bin\Release\net461\pt\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="pt_BR1429" Name="pt-BR">
+			<Component Id="pt_BR_1" Guid="14b8fcbd-7581-4fc1-b558-408711113184">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_21" Source="..\bin\Release\net461\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_21" Source="..\bin\Release\net461\pt-BR\Microsoft.CodeAnalysis.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="ru1432" Name="ru">
+			<Component Id="ru_1" Guid="c3e1b13b-90fe-4e7f-9aa8-5fab373b587c">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_22" Source="..\bin\Release\net461\ru\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_22" Source="..\bin\Release\net461\ru\Microsoft.CodeAnalysis.resources.dll" />
+				<File Id="ZedGraph_resources_dll_20" Source="..\bin\Release\net461\ru\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="ru_KZ1436" Name="ru-KZ">
+			<Component Id="ru_KZ_1" Guid="264446fc-c56e-42fa-abc0-b8b3994c527c">
+				<File Id="MissionPlanner_resources_dll_11" Source="..\bin\Release\net461\ru-KZ\MissionPlanner.resources.dll" />
+				<File Id="MissionPlanner_Strings_resources_dll_16" Source="..\bin\Release\net461\ru-KZ\MissionPlanner.Strings.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="ru_RU" Name="ru-RU">
+			<Component Id="ru_RU" Guid="58309120-fbe6-4f2f-b876-ed6a32d6b686">
+				<File Id="MissionPlanner_resources_dll_12" Source="..\bin\Release\net461\ru-RU\MissionPlanner.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="Scripts" Name="Scripts">
+			<Component Id="Scripts_1" Guid="e3b3071f-e54e-4579-9755-0635d50004d9">
+				<File Id="datetime_py_1" Source="..\bin\Release\net461\Scripts\datetime.py" />
+				<File Id="example1_py" Source="..\bin\Release\net461\Scripts\example1.py" />
+				<File Id="example2_py" Source="..\bin\Release\net461\Scripts\example2.py" />
+				<File Id="example3_py" Source="..\bin\Release\net461\Scripts\example3.py" />
+				<File Id="example4_wp_py" Source="..\bin\Release\net461\Scripts\example4 wp.py" />
+				<File Id="example5_inject_data_py" Source="..\bin\Release\net461\Scripts\example5 inject data.py" />
+				<File Id="example6_py" Source="..\bin\Release\net461\Scripts\example6.py" />
+				<File Id="example7_py" Source="..\bin\Release\net461\Scripts\example7.py" />
+				<File Id="example8___speech_py" Source="..\bin\Release\net461\Scripts\example8 - speech.py" />
+				<File Id="example9___sitl_py" Source="..\bin\Release\net461\Scripts\example9 - sitl.py" />
+				<File Id="PARACHUTE_LANDING_APPROACH_py" Source="..\bin\Release\net461\Scripts\PARACHUTE LANDING APPROACH.py" />
+				<File Id="rc___heli_py" Source="..\bin\Release\net461\Scripts\rc - heli.py" />
+				<File Id="rc_py" Source="..\bin\Release\net461\Scripts\rc.py" />
+				<File Id="TAKEOFF_py" Source="..\bin\Release\net461\Scripts\TAKEOFF.py" />
+			</Component>
+		</Directory>
+		<Directory Id="sk1456" Name="sk">
+			<Component Id="sk_1" Guid="78a67f6d-705e-49e4-9767-94800472f373">
+				<File Id="ZedGraph_resources_dll_21" Source="..\bin\Release\net461\sk\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="sv1458" Name="sv">
+			<Component Id="sv_1" Guid="c017479a-80a0-4dce-b910-7c0b87331bc7">
+				<File Id="ZedGraph_resources_dll_22" Source="..\bin\Release\net461\sv\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="tr1460" Name="tr">
+			<Component Id="tr_1" Guid="7912c8f6-76b8-4c28-894d-40e6a27c24fa">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_23" Source="..\bin\Release\net461\tr\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_23" Source="..\bin\Release\net461\tr\Microsoft.CodeAnalysis.resources.dll" />
+				<File Id="MissionPlanner_resources_dll_13" Source="..\bin\Release\net461\tr\MissionPlanner.resources.dll" />
+				<File Id="MissionPlanner_Strings_resources_dll_17" Source="..\bin\Release\net461\tr\MissionPlanner.Strings.resources.dll" />
+				<File Id="ZedGraph_resources_dll_23" Source="..\bin\Release\net461\tr\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="uk1466" Name="uk">
+			<Component Id="uk_1" Guid="f5d12a75-d1be-4764-a09f-4f5f591ecfc5">
+				<File Id="MissionPlanner_resources_dll_14" Source="..\bin\Release\net461\uk\MissionPlanner.resources.dll" />
+				<File Id="MissionPlanner_Strings_resources_dll_18" Source="..\bin\Release\net461\uk\MissionPlanner.Strings.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="x641469" Name="x64">
+			<Component Id="x64_2" Guid="cc5d9cdb-6679-46d7-a4a8-9c17169b3a09">
+				<File Id="libSkiaSharp_dll_4" Source="..\bin\Release\net461\x64\libSkiaSharp.dll" />
+				<File Id="libSkiaSharp_so_5" Source="..\bin\Release\net461\x64\libSkiaSharp.so" />
+			</Component>
+		</Directory>
+		<Directory Id="x861472" Name="x86">
+			<Component Id="x86_3" Guid="f95b72ae-10e4-478a-85b5-9e238a49215b">
+				<File Id="libSkiaSharp_dll_5" Source="..\bin\Release\net461\x86\libSkiaSharp.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="zh_cn1474" Name="zh-cn">
+			<Component Id="zh_cn_1" Guid="434786f1-91bf-4162-b7f5-6c5c6ce9d2d6">
+				<File Id="MissionPlanner_resources_dll_15" Source="..\bin\Release\net461\zh-cn\MissionPlanner.resources.dll" />
+				<File Id="ZedGraph_resources_dll_24" Source="..\bin\Release\net461\zh-cn\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="zh_Hans1477" Name="zh-Hans">
+			<Component Id="zh_Hans_1" Guid="8b741bea-769a-4b31-9d80-d1349eb0964f">
+				<File Id="GMap_NET_Core_resources_dll_1" Source="..\bin\Release\net461\zh-Hans\GMap.NET.Core.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_24" Source="..\bin\Release\net461\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_24" Source="..\bin\Release\net461\zh-Hans\Microsoft.CodeAnalysis.resources.dll" />
+				<File Id="MissionPlanner_Controls_resources_dll_1" Source="..\bin\Release\net461\zh-Hans\MissionPlanner.Controls.resources.dll" />
+				<File Id="MissionPlanner_resources_dll_16" Source="..\bin\Release\net461\zh-Hans\MissionPlanner.resources.dll" />
+				<File Id="MissionPlanner_Strings_resources_dll_19" Source="..\bin\Release\net461\zh-Hans\MissionPlanner.Strings.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="zh_Hant1484" Name="zh-Hant">
+			<Component Id="zh_Hant_1" Guid="26fd90e9-03b2-43e0-ac8c-48e6bff9b4ae">
+				<File Id="Microsoft_CodeAnalysis_CSharp_resources_dll_25" Source="..\bin\Release\net461\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll" />
+				<File Id="Microsoft_CodeAnalysis_resources_dll_25" Source="..\bin\Release\net461\zh-Hant\Microsoft.CodeAnalysis.resources.dll" />
+				<File Id="MissionPlanner_resources_dll_17" Source="..\bin\Release\net461\zh-Hant\MissionPlanner.resources.dll" />
+			</Component>
+		</Directory>
+		<Directory Id="zh_tw1488" Name="zh-tw">
+			<Component Id="zh_tw_1" Guid="8f2ba7e7-d7df-45b1-8764-004363948f38">
+				<File Id="MissionPlanner_resources_dll_18" Source="..\bin\Release\net461\zh-tw\MissionPlanner.resources.dll" />
+				<File Id="ZedGraph_resources_dll_25" Source="..\bin\Release\net461\zh-tw\ZedGraph.resources.dll" />
+			</Component>
+		</Directory>
+
+        </Directory>
+
+        <Directory Id="ProgramMenuFolder">
+            <Directory Id="ApplicationProgramsFolder" Name="Mission Planner" />
+        </Directory>
+    </Directory>
+
+    <Binary Id="signedcer"  SourceFile="..\Drivers\signed.cer" />
+  
+    <CustomAction  Id='Drivercleanup' Execute='deferred' 
+    Directory='Drivers'  ExeCommand='[Drivers]DriverCleanup.exe' Return='ignore' Impersonate='no'/>
+
+    <CustomAction  Id='Install_signed_Driver86' Execute='deferred' 
+    Directory='Drivers'  ExeCommand='[Drivers]DPInstx86.exe' Return='ignore' Impersonate='no'/>
+    <CustomAction  Id='Install_signed_Driver64' Execute='deferred' 
+    Directory='Drivers'  ExeCommand='[Drivers]DPInstx64.exe' Return='ignore' Impersonate='no'/>
+
+    <InstallExecuteSequence>  
+    <Custom Action="Install_signed_Driver86"  After="CreateShortcuts">NOT 
+    Installed AND NOT VersionNT64</Custom>
+    <Custom Action="Install_signed_Driver64"  After="CreateShortcuts">NOT 
+    Installed AND VersionNT64</Custom>
+    <Custom Action="Drivercleanup"  After="CreateShortcuts">NOT Installed</Custom>
+    </InstallExecuteSequence>
+
+    <InstallExecuteSequence>
+    <Custom Action='comReg' After='CreateShortcuts'>NOT REMOVE</Custom>
+    <Custom Action='comUnreg' Before='RemoveFiles'>Installed</Custom> 
+    <Custom Action='comReg64' After='CreateShortcuts'>NOT REMOVE AND VersionNT64</Custom>
+    <Custom Action='comUnreg64' Before='RemoveFiles'>Installed AND VersionNT64</Custom> 
+    </InstallExecuteSequence>
+ 
+    <CustomAction
+    Id='comReg' Impersonate='no' Execute='deferred' 
+    Directory='INSTALLDIR'
+    ExeCommand='[SystemFolder]cmd.exe /c ""[WindowsFolder]Microsoft.NET\Framework\v4.0.30319\regasm.exe" "[INSTALLDIR]tlogThumbnailHandler.dll" /codebase"'
+    Return='ignore' />
+ 
+    <CustomAction
+    Id='comUnreg' Impersonate='no' Execute='deferred' 
+    Directory='INSTALLDIR'
+    ExeCommand='[SystemFolder]cmd.exe /c ""[WindowsFolder]Microsoft.NET\Framework\v4.0.30319\regasm.exe" /u "[INSTALLDIR]tlogThumbnailHandler.dll""'
+    Return='ignore' />        
+
+    <CustomAction
+    Id='comReg64' Impersonate='no' Execute='deferred' 
+    Directory='INSTALLDIR'
+    ExeCommand='[SystemFolder]cmd.exe /c ""[WindowsFolder]Microsoft.NET\Framework64\v4.0.30319\regasm.exe" "[INSTALLDIR]tlogThumbnailHandler.dll" /codebase"'
+    Return='ignore' />
+ 
+    <CustomAction
+    Id='comUnreg64' Impersonate='no' Execute='deferred' 
+    Directory='INSTALLDIR'
+    ExeCommand='[SystemFolder]cmd.exe /c ""[WindowsFolder]Microsoft.NET\Framework64\v4.0.30319\regasm.exe" /u "[INSTALLDIR]tlogThumbnailHandler.dll""'
+    Return='ignore' />           
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+        <Component Id="ApplicationShortcut" Guid="*">
+            <Shortcut Id="ApplicationStartMenuShortcut10" Name="Mission Planner" Description="Mission Planner" Target="[INSTALLDIR]MissionPlanner.exe" WorkingDirectory="INSTALLDIR" />
+            <Shortcut Id="UninstallProduct" Name="Uninstall Mission Planner" Description="Uninstalls My Application" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+            <RegistryValue Root="HKCU" Key="Software\MichaelOborne\MissionPlanner" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+
+            <RemoveFolder Id="dltApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
+
+            <iis:Certificate Id="rootcert" StoreLocation="localMachine" StoreName="root" Overwrite='yes' BinaryKey='signedcer' Request="no" Name='Michael Oborne' />
+        </Component>
+    </DirectoryRef>
+
+
+    <Feature Id="Complete" Title="Mission Planner" Level="1">
+        <ComponentRef Id="InstallDirPermissions" />
+
+<ComponentRef Id="net461" />
+<ComponentRef Id="ar" />
+<ComponentRef Id="arm" />
+<ComponentRef Id="arm64" />
+<ComponentRef Id="az_Latn_AZ" />
+<ComponentRef Id="cs" />
+<ComponentRef Id="de" />
+<ComponentRef Id="de_DE" />
+<ComponentRef Id="Drivers" />
+<ComponentRef Id="amd64" />
+<ComponentRef Id="x86" />
+<ComponentRef Id="es" />
+<ComponentRef Id="es_ES" />
+<ComponentRef Id="fr" />
+<ComponentRef Id="gdal" />
+<ComponentRef Id="data" />
+<ComponentRef Id="share" />
+<ComponentRef Id="x64" />
+<ComponentRef Id="x86_1" />
+<ComponentRef Id="graphs" />
+<ComponentRef Id="hu" />
+<ComponentRef Id="HW" />
+<ComponentRef Id="id_ID" />
+<ComponentRef Id="it" />
+<ComponentRef Id="it_IT" />
+<ComponentRef Id="ja" />
+<ComponentRef Id="ja_JP" />
+<ComponentRef Id="ko" />
+<ComponentRef Id="ko_KR" />
+<ComponentRef Id="lib" />
+<ComponentRef Id="asyncio" />
+<ComponentRef Id="collections" />
+<ComponentRef Id="concurrent" />
+<ComponentRef Id="futures" />
+<ComponentRef Id="ctypes" />
+<ComponentRef Id="macholib" />
+<ComponentRef Id="curses" />
+<ComponentRef Id="dbm" />
+<ComponentRef Id="distutils" />
+<ComponentRef Id="command" />
+<ComponentRef Id="email" />
+<ComponentRef Id="mime" />
+<ComponentRef Id="encodings" />
+<ComponentRef Id="ensurepip" />
+<ComponentRef Id="_bundled" />
+<ComponentRef Id="html" />
+<ComponentRef Id="http" />
+<ComponentRef Id="importlib" />
+<ComponentRef Id="json" />
+<ComponentRef Id="lib2to3" />
+<ComponentRef Id="fixes" />
+<ComponentRef Id="pgen2" />
+<ComponentRef Id="logging" />
+<ComponentRef Id="msilib" />
+<ComponentRef Id="multiprocessing" />
+<ComponentRef Id="dummy" />
+<ComponentRef Id="pydoc_data" />
+<ComponentRef Id="site_packages" />
+<ComponentRef Id="sqlite3" />
+<ComponentRef Id="turtledemo" />
+<ComponentRef Id="unittest" />
+<ComponentRef Id="urllib" />
+<ComponentRef Id="venv" />
+<ComponentRef Id="scripts" />
+<ComponentRef Id="nt" />
+<ComponentRef Id="posix" />
+<ComponentRef Id="wsgiref" />
+<ComponentRef Id="xml" />
+<ComponentRef Id="dom" />
+<ComponentRef Id="etree" />
+<ComponentRef Id="parsers" />
+<ComponentRef Id="sax" />
+<ComponentRef Id="xmlrpc" />
+<ComponentRef Id="m3u" />
+<ComponentRef Id="NoFly" />
+<ComponentRef Id="pl" />
+<ComponentRef Id="plugins" />
+<ComponentRef Id="arm_1" />
+<ComponentRef Id="arm64_1" />
+<ComponentRef Id="az_Latn_AZ_1" />
+<ComponentRef Id="cs_1" />
+<ComponentRef Id="de_1" />
+<ComponentRef Id="de_DE_1" />
+<ComponentRef Id="es_1" />
+<ComponentRef Id="fr_1" />
+<ComponentRef Id="hu_1" />
+<ComponentRef Id="HW_1" />
+<ComponentRef Id="id_ID_1" />
+<ComponentRef Id="it_1" />
+<ComponentRef Id="ja_1" />
+<ComponentRef Id="ja_JP_1" />
+<ComponentRef Id="ko_1" />
+<ComponentRef Id="ko_KR_1" />
+<ComponentRef Id="pl_1" />
+<ComponentRef Id="pt" />
+<ComponentRef Id="pt_BR" />
+<ComponentRef Id="ru" />
+<ComponentRef Id="ru_KZ" />
+<ComponentRef Id="sk" />
+<ComponentRef Id="sv" />
+<ComponentRef Id="tr" />
+<ComponentRef Id="uk" />
+<ComponentRef Id="x64_1" />
+<ComponentRef Id="x86_2" />
+<ComponentRef Id="zh_cn" />
+<ComponentRef Id="zh_Hans" />
+<ComponentRef Id="zh_Hant" />
+<ComponentRef Id="zh_tw" />
+<ComponentRef Id="pt_1" />
+<ComponentRef Id="pt_BR_1" />
+<ComponentRef Id="ru_1" />
+<ComponentRef Id="ru_KZ_1" />
+<ComponentRef Id="ru_RU" />
+<ComponentRef Id="Scripts_1" />
+<ComponentRef Id="sk_1" />
+<ComponentRef Id="sv_1" />
+<ComponentRef Id="tr_1" />
+<ComponentRef Id="uk_1" />
+<ComponentRef Id="x64_2" />
+<ComponentRef Id="x86_3" />
+<ComponentRef Id="zh_cn_1" />
+<ComponentRef Id="zh_Hans_1" />
+<ComponentRef Id="zh_Hant_1" />
+<ComponentRef Id="zh_tw_1" />
+
+            
+        <ComponentRef Id="ApplicationShortcut" />
+    </Feature>
+        
+    <!-- Step 2: Add UI to your installer / Step 4: Trigger the custom action -->
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="licence.rtf" />
+
+    <UI>
+        <UIRef Id="WixUI_InstallDir" />
+        <Publish Dialog="ExitDialog" 
+            Control="Finish" 
+            Event="DoAction" 
+            Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+    </UI>
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Mission Planner" />
+
+    <!-- Step 3: Include the custom action -->
+    <Property Id="WixShellExecTarget" Value="[#_135]" />
+    <CustomAction Id="LaunchApplication" 
+        BinaryKey="WixCA" 
+        DllEntry="WixShellExec"
+        Impersonate="yes" />
+    </Product>
+    
+</Wix>

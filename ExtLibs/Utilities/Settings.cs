@@ -509,29 +509,71 @@ namespace MissionPlanner.Utilities
             EnsureGcsAuthDefaults();
         }
 
+        bool _authDefaultsInserted;
+
         /// <summary>
-        /// GCS user-login settings. Missing keys are created once; existing values are left as stored.
+        /// Fill GCS login settings only when a key is missing. Do not write config.xml here:
+        /// MainV2 saves once the window is up, and that save must not replace a value already in the file.
         /// </summary>
         public void EnsureGcsAuthDefaults()
         {
-            bool changed = false;
-            if (!config.ContainsKey(GcsAuthEnableKey))
+            bool inserted = false;
+            if (!config.ContainsKey(GcsAuthEnableKey) || string.IsNullOrWhiteSpace(config[GcsAuthEnableKey]))
             {
                 config[GcsAuthEnableKey] = "False";
-                changed = true;
+                inserted = true;
             }
-            if (!config.ContainsKey(GcsAuthUserIdKey))
+            if (!config.ContainsKey(GcsAuthUserIdKey) || string.IsNullOrEmpty(config[GcsAuthUserIdKey]))
             {
                 config[GcsAuthUserIdKey] = "q";
-                changed = true;
+                inserted = true;
             }
             if (!config.ContainsKey(GcsAuthPasswordKey))
             {
                 config[GcsAuthPasswordKey] = "q";
-                changed = true;
+                inserted = true;
             }
-            if (changed)
-                Save();
+            _authDefaultsInserted = inserted;
+        }
+
+        void KeepStoredAuthValues(string filename)
+        {
+            if (!_authDefaultsInserted || !File.Exists(filename))
+                return;
+
+            KeepStoredElement(filename, GcsAuthEnableKey);
+            KeepStoredElement(filename, GcsAuthUserIdKey);
+            KeepStoredElement(filename, GcsAuthPasswordKey);
+            _authDefaultsInserted = false;
+        }
+
+        void KeepStoredElement(string filename, string key)
+        {
+            var stored = ReadConfigElement(filename, key);
+            if (!string.IsNullOrEmpty(stored))
+                config[key] = stored;
+        }
+
+        static string ReadConfigElement(string filename, string key)
+        {
+            try
+            {
+                var text = File.ReadAllText(filename);
+                var open = "<" + key + ">";
+                var close = "</" + key + ">";
+                var start = text.LastIndexOf(open, StringComparison.Ordinal);
+                if (start < 0)
+                    return null;
+                start += open.Length;
+                var end = text.IndexOf(close, start, StringComparison.Ordinal);
+                if (end < 0)
+                    return null;
+                return text.Substring(start, end - start).Trim();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public const string GcsAuthEnableKey = "gcs_auth_enable";
@@ -541,6 +583,7 @@ namespace MissionPlanner.Utilities
         public void Save()
         {
             string filename = GetConfigFullPath();
+            KeepStoredAuthValues(filename);
 
             using (XmlTextWriter xmlwriter = new XmlTextWriter(filename, Encoding.UTF8))
             {

@@ -267,6 +267,50 @@ namespace MissionPlanner
 
         private volatile bool _giveComport = false;
 
+        bool _gcsAuthActive;
+        byte _gcsAuthSysid;
+        byte _gcsAuthCompid;
+
+        internal void SetGcsAuthSession(byte sysid, byte compid, byte[] signingKey)
+        {
+            _gcsAuthActive = true;
+            _gcsAuthSysid = sysid;
+            _gcsAuthCompid = compid;
+            if (signingKey != null && signingKey.Length == 32)
+            {
+                MAVlist[sysid, compid].signingKey = signingKey;
+                enableSigning(sysid, compid);
+            }
+        }
+
+        internal void EndGcsAuthSession(bool sendLogout)
+        {
+            if (!_gcsAuthActive)
+                return;
+
+            _gcsAuthActive = false;
+            try
+            {
+                if (sendLogout && BaseStream != null && BaseStream.IsOpen)
+                    GcsUserAuth.SendLogout(this, _gcsAuthSysid, _gcsAuthCompid);
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+            }
+
+            try
+            {
+                var state = MAVlist[_gcsAuthSysid, _gcsAuthCompid];
+                state.signingKey = null;
+                state.signing = false;
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+            }
+        }
+
         private DateTime lastparamset = DateTime.MinValue;
 
         /// <summary>
@@ -597,6 +641,15 @@ namespace MissionPlanner
         {
             try
             {
+                EndGcsAuthSession(true);
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+            }
+
+            try
+            {
                 Terrain?.UnSub();
                 Terrain = null;
             }
@@ -750,6 +803,34 @@ namespace MissionPlanner
                     {
                         log.Debug("SerialPort Sleep 2");
                         Thread.Sleep(1000);
+                    }
+                }
+
+                // The flight controller sends no heartbeat until this channel is authenticated.
+                if (GcsUserAuth.IsEnabled)
+                {
+                    frmProgressReporter.UpdateProgressAndStatus(-1, "User authentication");
+                    bool tookComport = false;
+                    try
+                    {
+                        if (!giveComport)
+                        {
+                            giveComport = true;
+                            tookComport = true;
+                        }
+
+                        string authError;
+                        if (!GcsUserAuth.Login(this, PRsender, out authError))
+                        {
+                            PRsender.doWorkArgs.ErrorMessage = authError;
+                            this.Close();
+                            throw new Exception(authError);
+                        }
+                    }
+                    finally
+                    {
+                        if (tookComport)
+                            giveComport = false;
                     }
                 }
 
@@ -1271,7 +1352,9 @@ Mission Planner waits for 2 valid heartbeat packets before connecting
                     messageType == (byte) MAVLINK_MSG_ID.PARAM_REQUEST_LIST ||
                     messageType == (byte) MAVLINK_MSG_ID.PARAM_REQUEST_READ ||
                     messageType == (byte) MAVLINK_MSG_ID.RALLY_FETCH_POINT ||
-                    messageType == (byte) MAVLINK_MSG_ID.FENCE_FETCH_POINT
+                    messageType == (byte) MAVLINK_MSG_ID.FENCE_FETCH_POINT ||
+                    messageType == (int) MAVLINK_MSG_ID.AUTH_REQUEST ||
+                    messageType == (int) MAVLINK_MSG_ID.AUTH_RESPONSE
                 )
                 {
                 }

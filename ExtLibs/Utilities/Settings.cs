@@ -466,7 +466,10 @@ namespace MissionPlanner.Utilities
             }
 
             if (!File.Exists(GetConfigFullPath()))
+            {
+                EnsureGcsAuthDefaults();
                 return;
+            }
 
             try
             {
@@ -502,7 +505,38 @@ namespace MissionPlanner.Utilities
                 File.Copy(GetConfigFullPath(), GetConfigFullPath() + DateTime.Now.toUnixTime() + ".failed", true);
                 throw;
             }
+
+            EnsureGcsAuthDefaults();
         }
+
+        /// <summary>
+        /// GCS user-login settings. Missing keys are created once; existing values are left as stored.
+        /// </summary>
+        public void EnsureGcsAuthDefaults()
+        {
+            bool changed = false;
+            if (!config.ContainsKey(GcsAuthEnableKey))
+            {
+                config[GcsAuthEnableKey] = "False";
+                changed = true;
+            }
+            if (!config.ContainsKey(GcsAuthUserIdKey))
+            {
+                config[GcsAuthUserIdKey] = "q";
+                changed = true;
+            }
+            if (!config.ContainsKey(GcsAuthPasswordKey))
+            {
+                config[GcsAuthPasswordKey] = "q";
+                changed = true;
+            }
+            if (changed)
+                Save();
+        }
+
+        public const string GcsAuthEnableKey = "gcs_auth_enable";
+        public const string GcsAuthUserIdKey = "gcs_auth_userid";
+        public const string GcsAuthPasswordKey = "gcs_auth_password";
 
         public void Save()
         {
